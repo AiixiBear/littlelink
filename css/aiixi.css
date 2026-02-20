@@ -1,0 +1,58 @@
+/* Local fonts from static/fonts */
+@font-face {
+    font-family: 'Huninn';
+    src: url('https://bearshen.top/fonts/Huninn-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Zen Maru Gothic';
+    src: url('https://bearshen.top/fonts/ZenMaruGothic-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Zen Maru Gothic';
+    src: url('https://bearshen.top/fonts/ZenMaruGothic-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+body {
+    position: relative;
+    margin: 0;
+    background-image: url("/images/nene2.webp");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+/* 背景遮罩 */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6); /* ★重點在這 */
+    z-index: -1;
+}
+
+@media (orientation: portrait) {
+    body {
+        background-image: url("/images/nene1.webp");
+        background-position: center top;
+    }
+}
+
+
+/*@import url('https://fonts.googleapis.com/css2?family=Huninn&family=Zen+Maru+Gothic:wght@500&display=swap');*/
+
+/* Default document font stack */
+html{
+    font-family: "Huninn", "Zen Maru Gothic", sans-serif !important;
+}
