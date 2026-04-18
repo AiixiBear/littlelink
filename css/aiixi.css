@@ -66,3 +66,11 @@ html{
 .head-text {
     text-shadow: 0 2px 10px rgba(255,255,255,0.5);
 }
+
+.a-footer{
+    color: #33DD99 !important;
+}
+
+.a-footer:hover{
+    color: #00ff99 !important;
+}

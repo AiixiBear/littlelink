@@ -100,7 +100,7 @@
 
               <p>我的社群個人檔案</p>
 
-              <a class="button button-threads" href="https://threads.com/@aiixi_bear" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/threads.svg" alt="Threads Logo" rel='me'>Threads</a>
+              <a class="button button-threads" href="https://threads.com/@aiixi_bear" target="_blank" rel="noopener" role="button" rel='me'><img class="icon" aria-hidden="true" src="images/icons/threads.svg" alt="Threads Logo">Threads</a>
 
               <a class="button button-instagram" href="https://instagram.com/aiixi_bear" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/instagram.svg" alt="Instagram Logo">Instagram</a>
 
@@ -116,31 +116,30 @@
       <hr>
       <!-- Feel free to add your own footer information, including updating `privacy.html` to reflect how your LittleLink fork is set up -->
       <footer>
-        <p id="trace-info" class="">
-          取得你所在的地區與 Cloudflare 節點中...
-        </p>
-      </footer>
-    </div>
-  </div>
-  <script>
-  fetch('/cdn-cgi/trace')
-    .then(res => res.text())
-    .then(text => {
-      const info = {};
-      text.split('\n').forEach(line => {
-        const [key, val] = line.split('=');
-        info[key] = val;
-      });
-      const colo = info.colo || '未知';
-      const loc = info.loc || '未知';
-      document.getElementById('trace-info').textContent =
-        `你所在地(IP)：${loc} | 連線的Cloudflare節點：${colo}`;
-    })
-    .catch(err => {
-      console.error('無法抓取 Cloudflare trace', err);
-      document.getElementById('trace-info').textContent =
-        '無法取得你所在的地區或 Cloudflare 節點';
-    });
+      <p>
+        <span id="trace-info" class="">...</span> | 
+        <a href="https://bearshen.top/" class="a-footer">Aiixi Bear (bearshen.top)</a>
+        <br>
+        <span>&copy; 2026 Aiixi Bear. All rights reserved.</span>
+      </p>
+    </footer>
+
+    <script>
+      fetch('/cdn-cgi/trace')
+        .then(res => res.text())
+        .then(text => {
+          const info = {};
+          text.split('\n').forEach(line => {
+            const [key, val] = line.split('=');
+            if (key) info[key] = val; 
+          });
+          const colo = info.colo || '未知';
+          document.getElementById('trace-info').textContent = `${colo}`;
+        })
+        .catch(err => {
+          console.error('無法抓取 Cloudflare trace', err);
+          document.getElementById('trace-info').textContent = '錯誤';
+        });
     </script>
 </body>
 
