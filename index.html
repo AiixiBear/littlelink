@@ -107,7 +107,11 @@
               <a class="button button-threads" href="https://threads.com/@aiixi_bear" target="_blank" rel="noopener" role="button" rel='me'><img class="icon" aria-hidden="true" src="images/icons/threads.svg" alt="Threads Logo">Threads</a>
 
               <a class="button button-instagram" href="https://instagram.com/aiixi_bear" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/instagram.svg" alt="Instagram Logo">Instagram</a>
-
+              
+              <a class="button button-discord copy-btn" href="javascript:void(0);" data-id="aiixi_bear" data-label="Discord">
+                <img class="icon" aria-hidden="true" src="images/icons/discord.svg" alt="Discord Logo">
+                <span class="btn-text">Discord (點擊複製)</span>
+              </a>
               <a class="button button-x" href="https://x.com/aiixi_bear" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/x.svg" alt="X Logo">X (Twitter)</a>
 
               <a class="button button-github" href="https://github.com/AiixiBear" target="_blank" rel="noopener" role="button"><img class="icon" aria-hidden="true" src="images/icons/github.svg" alt="GitHub Logo">GitHub</a>
@@ -154,6 +158,27 @@
           document.getElementById('trace-info').textContent = '錯誤';
         });
         console.info("大便")
+      document.querySelectorAll('.copy-btn').forEach(button => {
+        button.addEventListener('click', function(event) {
+          event.preventDefault(); // 安全防護：阻止預設跳轉
+
+          const idToCopy = this.getAttribute('data-id');      // 取得實際帳號
+          const platformLabel = this.getAttribute('data-label'); // 取得平台名稱
+          const textSpan = this.querySelector('.btn-text');   // 取得按鈕內的文字區塊
+          const originalText = document.querySelector('.btn-text').textContent; // 取得原始文字
+
+          navigator.clipboard.writeText(idToCopy).then(() => {
+            textSpan.textContent = `✅ 已複製 ${platformLabel} ID！`;
+            
+            setTimeout(() => {
+              textSpan.textContent = `${originalText}`;
+            }, 1500);
+          }).catch(err => {
+            console.error('複製失敗: ', err);
+            alert(`複製失敗，請手動複製：${idToCopy}`);
+          });
+        });
+      });
     </script>
     <!-- 由 Google 結構化資料標記協助工具產生的 JSON-LD 標記。 -->
     <script type="application/ld+json">

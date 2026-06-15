@@ -70,3 +70,18 @@ h1{
     width: 12rem !important;
     height: 12rem !important;
 }
+
+.toast-msg {
+    font-size: 13px;
+    color: #2e7d32;
+    background-color: #e8f5e9;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 10px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+/* 當加上 active 類別時才顯示 */
+.toast-msg.active {
+    opacity: 1;
+}
