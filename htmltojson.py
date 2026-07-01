@@ -24,7 +24,7 @@ from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlparse
 
-SKIP_SCHEMES = {"javascript", "mailto", "tel", "data"}
+SKIP_SCHEMES = {"javascript", "tel", "data"}
 
 
 class LinkExtractor(HTMLParser):
