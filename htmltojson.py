@@ -80,6 +80,9 @@ class LinkExtractor(HTMLParser):
 
             if "JSON" in title:
                 return
+            
+            if "COMMIT_HASH_PLACEHOLDER" in title:
+                return
 
             self._seen_urls.add(href)
 
