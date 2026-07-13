@@ -63,7 +63,6 @@
 </head>
 
 <body>
-
   <div class="container">
     <div class="column">
       <div class="">
@@ -90,6 +89,26 @@
             我的各社交平台帳號直戳都會回！
             想更了解我可以戳下方的網頁連結<br>
             ↓↓↓
+            <!-- 雙時區時鐘與日期區塊 -->
+            <div class="timezone-clock-container"> 
+              <span>愛希熊目前處於 (TZ_HERE) 時區<br>如果有造成不便 敬請見諒</span>         
+              <br>
+              <br>
+              <div class="clock-box">
+                <span class="clock-label">您的時區 (<span id="user-tz">偵測中...</span>)</span>
+                <div id="user-date" class="clock-date">0000/00/00</div>
+                <div id="user-time" class="clock-time">00:00:00</div>
+              </div>
+              <div class="clock-box">
+                <span class="clock-label">愛希熊的時區 (TZ_HERE)</span>
+                <div id="bear-date" class="clock-date">0000/00/00</div>
+                <div id="bear-time" class="clock-time">00:00:00</div>
+              </div>
+              <div><small class="sync-status" id="sync-status" style="opacity: 0.8;">正在請求愛希熊報時台...</small></div>
+            </div>
+            <br>
+          </p>
+        </div>
         </div>
         <!-- All your buttons go here -->
         <div class="button-stack" role="navigation">
@@ -120,8 +139,8 @@
 
           <h2>我的社交個人檔案</h2>
 
-          <a class="button button-threads" href="https://threads.com/@aiixi_bear" target="_blank" rel="noopener"
-            role="button" rel='me'><img class="icon" aria-hidden="true" src="images/icons/threads.svg"
+          <a class="button button-threads" href="https://threads.com/@aiixi_bear" target="_blank" rel="noopener me"
+            role="button"><img class="icon" aria-hidden="true" src="images/icons/threads.svg"
               alt="Threads Logo">Threads · aiixi_bear</a>
 
           <a class="button button-instagram" href="https://instagram.com/aiixi_bear" target="_blank" rel="noopener"
@@ -175,8 +194,6 @@
       <!-- Feel free to add your own footer information, including updating `privacy.html` to reflect how your LittleLink fork is set up -->
       <footer>
         <p>
-
-
           <span>背景圖來源：《世界計畫》草薙寧々卡面</span>
           <br>
           <span>&copy; 2026 Aiixi Bear. <a href="mailto:aiixi@aiixi.cc" class="a-footer">aiixi@aiixi.cc</a></span><br>
@@ -307,5 +324,92 @@
           });
         });
       </script>
+      <script>
+        // 核心時間變數
+        let timeOffset = 0; // 本地時間與伺服器精準時間的毫秒差
+
+        // 向我的報時台請求時間
+        function syncWithServer() {
+          const startTime = Date.now();
+          
+          fetch('https://www.aiixi.cc/api/time/')
+            .then(res => res.json())
+            .then(data => {
+              const endTime = Date.now();
+              // 計算網路傳輸延遲（來回時間的一半）
+              const latency = (endTime - startTime) / 2;
+              // 伺服器時間對齊到本地接收當下的推估值
+              const serverTimeCorrected = data.time + latency;
+              
+              // 計算時間差：伺服器精準時間 - 本地當前時間
+              timeOffset = serverTimeCorrected - endTime;
+              
+              document.getElementById('sync-status').textContent = '愛希熊報時台同步完成';
+            })
+            .catch(err => {
+              console.error('網路校時失敗，將使用本地設備時間代替。', err);
+              document.getElementById('sync-status').textContent = '校時失敗 (採用本地時間)';
+            });
+        }
+
+        // 雙時區時鐘與日期更新主程式
+        function updateClocks() {
+          // 取得經過校時修正後的絕對精準時間物件
+          const preciseNow = new Date(Date.now() + timeOffset);
+
+          // 1. 處理使用者時區、日期（含星期）與時間
+          try {
+            const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            document.getElementById('user-tz').textContent = userTimeZone;
+            
+            // 格式化使用者日期與星期 (例如：2026/07/13 星期一)
+            const userDateStr = preciseNow.toLocaleDateString('zh-TW', {
+              timeZone: userTimeZone,
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit',
+              weekday: 'long'
+            });
+            document.getElementById('user-date').textContent = userDateStr;
+
+            // 格式化使用者時間 (HH:MM:SS)
+            const userTimeStr = preciseNow.toLocaleTimeString('zh-TW', {
+              timeZone: userTimeZone,
+              hour12: false,
+              hour: '2-digit',
+              minute: '2-digit',
+              second: '2-digit'
+            });
+            document.getElementById('user-time').textContent = userTimeStr;
+          } catch (e) {
+            document.getElementById('user-tz').textContent = '無法偵測';
+          }
+
+          // 2. 處理愛希熊的時區日期（含星期）與時間
+          const bearDateStr = preciseNow.toLocaleDateString('zh-TW', {
+            timeZone: 'TZ_HERE',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            weekday: 'long'
+          });
+          document.getElementById('bear-date').textContent = bearDateStr;
+
+          const bearTimeStr = preciseNow.toLocaleTimeString('zh-TW', {
+            timeZone: 'TZ_HERE',
+            hour12: false,
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+          });
+          document.getElementById('bear-time').textContent = bearTimeStr;
+        }
+
+        // 執行初始化校時與定時鐘
+        syncWithServer();
+        updateClocks();
+        setInterval(updateClocks, 1000);
+      </script>
+    </div>
 </body>
 </html>
