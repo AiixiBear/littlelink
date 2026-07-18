@@ -1,2 +1,2 @@
-Europe/Warsaw
-波蘭
+Asia/Taipei
+台灣
