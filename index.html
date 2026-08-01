@@ -125,7 +125,6 @@
               <div id="bear-date" class="clock-date">0000/00/00</div>
               <div id="bear-time" class="clock-time">00:00:00</div>
             </div>
-            <div><small class="sync-status" id="sync-status" style="opacity: 0.8;">正在請求標準時間...</small></div>
           </div>
           <br>
         </div>
@@ -353,58 +352,6 @@
         });
       </script>
       <script>
-        // 核心時間變數
-        let timeOffset = 0;
-
-        function syncWithServer() {
-          const startTime = Date.now();
-          
-          // 加上時間戳記避免瀏覽器/CDN 快取舊的 trace
-          fetch('/cdn-cgi/trace?_t=' + startTime, { cache: 'no-store' })
-            .then(res => {
-              if (!res.ok) throw new Error('HTTP ' + res.status);
-              return res.text();
-            })
-            .then(traceText => {
-              const endTime = Date.now();
-              
-              const info = {};
-              traceText.split('\n').forEach(line => {
-                const [key, val] = line.split('=');
-                if (key && val) info[key.trim()] = val.trim();
-              });
-
-              if (!info.ts) throw new Error('未找到 ts 欄位');
-
-              const serverTimeMs = parseFloat(info.ts) * 1000;
-              const latency = (endTime - startTime) / 2;
-              const serverTimeCorrected = serverTimeMs + latency;
-              
-              timeOffset = serverTimeCorrected - endTime;
-              
-              document.getElementById('sync-status').textContent = '愛希熊報時台同步完成';
-              
-              // 關鍵優化 1：一校準完時間，立刻重新刷新一次畫面！不需等 1 秒鐘的 setInterval
-              updateClocks();
-            })
-            .catch(err => {
-              console.error('網路校時失敗，將使用本地設備時間代替。', err);
-              document.getElementById('sync-status').textContent = '校時失敗 (採用本地時間)';
-            });
-        }
-
-        // 關鍵優化 2：將 setInterval 換成對齊毫秒的精準觸發（避免累積誤差）
-        function startClockTimer() {
-          updateClocks();
-          // 計算距離下一秒還有幾毫秒，讓時鐘跳動精準對齊秒數切換
-          const delay = 1000 - (Date.now() + timeOffset) % 1000;
-          setTimeout(startClockTimer, delay);
-        }
-
-        // 執行初始化
-        updateClocks();      // 先以本地時間顯示（0秒延遲）
-        syncWithServer();     // 背景非同步校時
-        startClockTimer();    // 啟動精準毫秒對齊計時器
         // 輔助函式：解析長時區偏移量字串並轉換為分鐘數
         function parseOffsetToMinutes(tzStr) {
           if (!tzStr || tzStr === 'GMT' || tzStr === 'UTC') return 0;
@@ -418,8 +365,7 @@
 
         // 雙時區時鐘與日期更新主程式
         function updateClocks() {
-          // 取得經過校時修正後的絕對精準時間物件
-          const preciseNow = new Date(Date.now() + timeOffset);
+          const now = new Date();
           const bearTimeZone = 'AIIXI_TZ';
           let userTimeZone = '';
 
@@ -427,8 +373,7 @@
           try {
             userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
             
-            // 格式化使用者日期與星期
-            const userDateStr = preciseNow.toLocaleDateString('zh-TW', {
+            const userDateStr = now.toLocaleDateString('zh-TW', {
               timeZone: userTimeZone,
               year: 'numeric',
               month: '2-digit',
@@ -437,8 +382,7 @@
             });
             document.getElementById('user-date').textContent = userDateStr;
 
-            // 格式化使用者時間 (HH:MM:SS)
-            const userTimeStr = preciseNow.toLocaleTimeString('zh-TW', {
+            const userTimeStr = now.toLocaleTimeString('zh-TW', {
               timeZone: userTimeZone,
               hour12: false,
               hour: '2-digit',
@@ -447,14 +391,13 @@
             });
             document.getElementById('user-time').textContent = userTimeStr;
           } catch (e) {
-            // 本地 fallback 安全機制
-            document.getElementById('user-date').textContent = preciseNow.toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'long' });
-            document.getElementById('user-time').textContent = preciseNow.toLocaleTimeString('zh-TW', { hour12: false });
+            document.getElementById('user-date').textContent = now.toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'long' });
+            document.getElementById('user-time').textContent = now.toLocaleTimeString('zh-TW', { hour12: false });
           }
 
           // 2. 處理愛希熊的時區日期（含星期）與時間
           try {
-            const bearDateStr = preciseNow.toLocaleDateString('zh-TW', {
+            const bearDateStr = now.toLocaleDateString('zh-TW', {
               timeZone: bearTimeZone,
               year: 'numeric',
               month: '2-digit',
@@ -463,7 +406,7 @@
             });
             document.getElementById('bear-date').textContent = bearDateStr;
 
-            const bearTimeStr = preciseNow.toLocaleTimeString('zh-TW', {
+            const bearTimeStr = now.toLocaleTimeString('zh-TW', {
               timeZone: bearTimeZone,
               hour12: false,
               hour: '2-digit',
@@ -475,14 +418,14 @@
             console.error('愛希熊時區時間計算異常', e);
           }
 
-          // 3. 自動計算雙方精準時差並動態渲染標籤
+          // 3. 計算雙方時差標籤
           try {
             if (userTimeZone && bearTimeZone && bearTimeZone !== 'TZ_' + 'HERE') {
               const formatterUser = new Intl.DateTimeFormat('en-US', { timeZone: userTimeZone, timeZoneName: 'longOffset' });
               const formatterBear = new Intl.DateTimeFormat('en-US', { timeZone: bearTimeZone, timeZoneName: 'longOffset' });
               
-              const partsUser = formatterUser.formatToParts(preciseNow);
-              const partsBear = formatterBear.formatToParts(preciseNow);
+              const partsUser = formatterUser.formatToParts(now);
+              const partsBear = formatterBear.formatToParts(now);
               
               const tzStrUser = partsUser.find(p => p.type === 'timeZoneName').value;
               const tzStrBear = partsBear.find(p => p.type === 'timeZoneName').value;
@@ -504,9 +447,15 @@
           }
         }
 
-        setInterval(updateClocks, 1000);
+        // 精準對齊秒數跳動的計時器
+        function tick() {
+          updateClocks();
+          const delay = 1000 - Date.now() % 1000;
+          setTimeout(tick, delay);
+        }
+
+        // 立即執行，無載入延遲
+        tick();
       </script>
-    </div>
-  </div>
 </body>
 </html>
