@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<!--
+  To change the theme, change the class on the html tag below to one of:
+  - theme-auto: Automatically switches based on user's system preferences
+  - theme-light: Forces light theme
+  - theme-dark: Forces dark theme
+-->
+
+<html class="theme-dark" lang="zh-TW">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- 預先連線（載入 Logo 圖片和font） -->
+  <link rel="preconnect" href="https://www.aiixi.cc" crossorigin>
+  <link rel="preload" href="https://www.aiixi.cc/fonts/Huninn-Regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Page Title - Change this to your name/brand (50-60 characters recommended) -->
+  <title>404 Error （Aiixi Bear的入口網站）</title>
+  <link rel="icon" type="image/x-icon" href="https://www.aiixi.cc/favicon.ico">
+
+  <!-- Author Information -->
+  <meta name="author" content="Aiixi Bear">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/404_aiixi.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M39ZRQSLTT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-M39ZRQSLTT');
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="column">
+      <div class="">
+        <div class="head-text">
+          <h1>
+            <div>404 Error !!!</div>
+          </h1>
+          <p class="des">
+            愛希熊已經為你翻遍了伺服器的檔案，<br>但沒有找到你要求的網頁。
+          </p>
+        <!-- All your buttons go here -->
+        <div class="button-stack" role="navigation">
+
+          <a class="button button-default" href="/" rel="noopener"
+            role="button"><img class="icon" aria-hidden="true" src="images/icons/generic-website.svg"
+              alt="Website Logo">返回網站首頁</a>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <footer>
+        <p>
+          <span>Aiixi Bear的入口網站</span>
+          <br>
+          <span>背景圖來源：《世界計畫》草薙寧々卡面</span>
+          <br>
+          <span>&copy; 2026 Aiixi Bear. <a href="mailto:aiixi@aiixi.cc" class="a-footer">aiixi@aiixi.cc</a></span><br>
+
+          <!-- 我覺得以下是專業區域 -->
+          <small style="opacity: 0.8;">
+            目前版本：
+            <a class="a-footer" href="https://github.com/AiixiBear/littlelink/commit/COMMIT_HASH_PLACEHOLDER"
+              target="_blank">
+              COMMIT_HASH_PLACEHOLDER
+            </a>
+          </small>
+          <br>
+          <small id="trace-info" class="" style="opacity: 0.8;">...</small>
+          <br>
+        </p>
+      </footer>
+      </div>
+    </div>
+  </div>
+      <div id="sakura-container"></div>
+      <script>
+        const container = document.getElementById('sakura-container');
+
+        // 定義生成櫻花的函式 (核心工廠)
+        function createSakura(isInitial = false) {
+          const sakura = document.createElement('div');
+          sakura.classList.add('sakura');
+
+          const size = Math.random() * 8 + 8;
+          sakura.style.width = `${size}px`;
+          sakura.style.height = `${size * 0.9}px`;
+          
+          // 水平位置
+          sakura.style.left = `${Math.random() * 100}%`;
+          
+          // 如果是初始化，隨機決定它在垂直方向的位置，不要全部擠在頂端！
+          const startTop = isInitial ? Math.random() * 100 : -5;
+          sakura.style.top = `${startTop}vh`;
+          
+          const duration = Math.random() * 7 + 8;
+          sakura.style.animationDuration = `${duration}s`;
+          
+          // 關鍵：如果不是剛生成的，就不要有延遲
+          sakura.style.animationDelay = isInitial ? `-${Math.random() * duration}s` : '0s';
+
+          container.appendChild(sakura);
+
+          sakura.addEventListener('animationend', () => {
+            sakura.remove();
+          });
+        }
+
+        // 在初始化時，直接產生一批櫻花，並且讓它們處於隨機的飄落狀態
+        for (let i = 0; i < 40; i++) {
+            createSakura(true); 
+        }
+
+        let lastTimestamp = 0;
+        let productionInterval = 100; // 初始生產間隔 (毫秒)
+
+        function startSakuraProduction(timestamp) {
+          // 計算距離上次生產的時間差
+          if (!lastTimestamp) lastTimestamp = timestamp;
+          const elapsed = timestamp - lastTimestamp;
+
+          // 當時間差達到設定的間隔時，生產一片新櫻花
+          if (elapsed > productionInterval) {
+            createSakura();
+            lastTimestamp = timestamp;
+          }
+
+          // 請求瀏覽器在下一幀繼續執行生產線
+          requestAnimationFrame(startSakuraProduction);
+        }
+
+        function adjustProductionRhythm() {
+          const screenWidth = window.innerWidth;
+
+          if (screenWidth > 1200) {
+            // 寬螢幕：縮短間隔，生產更多櫻花
+            productionInterval = 350;
+          } else if (screenWidth > 768) {
+            // 平板或大手機：適中
+            productionInterval = 400;
+          } else {
+            // 一般手機：拉長間隔，確保流暢
+            productionInterval = 500;
+          }
+        }
+
+        // 設定初始節奏
+        adjustProductionRhythm();
+        
+        // 啟動櫻花
+        requestAnimationFrame(startSakuraProduction);
+
+        // 當視窗大小改變時，動態調整生產節奏
+        window.addEventListener('resize', adjustProductionRhythm);
+      </script>
+      <script>
+      Promise.all([
+        fetch('/cdn-cgi/trace').then(res => res.text()),
+        fetch('https://www.aiixi.cc/cloudflare_nodes.json').then(res => res.json())
+      ])
+        .then(([traceText, nodesData]) => {
+          // 解析 /cdn-cgi/trace 文字資料
+          const info = {};
+          traceText.split('\n').forEach(line => {
+            const [key, val] = line.split('=');
+            if (key) info[key] = val.trim();
+          });
+
+          const colo = info.colo;
+          if (!colo) {
+            document.getElementById('trace-info').textContent = 'CDN：不存在';
+            return;
+          }
+
+          // 依據 colo 機房代碼尋找對應的城市名稱
+          const cityName = nodesData[colo] || '未知城市';
+          document.getElementById('trace-info').textContent = `CDN : ${cityName} (${colo})`;
+        })
+        .catch(err => {
+          console.error('無法抓取 Cloudflare trace 或節點資料', err);
+          document.getElementById('trace-info').textContent = 'CDN：錯誤';
+        });
+        console.info("大便")
+    </script>
+</body>
+</html>
