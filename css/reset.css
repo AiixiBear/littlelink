@@ -1,6 +1,7 @@
 /*
-* LittleLink Reset
-* A minimal CSS reset for LittleLink
+* LittleLink Reset — Aiixi Bear Theme Edition
+* 只調整 focus 樣式的強調色，其餘規則與原版完全相同
+* 可與 aiixi.css / 404_aiixi.css 共存
 */
 
 /* Box sizing rules */
@@ -75,13 +76,13 @@ select {
   }
 }
 
-/* Modern focus styles */
+/* Modern focus styles — 強調色改為櫻花粉，呼應 Aiixi 主題 */
 :focus:not(:focus-visible) {
   outline: none;
 }
 
 :focus-visible {
-  outline: 2px solid #2457F5;
+  outline: 2px solid #ffb7c5;
   outline-offset: 2px;
 }
 

@@ -21,7 +21,7 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.4); 
     z-index: -1;
 }
 
@@ -71,21 +71,6 @@ h1{
     height: 12rem !important;
 }
 
-.toast-msg {
-    font-size: 13px;
-    color: #2e7d32;
-    background-color: #e8f5e9;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-left: 10px;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
-/* 當加上 active 類別時才顯示 */
-.toast-msg.active {
-    opacity: 1;
-}
-
 /* ============================================================
    櫻花飄落特效
    ============================================================ */
@@ -126,29 +111,26 @@ h1{
 
 
 .timezone-clock-container {
-padding: 15px;
-background: rgba(255, 255, 255, 0.25);
-border-radius: 12px;
-border: 1px solid rgba(255, 255, 255, 0.5);
-max-width: 100%;
-box-sizing: border-box;
-position: relative;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    max-width: 100%;
+    box-sizing: border-box;
+    position: relative;
 }
 .clock-box {
-text-align: center;
-}
-.clock-box:last-child {
-padding-top: 12px;
-border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    text-align: center;
 }
 
 .clock-date {
-font-size: 0.95rem;
-color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
 }
+
 .clock-time {
-font-size: 1.6rem;
-font-weight: bold;
-color: #ffb7c5; /* 櫻花粉 */
-letter-spacing: 2px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #ffb7c5; /* 櫻花粉 */
+    letter-spacing: 2px;
 }
