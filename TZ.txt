@@ -1,2 +1,2 @@
-Europe/Warsaw
-波蘭
+時區
+城市
