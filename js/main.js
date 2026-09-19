@@ -269,7 +269,7 @@ setInterval(() => {
 
 Promise.all([
 fetch('/cdn-cgi/trace').then(res => res.text()),
-fetch('https://www.aiixi.cc/cloudflare_nodes.json').then(res => res.json())
+fetch('/cloudflare_nodes.json').then(res => res.json())
 ])
 .then(([traceText, nodesData]) => {
     // 解析 /cdn-cgi/trace 文字資料
@@ -308,6 +308,65 @@ document.querySelectorAll('.copy-btn').forEach(button => {
         alert(`複製失敗`);
     });
     });
+});
+
+function setGreeting() {
+  const hour = new Date().getHours();
+  let greetingText = '';
+
+if (hour >= 5 && hour < 12) {
+    greetingText = `你好啊，早安呀～`;
+  } else if (hour >= 12 && hour < 18) {
+    greetingText = `你好呀！午安！吃午餐了嗎？`;
+  } else if (hour >= 18 && hour < 23) {
+    greetingText = `你好耶，晚安！祝你有個美好的夜晚唷～`;
+  } else {
+    // 處理 23 點與 0~4 點
+    const displayHour = hour === 0 ? 12 : (hour > 12 ? hour - 12 : hour);
+    const timeLabel = hour === 23 ? '深夜' : '凌晨';
+    
+    greetingText = `現在已經${timeLabel} ${displayHour} 點了欸，注意休息喔！`;
+  }
+
+  const greetingEl = document.getElementById('greeting');
+  if (greetingEl) {
+    greetingEl.textContent = greetingText;
+  }
+}
+
+// 頁面載入後執行
+document.addEventListener('DOMContentLoaded', setGreeting);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const shareBtn = document.getElementById('floating-share-btn');
+
+  if (shareBtn) {
+    shareBtn.addEventListener('click', async () => {
+      // 優先使用原生 Web Share API
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            text: '歡迎來到 Aiixi Bear 的入口網站！',
+            url: window.location.href,
+          });
+        } catch (err) {
+          // 使用者取消分享時不處理錯誤
+          if (err.name !== 'AbortError') {
+            console.error('分享失敗:', err);
+          }
+        }
+      } else {
+        // 不支援 Web Share API 時（如部分桌上型瀏覽器），降級為複製網址
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          alert('已複製網站連結至剪貼簿！');
+        } catch (err) {
+          console.error('複製失敗:', err);
+        }
+      }
+    });
+  }
 });
 /*
 // 輔助函式：解析長時區偏移量字串並轉換為分鐘數
