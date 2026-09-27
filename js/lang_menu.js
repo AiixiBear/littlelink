@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectedLang = e.target.value;
 
     const routes = {
-      'zh-TW': '/',
+      'zh-TW': '/zh-tw/',
       'en': '/en/',
       'ja': '/ja/'
     };
