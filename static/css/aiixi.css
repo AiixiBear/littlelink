@@ -251,7 +251,10 @@ h1{
   transform: scale(0.95);
 }
 
-
 .aiixi-box b {
+  color: var(--accent-color, #ffb7c5);
+}
+
+.pink-text {
   color: var(--accent-color, #ffb7c5);
 }
