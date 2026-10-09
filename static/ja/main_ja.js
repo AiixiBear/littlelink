@@ -453,3 +453,47 @@ function tick() {
 // 立即執行，無載入延遲
 tick();
 */
+
+function setGreetingJa() {
+  const hour = new Date().getHours();
+  let greetingText = '';
+
+  if (hour >= 5 && hour < 12) {
+    greetingText = 'おはようございます！';
+  } else if (hour >= 12 && hour < 18) {
+    greetingText = 'こんにちは！お昼ご飯はもう食べましたか？';
+  } else if (hour >= 18 && hour < 23) {
+    greetingText = 'こんばんは！素敵な夜をお過ごしください～';
+  } else {
+    // 處理 23 點與 0~4 點
+    const displayHour = hour % 12 === 0 ? 12 : hour % 12;
+    const timeLabel = hour === 23 ? '深夜' : '未明';
+
+    greetingText = `もう${timeLabel}${displayHour}時ですよ。無理しないでゆっくり休んでくださいね！`;
+  }
+
+  const greetingEl = document.getElementById('greeting');
+  if (greetingEl) {
+    greetingEl.textContent = greetingText;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', setGreetingJa);
+
+function updateTime() {
+  const el = document.getElementById('aiixi-time');
+  if (!el) return;
+
+  const formatter = new Intl.DateTimeFormat('ja', {
+    timeZone: 'Asia/Taipei',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  });
+
+  el.textContent = formatter.format(new Date());
+}
+
+// 載入時立即執行並設定每秒自動更新
+updateTime();

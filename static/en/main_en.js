@@ -452,3 +452,48 @@ function tick() {
 // 立即執行，無載入延遲
 tick();
 */
+
+function setGreetingEn() {
+  const hour = new Date().getHours();
+  let greetingText = '';
+
+  if (hour >= 5 && hour < 12) {
+    greetingText = 'Good morning!';
+  } else if (hour >= 12 && hour < 18) {
+    greetingText = 'Good afternoon! Have you had lunch yet?';
+  } else if (hour >= 18 && hour < 23) {
+    greetingText = 'Good evening! Hope you have a wonderful night!';
+  } else {
+    // 處理 23 點與 0~4 點
+    const displayHour = hour % 12 === 0 ? 12 : hour % 12;
+    const period = hour >= 12 ? 'PM' : 'AM';
+    const timeLabel = hour === 23 ? 'late at night' : 'early morning';
+
+    greetingText = `It is already ${displayHour} ${period} (${timeLabel}). Make sure to get some rest!`;
+  }
+
+  const greetingEl = document.getElementById('greeting');
+  if (greetingEl) {
+    greetingEl.textContent = greetingText;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', setGreetingEn);
+
+function updateTime() {
+  const el = document.getElementById('aiixi-time');
+  if (!el) return;
+
+  const formatter = new Intl.DateTimeFormat('en', {
+    timeZone: 'Asia/Taipei',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  });
+
+  el.textContent = formatter.format(new Date());
+}
+
+// 載入時立即執行並設定每秒自動更新
+updateTime();

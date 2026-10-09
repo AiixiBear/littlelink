@@ -3,3 +3,6 @@
 .devcontainer
 links.json
 public/
+dist/
+node_modules/
+.astro/
