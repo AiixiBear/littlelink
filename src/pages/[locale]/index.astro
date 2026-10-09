@@ -76,6 +76,7 @@ const languageOptions = languages.map((language) => ({
           )
         ))}
         <br />
+
         {content.intro.line4.map((item, index) => (
           item.strong ? (
             <b key={index} id={item.id} class={item.class}>{item.text}</b>
