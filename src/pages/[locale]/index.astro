@@ -69,6 +69,17 @@ const languageOptions = languages.map((language) => ({
         {content.intro.alternateSuffix}
         <br />
         {content.intro.line3.map((item, index) => (
+          item.materialIcon ? (
+            <span
+              key={index}
+              class="material-symbols-outlined"
+              aria-hidden="true"
+              style="vertical-align: middle; font-size: 1em; line-height: 1;"
+            >
+              {item.text}
+            </span>
+            <span>&nbsp;</span>
+          ):
           item.strong ? (
             <b key={index} id={item.id} class={item.class}>{item.text}</b>
           ) : (
@@ -78,7 +89,17 @@ const languageOptions = languages.map((language) => ({
         <br />
 
         {content.intro.line4.map((item, index) => (
-          item.strong ? (
+          item.materialIcon ? (
+            <span
+              key={index}
+              class="material-symbols-outlined"
+              aria-hidden="true"
+              style="vertical-align: middle; font-size: 1em; line-height: 1;"
+            >
+              {item.text}
+            </span>
+            <span>&nbsp;</span>
+          ) : item.strong ? (
             <b key={index} id={item.id} class={item.class}>{item.text}</b>
           ) : (
             <span key={index}>{item.text}</span>
