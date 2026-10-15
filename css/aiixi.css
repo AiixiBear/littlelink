@@ -123,3 +123,32 @@ h1{
     transform: translateY(110vh) rotate(360deg);
   }
 }
+
+
+.timezone-clock-container {
+padding: 15px;
+background: rgba(255, 255, 255, 0.25);
+border-radius: 12px;
+border: 1px solid rgba(255, 255, 255, 0.5);
+max-width: 100%;
+box-sizing: border-box;
+position: relative;
+}
+.clock-box {
+text-align: center;
+}
+.clock-box:last-child {
+padding-top: 12px;
+border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.clock-date {
+font-size: 0.95rem;
+color: rgba(255, 255, 255, 0.8);
+}
+.clock-time {
+font-size: 1.6rem;
+font-weight: bold;
+color: #ffb7c5; /* 櫻花粉 */
+letter-spacing: 2px;
+}
