@@ -104,32 +104,9 @@
             想更了解我可以戳下方的網頁連結<br>
             ↓↓↓↓↓↓
           </p>
-          <section id="discord-presence" class="discord-presence" aria-live="polite" hidden>
-            <div class="presence-header">
-              <span id="presence-indicator" class="presence-indicator" aria-hidden="true"></span>
-              <span id="presence-status">Discord 狀態</span>
-            </div>
-            <div id="discord-activity" class="presence-section" hidden>
-              <h2>目前活動</h2>
-              <div id="activity-list"></div>
-            </div>
-            <div id="spotify-activity" class="presence-section spotify-section" hidden>
-              <h2>Spotify</h2>
-              <div class="spotify-content">
-                <img id="spotify-art" class="spotify-art" alt="" hidden>
-                <div class="spotify-details">
-                  <strong id="spotify-song"></strong>
-                  <span id="spotify-artist"></span>
-                  <span id="spotify-album"></span>
-                  <div class="spotify-progress" aria-label="Spotify 播放進度"><span id="spotify-progress-bar"></span></div>
-                  <span id="spotify-time" class="spotify-time"></span>
-                </div>
-              </div>
-              <a id="spotify-link" class="presence-link" target="_blank" rel="noopener" hidden>在 Spotify 開啟</a>
-            </div>
-          </section>
+
           <!--
-          <div class="timezone-clock-container"> 
+          <div class="aiixi-box"> 
             <span>愛希熊目前處於 <b>TZ_NAME</b> 時區<br>如果有造成不便 敬請見諒</span>
             <br>
             <br>
@@ -221,6 +198,31 @@
             role="button"><img class="icon" aria-hidden="true" src="images/icons/email.svg"
               alt="Email Logo">aiixi@aiixi.cc</a>
 
+          <h2>愛希的 Discord 狀態（測試中）</h2>
+          <section id="discord-presence" class="aiixi-box aria-live="polite" hidden>
+          <div class="presence-header">
+            <span id="presence-indicator" class="presence-indicator" aria-hidden="true"></span>
+            <span id="presence-status">Discord 狀態</span>
+          </div>
+          <div id="discord-activity" class="presence-section" hidden>
+            <h3>目前活動</h3>
+            <div id="activity-list"></div>
+          </div>
+          <div id="spotify-activity" class="presence-section spotify-section" hidden>
+            <h2>Spotify</h2>
+            <div class="spotify-content">
+              <img id="spotify-art" class="spotify-art" alt="" hidden>
+              <div class="spotify-details">
+                <strong id="spotify-song"></strong>
+                <span id="spotify-artist"></span>
+                <span id="spotify-album"></span>
+                <div class="spotify-progress" aria-label="Spotify 播放進度"><span id="spotify-progress-bar"></span></div>
+                <span id="spotify-time" class="spotify-time"></span>
+              </div>
+            </div>
+            <a id="spotify-link" class="presence-link" target="_blank" rel="noopener" hidden>在 Spotify 開啟</a>
+          </div>
+        </section>
         </div>
       </div>
       <br>
@@ -329,7 +331,7 @@
         window.addEventListener('resize', adjustProductionRhythm);
       </script>
       <script>
-        const LANYARD_USER_ID = 'YOUR_DISCORD_USER_ID';
+        const LANYARD_USER_ID = '982547292529774612';
         const presenceCard = document.getElementById('discord-presence');
         const presenceIndicator = document.getElementById('presence-indicator');
         const presenceStatus = document.getElementById('presence-status');
@@ -340,8 +342,8 @@
         let reconnectTimer;
         let currentSpotifyTimestamps;
 
-        const statusNames = { online: '線上', idle: '閒置', dnd: '勿擾', offline: '離線' };
-        const activityTypes = ['遊玩', '串流', '聆聽', '觀看', '自訂狀態', '競賽'];
+        const statusNames = { online: '線上', idle: '閒置', dnd: '請勿打擾', offline: '離線' };
+        const activityTypes = ['正在遊玩', '正在串流', '正在聽', '正在觀看', '自訂狀態', '競賽'];
 
         function activityImage(activity) {
           const image = activity.assets && activity.assets.large_image;
@@ -373,7 +375,7 @@
             const details = document.createElement('div');
             details.className = 'activity-details';
             const title = document.createElement('strong');
-            title.textContent = `${activityTypes[activity.type] || '活動'}：${activity.name || '未命名活動'}`;
+            title.textContent = `${activityTypes[activity.type] || '活動'} ${activity.name || '未命名活動'}`;
             details.append(title);
             [activity.details, activity.state].filter(Boolean).forEach(text => {
               const line = document.createElement('span');
@@ -384,7 +386,22 @@
               const elapsed = document.createElement('span');
               elapsed.className = 'activity-time';
               elapsed.dataset.started = activity.timestamps.start;
+              if (activity.timestamps.end) elapsed.dataset.ended = activity.timestamps.end;
               details.append(elapsed);
+              if (activity.type === 2 && activity.timestamps.end > activity.timestamps.start) {
+                const progress = document.createElement('div');
+                progress.className = 'activity-progress';
+                progress.setAttribute('role', 'progressbar');
+                progress.setAttribute('aria-label', '音樂活動進度');
+                progress.setAttribute('aria-valuemin', '0');
+                progress.setAttribute('aria-valuemax', '100');
+                const progressBar = document.createElement('span');
+                progress.append(progressBar);
+                details.append(progress);
+                elapsed.dataset.progress = 'true';
+                elapsed.dataset.progressBar = 'true';
+                progressBar.dataset.activityProgress = 'true';
+              }
             }
             const buttonUrls = activity.metadata && activity.metadata.button_urls || [];
             if ((activity.buttons || []).length && buttonUrls.length) {
@@ -405,6 +422,7 @@
             item.append(details);
             activityList.append(item);
           });
+          updateActivityProgress();
         }
 
         function renderSpotify(spotify) {
@@ -430,6 +448,20 @@
           const percentage = Math.min(100, Math.max(0, elapsed / duration * 100));
           document.getElementById('spotify-progress-bar').style.width = `${percentage}%`;
           document.getElementById('spotify-time').textContent = `${formatTime(elapsed)} / ${formatTime(duration)}`;
+        }
+
+        function updateActivityProgress() {
+          document.querySelectorAll('.activity-time[data-progress="true"]').forEach(element => {
+            const start = Number(element.dataset.started);
+            const end = Number(element.dataset.ended);
+            const duration = end - start;
+            const elapsed = Math.min(duration, Math.max(0, Date.now() - start));
+            const percentage = elapsed / duration * 100;
+            const progressBar = element.parentElement.querySelector('[data-activity-progress]');
+            element.textContent = `${formatTime(elapsed)} / ${formatTime(duration)}`;
+            progressBar.style.width = `${percentage}%`;
+            progressBar.parentElement.setAttribute('aria-valuenow', String(Math.round(percentage)));
+          });
         }
 
         function renderPresence(data) {
@@ -478,9 +510,10 @@
         connectPresence();
         setInterval(() => {
           updateSpotifyProgress(currentSpotifyTimestamps);
-          document.querySelectorAll('.activity-time').forEach(element => {
+          document.querySelectorAll('.activity-time:not([data-progress="true"])').forEach(element => {
             element.textContent = `已進行 ${formatTime(Date.now() - Number(element.dataset.started))}`;
           });
+          updateActivityProgress();
         }, 1000);
 
       Promise.all([
