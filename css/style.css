@@ -141,7 +141,7 @@ h1 {
 	.container p { font-size:var(--scale-0); }
 	.avatar { margin-bottom:var(--spacing-m); }
 	footer { margin:var(--spacing-xl) 0; }
-	.container { padding:2.25rem 1.5rem; border-radius:1.75rem; margin: 4rem 0;}
+	.container { padding:2.25rem 1.5rem; border-radius:1.75rem; margin: 1rem 0;}
 }
 
 /* Footer */
