@@ -1,0 +1,213 @@
+/* ============================================================
+   Aiixi Bear - 404 Page Custom Stylesheet
+   ============================================================ */
+
+/* 1. 字體設定 */
+@font-face {
+    font-family: 'Huninn';
+    src: url('https://www.aiixi.cc/fonts/Huninn-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+html {
+    font-family: "Huninn", -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* 2. 背景圖與半透明遮罩 */
+body {
+    position: relative;
+    margin: 0;
+    min-height: 100vh;
+    background-image: url("/images/nene2.webp");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* 背景黑色半透明遮罩 */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: -1;
+}
+
+/* 直向螢幕自動切換背景圖 */
+@media (orientation: portrait) {
+    body {
+        background-image: url("/images/nene1.webp");
+        background-position: center top;
+    }
+}
+
+/* 3. 版面置中結構 (.container & .column) */
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1.5rem;
+    box-sizing: border-box;
+}
+
+.column {
+    width: 100%;
+    max-width: 560px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 40px;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 70px;
+    padding: 20px;
+}
+
+/* 4. 標題與內文 */
+h1 {
+    font-size: 3.3rem !important;
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+}
+
+.des {
+    font-size: 1.3rem !important;
+    line-height: 1.7;
+    color: #e0e0e0;
+    margin-bottom: 2rem;
+}
+
+/* 5. 按鈕區塊樣式 */
+.button-stack {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2.2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+.button .icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+/* 6. 分隔線與頁尾 */
+hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    margin: 2rem 0 1.5rem 0;
+}
+
+footer {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #cccccc;
+}
+
+.a-footer {
+    color: #33DD99 !important;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.a-footer:hover {
+    color: #00ff99 !important;
+    text-decoration: underline;
+}
+
+/* 7. 櫻花飄落特效 (支援頁尾 JS 生成的元素) */
+#sakura-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.sakura {
+    position: absolute;
+    background-color: #ffb7c5;
+    border-radius: 15% 85% 35% 65% / 20% 80% 20% 80%;
+    opacity: 0.8;
+    filter: blur(1px);
+    will-change: transform;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+/* 8. 行動裝置響應式微調 */
+@media (max-width: 600px) {
+    .column {
+        padding: 2.25rem 1.5rem;
+        border-radius: 28px;
+    }
+
+    h1 {
+        font-size: 2.5rem !important;
+    }
+
+    .des {
+        font-size: 1.1rem !important;
+    }
+
+    .button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
