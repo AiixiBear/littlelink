@@ -369,109 +369,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-/*
-// 輔助函式：解析長時區偏移量字串並轉換為分鐘數
-function parseOffsetToMinutes(tzStr) {
-    if (!tzStr || tzStr === 'GMT' || tzStr === 'UTC') return 0;
-    const match = tzStr.match(/GMT([+-])(\d+):?(\d+)?/);
-    if (!match) return 0;
-    const sign = match[1] === '+' ? 1 : -1;
-    const hours = parseInt(match[2], 10);
-    const minutes = match[3] ? parseInt(match[3], 10) : 0;
-    return sign * (hours * 60 + minutes);
+
+function updateTime() {
+  const el = document.getElementById('aiixi-time');
+  if (!el) return;
+
+  const formatter = new Intl.DateTimeFormat('zh-TW', {
+    timeZone: 'Asia/Taipei',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  });
+
+  el.textContent = formatter.format(new Date());
 }
 
-// 雙時區時鐘與日期更新主程式
-function updateClocks() {
-    const now = new Date();
-    const bearTimeZone = 'AIIXI_TZ';
-    let userTimeZone = '';
-
-    // 1. 處理使用者時區、日期（含星期）與時間
-    try {
-    userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    
-    const userDateStr = now.toLocaleDateString('zh-TW', {
-        timeZone: userTimeZone,
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        weekday: 'long'
-    });
-    document.getElementById('user-date').textContent = userDateStr;
-
-    const userTimeStr = now.toLocaleTimeString('zh-TW', {
-        timeZone: userTimeZone,
-        hour12: false,
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-    });
-    document.getElementById('user-time').textContent = userTimeStr;
-    } catch (e) {
-    document.getElementById('user-date').textContent = now.toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'long' });
-    document.getElementById('user-time').textContent = now.toLocaleTimeString('zh-TW', { hour12: false });
-    }
-
-    // 2. 處理愛希熊的時區日期（含星期）與時間
-    try {
-    const bearDateStr = now.toLocaleDateString('zh-TW', {
-        timeZone: bearTimeZone,
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        weekday: 'long'
-    });
-    document.getElementById('bear-date').textContent = bearDateStr;
-
-    const bearTimeStr = now.toLocaleTimeString('zh-TW', {
-        timeZone: bearTimeZone,
-        hour12: false,
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-    });
-    document.getElementById('bear-time').textContent = bearTimeStr;
-    } catch (e) {
-    console.error('愛希熊時區時間計算異常', e);
-    }
-
-    // 3. 計算雙方時差標籤
-    try {
-    if (userTimeZone && bearTimeZone && bearTimeZone !== 'TZ_' + 'HERE') {
-        const formatterUser = new Intl.DateTimeFormat('en-US', { timeZone: userTimeZone, timeZoneName: 'longOffset' });
-        const formatterBear = new Intl.DateTimeFormat('en-US', { timeZone: bearTimeZone, timeZoneName: 'longOffset' });
-        
-        const partsUser = formatterUser.formatToParts(now);
-        const partsBear = formatterBear.formatToParts(now);
-        
-        const tzStrUser = partsUser.find(p => p.type === 'timeZoneName').value;
-        const tzStrBear = partsBear.find(p => p.type === 'timeZoneName').value;
-
-        const diffMinutes = parseOffsetToMinutes(tzStrBear) - parseOffsetToMinutes(tzStrUser);
-        const diffHours = diffMinutes / 60;
-
-        const diffTag = document.getElementById('time-diff-tag');
-        if (diffHours === 0) {
-        diffTag.textContent = '(與您相同)';
-        } else if (diffHours > 0) {
-        diffTag.textContent = `(比您快 ${diffHours} 小時)`;
-        } else {
-        diffTag.textContent = `(比您慢 ${Math.abs(diffHours)} 小時)`;
-        }
-    }
-    } catch (err) {
-    console.error('時差標籤動態計算失敗', err);
-    }
-}
-
-// 精準對齊秒數跳動的計時器
-function tick() {
-    updateClocks();
-    const delay = 1000 - Date.now() % 1000;
-    setTimeout(tick, delay);
-}
-
-// 立即執行，無載入延遲
-tick();
-*/
+// 載入時立即執行並設定每秒自動更新
+updateTime();

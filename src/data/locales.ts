@@ -1,0 +1,269 @@
+export const locales = {
+  "zh-tw": {
+    lang: "zh-TW",
+    title: "Aiixi Bear 的入口網站",
+    description:
+      "歡迎來到 Aiixi Bear（愛希熊）的入口網站！這裡整理了我的社群平台、部落格與個人網站，歡迎一起交流、認識彼此。",
+    ogDescription:
+      "歡迎來到 Aiixi Bear（愛希熊）的入口網站！這裡整理了我的社群平台、部落格與個人網站，歡迎一起交流、認識彼此。",
+    ogImageAlt: "Aiixi Bear 的入口網站封面圖片",
+    jsonLdName: "Aiixi Bear 的入口網站",
+    languageLabel: "Language / 語言 / 言語",
+    avatarAlt: "Aiixi Bear Avatar",
+    intro: {
+      greeting: "你好呀！",
+      greetingOnOwnLine: true,
+      line1: "我是 Aiixi Bear",
+      line2: "也可以叫我",
+      alternateName: "愛希熊 / あいきくま",
+      alternateSuffix: "",
+      line3: [
+        { text: "cake", materialIcon: true },
+        { text: "10/19", strong: true }, { text: " ♎ · " }, { text: "INFJ", strong: true }
+
+      ],
+      line4: [
+        { text: "location_on", materialIcon: true },
+        { text: "台灣，中華民國 · ", strong: true },
+        { text: "schedule", materialIcon: true },
+        { text: "", strong: true, class: "pink-text", id: "aiixi-time" },
+      ],
+      line5: "很高興認識你！",
+    },
+    aboutHeading: "自我介紹",
+    aboutCards: [
+      {
+        title: "關於我",
+        lines: [
+          [{ text: "一隻熱愛畫畫的熊 🐻" }],
+          [{ text: "最喜歡的顏色：" }, { text: "水藍色", strong: true }],
+          [{ text: "看起來像人類，但其實是一隻熊" }],
+          [{ text: "喜歡畫畫、動漫、音樂，以及安靜自在的生活" }],
+        ],
+      },
+      {
+        title: "我喜歡 / 我不喜歡",
+        lines: [
+          [{ text: "喜歡：", strong: true }, { text: "可愛的事物、畫畫、動漫、軟軟的棉被、音樂，以及交朋友" }],
+          [{ text: "不喜歡：", strong: true }, { text: "太甜的食物、吵雜的環境、大太陽、話說一半" }],
+        ],
+      },
+      {
+        title: "推し",
+        lines: [
+          [{ text: "草薙寧寧、朝比奈真冬（Project SEKAI）" }],
+          [{ text: "大黑塔（崩壞：星穹鐵道）" }],
+          [{ text: "酒寄彩葉（超時空輝耀姬）" }],
+          [{ text: "哆啦A夢" }],
+        ],
+      },
+      {
+        title: "遊戲清單",
+        lines: [
+          [{ text: "Project SEKAI（台／日）、Phigros（音遊）" }],
+          [{ text: "崩壞：星穹鐵道" }],
+        ],
+      },
+    ],
+    aboutLink: "★ 看我的完整自我介紹，點這裡",
+    linksHeading: "連結",
+    websitesHeading: "我的網站",
+    socialHeading: "我的社群個人檔案",
+    websiteTitle: "Aiixi Bear 數位後花園",
+    discordHeading: "我的 Discord 狀態（測試中）",
+    discordDescription: [
+      "這裡會即時更新並顯示我的 Discord 狀態。",
+      "這個功能使用 Lanyard API 實作。",
+      "目前仍在測試中，如果出現異常，屬於正常現象。",
+    ],
+    presenceStatus: "Discord 狀態",
+    activityHeading: "目前活動",
+    spotifyHeading: "Spotify",
+    spotifyProgress: "Spotify 播放進度",
+    spotifyLink: "在 Spotify 開啟",
+    footerTitle: "Aiixi Bear 的入口網站",
+    imageCredit: "背景圖來源：《世界計畫》草薙寧々卡面",
+    versionLabel: "目前版本：",
+    shareLabel: "分享此頁面",
+    websiteIconAlt: "Website Logo",
+    homepageIconAlt: "Website Homepage Logo",
+  },
+  en: {
+    lang: "en",
+    title: "Aiixi Bear's Portal Website",
+    description:
+      "Welcome to Aiixi Bear's portal website! Here I’ve gathered my social media, blog, and personal websites so you can get to know me and say hello.",
+    ogDescription:
+      "Welcome to Aiixi Bear's portal website! Here I’ve gathered my social media, blog, and personal websites so you can get to know me and say hello.",
+    ogImageAlt: "Aiixi Bear's portal website cover image",
+    jsonLdName: "Aiixi Bear's Portal Website",
+    languageLabel: "Language / 語言",
+    avatarAlt: "Aiixi Bear Avatar",
+    intro: {
+      greeting: "Hello there!",
+      greetingOnOwnLine: true,
+      line1: "I'm Aiixi Bear",
+      line2: "You can also call me",
+      alternateName: "愛希熊 / あいきくま",
+      alternateSuffix: "",
+      line3: [
+        { text: "cake", materialIcon: true },
+        { text: "10/19", strong: true }, { text: " ♎ · " }, { text: "INFJ", strong: true }
+      ],
+      line4: [
+        { text: "location_on", materialIcon: true },
+        { text: "Taiwan, ROC · ", strong: true },
+        { text: "schedule", materialIcon: true },
+        { text: "", strong: true, class: "pink-text", id: "aiixi-time" },
+      ],
+      line5: "Nice to meet you!",
+    },
+    aboutHeading: "About me",
+    aboutCards: [
+      {
+        title: "About me",
+        lines: [
+          [{ text: "A bear who loves to draw 🐻" }],
+          [{ text: "Favorite color: " }, { text: "cyan", strong: true }],
+          [{ text: "I look like a human, but I'm really a bear" }],
+          [{ text: "I enjoy drawing, anime, music, and a peaceful, easygoing life" }],
+        ],
+      },
+      {
+        title: "Likes / Dislikes",
+        lines: [
+          [{ text: "Likes: ", strong: true }, { text: "cute things, drawing, anime, soft blankets, music, and making friends" }],
+          [{ text: "Dislikes: ", strong: true }, { text: "overly sweet food, noisy spaces, harsh sunlight, and people who only say half a sentence" }],
+        ],
+      },
+      {
+        title: "Favorites",
+        lines: [
+          [{ text: "Nene Kusanagi, Mafuyu Asahina (Project SEKAI)" }],
+          [{ text: "The Herta (Honkai: Star Rail)" }],
+          [{ text: "Iroha Sakayori (Cho Kaguya Hime)" }],
+          [{ text: "Doraemon" }],
+        ],
+      },
+      {
+        title: "Games",
+        lines: [
+          [{ text: "Project SEKAI (TW/JP), Phigros" }],
+          [{ text: "Honkai: Star Rail" }],
+        ],
+      },
+    ],
+    aboutLink: "★ Click here to see my full self-introduction",
+    linksHeading: "Links",
+    websitesHeading: "My website",
+    socialHeading: "My social profiles",
+    websiteTitle: "Aiixi Bear Digital Backyard",
+    discordHeading: "My Discord status (testing)",
+    discordDescription: [
+      "This page updates in real time and shows my current Discord status.",
+      "This feature is powered by the Lanyard API.",
+      "It is still under testing, so minor issues are expected.",
+    ],
+    presenceStatus: "Discord Status",
+    activityHeading: "Current activity",
+    spotifyHeading: "Spotify",
+    spotifyProgress: "Spotify progress",
+    spotifyLink: "Open in Spotify",
+    footerTitle: "Aiixi Bear's Portal Website",
+    imageCredit: "Background image: Nene Kusanagi from Project SEKAI",
+    versionLabel: "Version: ",
+    shareLabel: "Share this page",
+    websiteIconAlt: "Website Logo",
+    homepageIconAlt: "Website Homepage Logo",
+  },
+  ja: {
+    lang: "ja",
+    title: "Aiixi Bear のポータルサイト",
+    description:
+      "Aiixi Bear のポータルサイトへようこそ！ここでは私のSNS、ブログ、個人サイトをまとめているので、ぜひ交流してみてください。",
+    ogDescription:
+      "Aiixi Bear のポータルサイトへようこそ！ここでは私のSNS、ブログ、個人サイトをまとめているので、ぜひ交流してみてください。",
+    ogImageAlt: "Aiixi Bear のポータルサイトカバー画像",
+    jsonLdName: "Aiixi Bear のポータルサイト",
+    languageLabel: "Language / 言語",
+    avatarAlt: "Aiixi Bear アバター",
+    intro: {
+      greeting: "こんにちは！",
+      greetingOnOwnLine: true,
+      line1: "私は Aiixi Bear です",
+      line2: "別名は",
+      alternateName: "愛希熊 / あいきくま",
+      alternateSuffix: "",
+      line3: [
+        { text: "cake", materialIcon: true },
+        { text: "10/19", strong: true }, { text: " ♎ · " }, { text: "INFJ", strong: true }
+      ],
+      line4: [
+        { text: "location_on", materialIcon: true },
+        { text: "Taiwan, ROC · ", strong: true },
+        { text: "schedule", materialIcon: true },
+        { text: "", strong: true, class: "pink-text", id: "aiixi-time" },
+      ],
+      line5: "どうぞよろしくお願いします！",
+    },
+    aboutHeading: "自己紹介",
+    aboutCards: [
+      {
+        title: "私について",
+        lines: [
+          [{ text: "絵を描くのが好きなクマです 🐻" }],
+          [{ text: "好きな色：" }, { text: "水色", strong: true }],
+          [{ text: "見た目は人間っぽいけれど、実はクマです" }],
+          [{ text: "絵を描くこと、アニメ、音楽、そして落ち着いた生活が好きです" }],
+        ],
+      },
+      {
+        title: "好きなもの / 嫌いなもの",
+        lines: [
+          [{ text: "好き：", strong: true }, { text: "可愛いもの、絵を描くこと、アニメ、ふかふかの布団、音楽、お友達づくり" }],
+          [{ text: "嫌い：", strong: true }, { text: "甘すぎる食べ物、騒がしい場所、強い日差し、話を途中で切られること" }],
+        ],
+      },
+      {
+        title: "推し",
+        lines: [
+          [{ text: "草薙寧々、朝比奈まふゆ（Project SEKAI）" }],
+          [{ text: "The Herta（崩壊：スターレイル）" }],
+          [{ text: "酒寄彩葉（超かぐや姫）" }],
+          [{ text: "ドラえもん" }],
+        ],
+      },
+      {
+        title: "ゲーム",
+        lines: [
+          [{ text: "プロセカ（TW/JP）、Phigros" }],
+          [{ text: "崩壊：スターレイル" }],
+        ],
+      },
+    ],
+    aboutLink: "★ 完全な自己紹介はこちら",
+    linksHeading: "リンク",
+    websitesHeading: "ウェブサイト",
+    socialHeading: "SNS アカウント",
+    websiteTitle: "Aiixi Bear デジタルの裏庭",
+    discordHeading: "Discord ステータス（テスト中）",
+    discordDescription: [
+      "このページでは現在の Discord ステータスをリアルタイムで表示しています。",
+      "この機能は Lanyard API を使用しています。",
+      "現在テスト中のため、一部不具合が起きる場合があります。",
+    ],
+    presenceStatus: "Discord ステータス",
+    activityHeading: "アクティビティ",
+    spotifyHeading: "Spotify",
+    spotifyProgress: "Spotify 再生状況",
+    spotifyLink: "Spotify で開く",
+    footerTitle: "Aiixi Bear のポータルサイト",
+    imageCredit: "背景画像：『プロセカ』草薙寧々",
+    versionLabel: "バージョン：",
+    shareLabel: "このページを共有",
+    websiteIconAlt: "Website Logo",
+    homepageIconAlt: "Website Homepage Logo",
+  },
+} as const;
+
+export type Locale = keyof typeof locales;
