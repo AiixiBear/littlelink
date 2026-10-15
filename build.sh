@@ -11,7 +11,6 @@ NODE_BINARY="${NODE_BINARY:-node}"
 COMMIT_HASH=$(echo "${CF_PAGES_COMMIT_SHA:-local}" | cut -c1-7)
 
 echo "Starting build process..."
-echo "TimeZone: ${AIIXI_TZ} (${TZ_NAME})"
 echo "Commit SHA: ${COMMIT_HASH}"
 
 # 2. 使用 Astro 建置頁面
