@@ -247,3 +247,6 @@ h1{
 .pink-text {
   color: var(--accent-color, #ffb7c5);
 }
+.cyan {
+  color: #00ffff !important; 
+}

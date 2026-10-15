@@ -25,7 +25,7 @@ export const locales = {
         title: "關於我",
         lines: [
           [{ text: "一隻熱愛畫畫的熊 🐻" }],
-          [{ text: "最喜歡的顏色：" }, { text: "水藍色", strong: true }],
+          [{ text: "最喜歡的顏色：" }, { text: "水藍色", strong: true, class: "cyan" }],
           [{ text: "看起來像人類，但其實是一隻熊" }],
           [{ text: "喜歡畫畫、動漫、音樂，以及安靜自在的生活" }],
           [
@@ -105,7 +105,7 @@ export const locales = {
         title: "About me",
         lines: [
           [{ text: "A bear who loves to draw 🐻" }],
-          [{ text: "Favorite color: " }, { text: "cyan", strong: true }],
+          [{ text: "Favorite color: " }, { text: "cyan", strong: true, class: "cyan" }],
           [{ text: "I look like a human, but I'm really a bear" }],
           [{ text: "I enjoy drawing, anime, music, and a peaceful, easygoing life" }],
           [
@@ -185,7 +185,7 @@ export const locales = {
         title: "私について",
         lines: [
           [{ text: "絵を描くのが好きなクマです 🐻" }],
-          [{ text: "好きな色：" }, { text: "水色", strong: true }],
+          [{ text: "好きな色：" }, { text: "水色", strong: true, class: "cyan" }],
           [{ text: "見た目は人間っぽいけれど、実はクマです" }],
           [{ text: "絵を描くこと、アニメ、音楽、そして落ち着いた生活が好きです" }],
           [
