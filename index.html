@@ -13,6 +13,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- 自動切換語言 -->
+  <script src="/js/lang_switcher.js"></script>
+
   <!-- 預先連線（載入 Logo 圖片和font） -->
   <link rel="preconnect" href="https://www.aiixi.cc" crossorigin>
   <link rel="preload" href="https://www.aiixi.cc/fonts/Huninn-Regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -30,6 +33,13 @@
 
   <!-- Author Information -->
   <meta name="author" content="Aiixi Bear">
+
+  <!-- 3. hreflang 標籤：列出所有語言版本 -->
+  <link rel="alternate" hreflang="zh-TW" href="https://go.aiixi.cc/">
+  <link rel="alternate" hreflang="en" href="https://go.aiixi.cc/en/">
+  <link rel="alternate" hreflang="ja" href="https://go.aiixi.cc/ja/">
+  <!-- x-default：當使用者的語言都不匹配時推薦的預設頁面 -->
+  <link rel="alternate" hreflang="x-default" href="https://go.aiixi.cc/">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/css/reset.css">
@@ -94,6 +104,13 @@
             <div>Aiixi Bear</div>
           </h1>
 
+          <div class="lang-switcher">
+            <select id="lang-select" aria-label="Language / 語言">
+              <option value="zh-TW">繁體中文</option>
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+            </select>
+          </div>
           <!-- Add a short description about yourself or your brand -->
           <p class="des">
             <b>你好！</b>我叫Aiixi Bear<br>
@@ -152,11 +169,11 @@
 
           <h2>我的社交個人檔案</h2>
 
-          <a class="button button-threads" href="https://threads.com/@aiixi_bear" target="_blank" rel="noopener me"
+          <a class="button button-threads" href="https://www.threads.com/@aiixi_bear" target="_blank" rel="noopener me"
             role="button"><img class="icon" aria-hidden="true" src="images/icons/threads.svg"
               alt="Threads Logo">Threads · aiixi_bear</a>
 
-          <a class="button button-instagram" href="https://instagram.com/aiixi_bear" target="_blank" rel="noopener"
+          <a class="button button-instagram" href="https://www.instagram.com/aiixi_bear" target="_blank" rel="noopener"
             role="button"><img class="icon" aria-hidden="true" src="images/icons/instagram.svg"
               alt="Instagram Logo">Instagram · aiixi_bear</a>
 
@@ -255,6 +272,6 @@
       </footer>
   </div>
   <div id="sakura-container"></div>
-  <script src="/main.js"></script>
+  <script src="/js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<!--
+  To change the theme, change the class on the html tag below to one of:
+  - theme-auto: Automatically switches based on user's system preferences
+  - theme-light: Forces light theme
+  - theme-dark: Forces dark theme
+-->
+
+<html class="theme-dark" lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- 自動切換語言 -->
+  <script src="/js/lang_switcher.js"></script>
+
+  <!-- 預先連線（載入 Logo 圖片和font） -->
+  <link rel="preconnect" href="https://www.aiixi.cc" crossorigin>
+  <link rel="preload" href="https://www.aiixi.cc/fonts/Huninn-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://www.aiixi.cc/img/blowfish_logo.webp" as="image">
+
+  <!-- Page Title -->
+  <title>Aiixi Bearのポータルサイト</title>
+  <link rel="icon" type="image/x-icon" href="https://www.aiixi.cc/favicon.ico">
+
+  <!-- Meta Description -->
+  <meta name="description" content="Aiixi Bearのポータルサイトへようこそ！SNSアカウント、ブログ、WEBサイトのリンクをまとめています。お気軽にフォローや友達申請してくださいね！">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://go.aiixi.cc/ja/">
+
+  <!-- Author Information -->
+  <meta name="author" content="Aiixi Bear">
+
+  <!-- 3. hreflang 標籤：列出所有語言版本 -->
+  <link rel="alternate" hreflang="zh-TW" href="https://go.aiixi.cc/">
+  <link rel="alternate" hreflang="en" href="https://go.aiixi.cc/en/">
+  <link rel="alternate" hreflang="ja" href="https://go.aiixi.cc/ja/">
+  <!-- x-default：當使用者的語言都不匹配時推薦的預設頁面 -->
+  <link rel="alternate" hreflang="x-default" href="https://go.aiixi.cc/">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/brands.css">
+  <link rel="stylesheet" href="/css/aiixi.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M39ZRQSLTT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-M39ZRQSLTT');
+  </script>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Aiixi Bearのポータルサイト">
+  <meta property="og:description" content="Aiixi Bearのポータルサイトへようこそ！SNSアカウント、ブログ、WEBサイトのリンクをまとめています。お気軽にフォローや友達申請してくださいね！">
+  <meta property="og:image" content="https://www.aiixi.cc/img/aiixi_go.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Aiixi Bear のポータルサイトカバー画像">
+  <meta property="og:url" content="https://go.aiixi.cc/ja/">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter (X) 卡片 -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Aiixi Bearのポータルサイト">
+  <meta name="twitter:description" content="Aiixi Bearのポータルサイトへようこそ！SNSアカウント、ブログ、WEBサイトのリンクをまとめています。お気軽にフォローや友達申請してくださいね！">
+  <meta name="twitter:image" content="https://www.aiixi.cc/img/aiixi_go.webp">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://go.aiixi.cc/ja/",
+    "name": "Aiixi Bearのポータルサイト"
+  }
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="column">
+      <div class="">
+        <div class="head-text">
+          <img class="avatar avatar--rounded" src="https://www.aiixi.cc/img/blowfish_logo.webp" alt="Aiixi Bear アバター">
+
+          <h1>
+            <div>Aiixi Bear</div>
+          </h1>
+
+          <div class="lang-switcher">
+            <select id="lang-select" aria-label="Language / 言語">
+              <option value="zh-TW">繁體中文</option>
+              <option value="en">English</option>
+              <option value="ja" selected>日本語</option>
+            </select>
+          </div>
+          
+          <p class="des">
+            <b>こんにちは！</b>Aiixi Bear です！<br>
+            <i>愛希熊（あいきくま）</i>とも呼ばれています🐻<br>
+            友達申請・フォロー大歓迎です！<br>
+            私についてもっと知りたい方は、下のリンクをチェックしてね！<br>
+            ↓↓↓↓↓↓
+          </p>
+
+          <br>
+        </div>
+        </div>
+
+        <div class="button-stack" role="navigation">
+
+          <hr>
+          <br>
+
+          <h2>ようこそ！</h2>
+
+          <a class="button button-default" href="https://www.aiixi.cc/about/" target="_blank" rel="noopener"
+            role="button"><img class="icon" aria-hidden="true" src="/images/icons/generic-blog.svg"
+              alt="Website Logo">★自己紹介はこちらをクリック</a>
+
+          <h2>ウェブサイト</h2>
+
+          <a class="button button-default" href="https://www.aiixi.cc/" target="_blank" rel="noopener" role="button"><img
+              class="icon" aria-hidden="true" src="/images/icons/generic-homepage.svg"
+              alt="Website Homepage Logo">公式サイト トップページ</a>
+
+          <a class="button button-default" href="https://nene.bearshen.top/" target="_blank" rel="noopener"
+            role="button"><img class="icon" aria-hidden="true" src="/images/icons/generic-website.svg"
+              alt="Website Logo">Aiixi Bear的宇宙</a>
+
+          <a class="button button-default" href="https://www.aiixi.run.place/" target="_blank" rel="noopener"
+            role="button"><img class="icon" aria-hidden="true" src="/images/icons/generic-website.svg"
+              alt="Website Logo">www.aiixi.run.place</a>
+
+          <h2>SNSアカウント</h2>
+
+          <a class="button button-threads" href="https://www.threads.com/@aiixi_bear" target="_blank" rel="noopener me"
+            role="button"><img class="icon" aria-hidden="true" src="/images/icons/threads.svg"
+              alt="Threads Logo">Threads · aiixi_bear</a>
+
+          <a class="button button-instagram" href="https://www.instagram.com/aiixi_bear" target="_blank" rel="noopener"
+            role="button"><img class="icon" aria-hidden="true" src="/images/icons/instagram.svg"
+              alt="Instagram Logo">Instagram · aiixi_bear</a>
+
+          <a class="button button-discord copy-btn" href="javascript:void(0);" data-id="aiixi_bear"
+            data-label="Discord">
+            <img class="icon" aria-hidden="true" src="/images/icons/discord.svg" alt="Discord Logo">
+            <span class="btn-text">Discord · aiixi_bear</span>
+          </a>
+          <a class="button button-x" href="https://x.com/aiixi_bear" target="_blank" rel="noopener" role="button"><img
+              class="icon" aria-hidden="true" src="/images/icons/x.svg" alt="X Logo">X · aiixi_bear</a>
+
+          <a class="button button-github" href="https://github.com/AiixiBear" target="_blank" rel="noopener"
+            role="button"><img class="icon" aria-hidden="true" src="/images/icons/github.svg" alt="GitHub Logo">GitHub ·
+            AiixiBear</a>
+
+          <a class="button button-default" href="https://nene.bearshen.top/@bearshen1019" target="_blank" rel="noopener"
+            role="button"><img class="icon" aria-hidden="true" src="/images/icons/generic-website.svg"
+              alt="Website Logo">Aiixi Bear的宇宙 · @bearshen1019</a>
+
+          <a class="button button-mastodon" href="https://c7.io/@aiixi" target="_blank" rel="noopener me"
+            role="button"><img class="icon" aria-hidden="true" src="/images/icons/mastodon.svg" alt="Mastodon Logo">c7.io
+            · @aiixi</a>
+
+          <a class="button button-bluesky" href="https://bsky.app/profile/aiixi.cc" target="_blank" rel="noopener"
+            role="button"><img class="icon" aria-hidden="true" src="/images/icons/bluesky.svg" alt="Bluesky Logo">Bluesky
+            · @aiixi.cc</a>
+
+          <a class="button button-matrix" href="https://matrix.to/#/@aiixi_bear:matrix.org" target="_blank"
+            rel="noopener" role="button"><img class="icon" aria-hidden="true" src="/images/icons/matrix.svg"
+              alt="Matrix Logo">Matrix</a>
+
+          <a class="button button-pinterest" href="https://www.pinterest.com/aiixi_bear/" target="_blank" rel="noopener"
+            role="button"><img class="icon" aria-hidden="true" src="/images/icons/pinterest.svg"
+              alt="Pinterest Logo">Pinterest · aiixi_bear</a>
+
+          <a class="button button-default" href="mailto:aiixi@aiixi.cc" target="_blank" rel="noopener"
+            role="button"><img class="icon" aria-hidden="true" src="/images/icons/email.svg"
+              alt="Email Logo">aiixi@aiixi.cc</a>
+
+          <h2>Discord ステータス（テスト中）</h2>
+          <p>
+            ここでは現在の Discord ステータスをリアルタイムで表示しています。<br>
+            この機能は Lanyard API を使用して実装されています。<br>
+            現在テスト中のため、不具合が発生する場合があります。
+          </p>
+          <section id="discord-presence" class="aiixi-box" aria-live="polite" hidden>
+          <div class="presence-header">
+            <span id="presence-indicator" class="presence-indicator" aria-hidden="true"></span>
+            <span id="presence-status">Discord ステータス</span>
+          </div>
+          <div id="discord-activity" class="presence-section" hidden>
+            <h3>アクティビティ</h3>
+            <div id="activity-list"></div>
+          </div>
+          <div id="spotify-activity" class="presence-section spotify-section" hidden>
+            <h2>Spotify</h2>
+            <div class="spotify-content">
+              <img id="spotify-art" class="spotify-art" alt="" hidden>
+              <div class="spotify-details">
+                <strong id="spotify-song"></strong>
+                <span id="spotify-artist"></span>
+                <span id="spotify-album"></span>
+                <div class="spotify-progress" aria-label="Spotify 進捗状況"><span id="spotify-progress-bar"></span></div>
+                <span id="spotify-time" class="spotify-time"></span>
+              </div>
+            </div>
+            <a id="spotify-link" class="presence-link" target="_blank" rel="noopener" hidden>Spotify で開く</a>
+          </div>
+        </section>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <footer>
+        <p>
+          <span>Aiixi Bearのポータルサイト</span>
+          <br>
+          <span>背景画像：『プロセカ』草薙寧々</span>
+          <br>
+          <span>&copy; 2026 Aiixi Bear. <a href="mailto:aiixi@aiixi.cc" class="a-footer">aiixi@aiixi.cc</a></span><br>
+
+          <small id="trace-info" class="" style="opacity: 0.8;">...</small>
+          <br>
+          <small style="opacity: 0.8;">
+            バージョン：
+            <a class="a-footer" href="https://github.com/AiixiBear/littlelink/commit/COMMIT_HASH_PLACEHOLDER"
+              target="_blank">
+              COMMIT_HASH_PLACEHOLDER
+            </a>
+             | 
+            <a class="a-footer" href="https://github.com/AiixiBear/littlelink">GitHub Repo</a>
+          </small>
+          <br>
+        </p>
+      </footer>
+  </div>
+  <div id="sakura-container"></div>
+  <script src="main_ja.js"></script>
+</body>
+</html>

@@ -154,3 +154,58 @@ h1{
 .spotify-content { display:flex; gap:0.75rem; border-top:1px solid rgba(255,255,255,0.18); padding-top:0.75rem; }
 .spotify-progress { height:0.25rem; margin-top:0.45rem; background:rgba(255,255,255,0.2); border-radius:1rem; overflow:hidden; }
 .spotify-progress span { display:block; width:0; height:100%; background:#1ed760; transition:width 1s linear; }
+
+/* 語言切換器容器 */
+.lang-switcher {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px auto;
+}
+
+/* 下拉選單本體 */
+.lang-switcher select {
+  appearance: none; /* 移除瀏覽器預設樣式 */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px; /* 圓角膠囊形狀 */
+  padding: 8px 36px 8px 16px;
+  font-size: 1.3rem;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  
+  /* 自訂下拉箭頭圖示 (白/粉箭頭) */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffb7c5' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+  
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 懸停與聚焦效果 */
+.lang-switcher select:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-color: var(--accent-color, #ffb7c5);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(255, 183, 197, 1);
+}
+
+.lang-switcher select:focus {
+  border-color: var(--accent-color, #ffb7c5);
+  box-shadow: 0 0 0 3px rgba(255, 183, 197, 0.5);
+}
+
+/* 下拉選單展開後的選單背景（深色） */
+.lang-switcher select option {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 10px;
+}

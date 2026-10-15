@@ -10,7 +10,8 @@
 
 **請注意： 本專案的圖示（Icon）、名稱及相關品牌標誌不在授權範圍內，請勿將其用於您的專案或衍生作品中。**
 
-## Cloudflare Pages 組建命令
-```bash
-sed -i "s#AIIXI_TZ#$(sed -n '1p' TZ.txt)#g" index.html && sed -i "s#TZ_NAME#$(sed -n '2p' TZ.txt)#g" index.html && sed -i "s/COMMIT_HASH_PLACEHOLDER/$(echo $CF_PAGES_COMMIT_SHA | cut -c1-7)/g" index.html && sed -i "s/COMMIT_HASH_PLACEHOLDER/$(echo $CF_PAGES_COMMIT_SHA | cut -c1-7)/g" 404.html
-```
+## Cloudflare Pages 組建組態設定
+
+Framework 預設：`無`
+組建命令：`./build.sh`
+組建輸出目錄：`public`
