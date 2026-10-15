@@ -33,7 +33,7 @@ class LinkExtractor(HTMLParser):
         self.sections = []
 
         self._current_section = None
-        self._in_p = False
+        self._in_h2 = False
         self._in_anchor = False
         self._current_href = None
         self._current_title_attr = ""
@@ -49,9 +49,9 @@ class LinkExtractor(HTMLParser):
     def handle_starttag(self, tag, attrs):
         attrs_dict = dict(attrs)
 
-        if tag == "p":
-            self._in_p = True
-            self._p_text = []
+        if tag == "h2":
+            self._in_h2 = True
+            self._h2_text = []
 
         elif tag == "a":
             href = attrs_dict.get("href", "").strip()
