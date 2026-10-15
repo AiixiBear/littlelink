@@ -24,7 +24,7 @@ mkdir -p "$OUTPUT_DIR"
 # 使用 rsync 是一個比較安全且靈活的方式
 # 如果系統沒有 rsync，可以使用 cp，但 cp 排除特定檔案會比較麻煩。這裡使用常見的排除方法：
 echo "Copying files to ${OUTPUT_DIR}/..."
-cp -R css en fonts images ja js 404.html index.html cloudflare_nodes.json robots.txt "$OUTPUT_DIR/"
+cp -R css en images ja js 404.html index.html cloudflare_nodes.json robots.txt "$OUTPUT_DIR/"
 
 # (備註：如果有需要把其他檔案也放進去，請在上面的 cp 命令加上去)
 
