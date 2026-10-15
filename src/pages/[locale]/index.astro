@@ -1,0 +1,214 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { languages } from "../../data/languages";
+import { locales, type Locale } from "../../data/locales";
+import { socialLinks, websiteLinks } from "../../data/site";
+
+export function getStaticPaths() {
+  return Object.entries(locales).map(([locale, content]) => ({
+    params: { locale },
+    props: { locale: locale as Locale, content },
+  }));
+}
+
+const { locale, content } = Astro.props;
+const pageScript = `/${locale}/${locale === "zh-tw" ? "main.js" : locale === "en" ? "main_en.js" : "main_ja.js"}`;
+const languageOptions = languages.map((language) => ({
+  ...language,
+  selected: language.key === locale,
+}));
+---
+
+<SiteLayout
+  locale={locale}
+  pageTitle={content.title}
+  description={content.description}
+  ogDescription={content.ogDescription}
+  ogImageAlt={content.ogImageAlt}
+  jsonLdName={content.jsonLdName}
+  footerTitle={content.footerTitle}
+  imageCredit={content.imageCredit}
+  versionLabel={content.versionLabel}
+  shareLabel={content.shareLabel}
+  pageScript={pageScript}
+>
+  <div class="">
+    <div class="head-text">
+      <img
+        class="avatar avatar--rounded"
+        src="https://www.aiixi.cc/img/blowfish_logo.webp"
+        alt={content.avatarAlt}
+      />
+
+      <h1>
+        <div>Aiixi Bear</div>
+      </h1>
+
+      <div class="lang-switcher" title={content.languageLabel}>
+        <select id="lang-select" aria-label={content.languageLabel}>
+          {languageOptions.map((language) => (
+            <>
+              <option value={language.locale} selected={language.selected}>
+                {language.label}
+              </option>
+              {"\n"}
+            </>
+          ))}
+        </select>
+      </div>
+
+      <p class="des">
+        <b id="greeting" >{content.intro.greeting}</b>
+        {!content.intro.greetingOnOwnLine && " "}
+        {!content.intro.greetingOnOwnLine && content.intro.line1}
+        {content.intro.greetingOnOwnLine && <br />}
+        {content.intro.greetingOnOwnLine && content.intro.line1}
+        <br />
+        {content.intro.line2 && `${content.intro.line2} `}
+        <i>{content.intro.alternateName}</i>
+        {content.intro.alternateSuffix}
+        <br />
+        {content.intro.line3.map((item, index) => (
+          item.strong ? (
+            <b key={index} id={item.id} class={item.class}>{item.text}</b>
+          ) : (
+            <span key={index}>{item.text}</span>
+          )
+        ))}
+        <br />
+        {content.intro.line4.map((item, index) => (
+          item.strong ? (
+            <b key={index} id={item.id} class={item.class}>{item.text}</b>
+          ) : (
+            <span key={index}>{item.text}</span>
+          )
+        ))}
+        <br />
+        {content.intro.line5}
+        <br />
+      </p>
+
+      <br />
+    </div>
+  </div>
+
+  <div class="button-stack" role="navigation">
+    <hr />
+    <br />
+
+    <h2>{content.aboutHeading}</h2>
+
+    {content.aboutCards.map((card) => (
+      <>
+        <div class="aiixi-box">
+          <h3>{card.title}</h3>
+          <p>
+            {card.lines.map((line) => (
+              <>
+                {line.map((part) =>
+                  part.strong ? <b>{part.text}</b> : part.text
+                )}
+                <br />
+              </>
+            ))}
+          </p>
+        </div>
+        {"\n"}
+      </>
+    ))}
+
+    <a
+      class="button button-default"
+      href="https://www.aiixi.cc/about/"
+      target="_blank"
+      rel="noopener"
+      role="button"
+    >
+      <img class="icon" aria-hidden="true" src="/images/icons/generic-blog.svg" alt={content.websiteIconAlt} />
+      {content.aboutLink}
+    </a>
+
+    <h2>{content.linksHeading}</h2>
+
+    <h3>{content.websitesHeading}</h3>
+
+    {websiteLinks.map((link) => (
+      <>
+        <a class="button button-default" href={link.href} target="_blank" rel={link.rel} role="button">
+          <img
+            class="icon"
+            aria-hidden="true"
+            src={`/images/icons/${link.icon}`}
+            alt={link.key ? content.homepageIconAlt : content.websiteIconAlt}
+          />
+          {link.key ? content[link.key] : link.label}
+        </a>
+        {"\n"}
+      </>
+    ))}
+
+    <h3>{content.socialHeading}</h3>
+
+    {socialLinks.map((link) => (
+      <>
+        <a
+          class={`button button-${link.className}`}
+          href={link.href}
+          target={link.copyId ? undefined : "_blank"}
+          rel={link.rel}
+          role="button"
+          data-id={link.copyId}
+          data-label={link.copyId ? "Discord" : undefined}
+        >
+          <img
+            class="icon"
+            aria-hidden="true"
+            src={`/images/icons/${link.icon}`}
+            alt={`${link.label.split(" · ")[0]} Logo`}
+          />
+          {link.copyId ? <span class="btn-text">{link.label}</span> : link.label}
+        </a>
+        {"\n"}
+      </>
+    ))}
+
+    <h2>{content.discordHeading}</h2>
+    <p>
+      {content.discordDescription.map((line) => (
+        <>
+          {line}
+          <br />
+        </>
+      ))}
+    </p>
+
+    <section id="discord-presence" class="aiixi-box" aria-live="polite" hidden>
+      <div class="presence-header">
+        <span id="presence-indicator" class="presence-indicator" aria-hidden="true"></span>
+        <span id="presence-status">{content.presenceStatus}</span>
+      </div>
+      <div id="discord-activity" class="presence-section" hidden>
+        <h3>{content.activityHeading}</h3>
+        <div id="activity-list"></div>
+      </div>
+      <div id="spotify-activity" class="presence-section spotify-section" hidden>
+        <h3>{content.spotifyHeading}</h3>
+        <div class="spotify-content">
+          <img id="spotify-art" class="spotify-art" alt="" hidden />
+          <div class="spotify-details">
+            <strong id="spotify-song"></strong>
+            <span id="spotify-artist"></span>
+            <span id="spotify-album"></span>
+            <div class="spotify-progress" aria-label={content.spotifyProgress}>
+              <span id="spotify-progress-bar"></span>
+            </div>
+            <span id="spotify-time" class="spotify-time"></span>
+          </div>
+        </div>
+        <a id="spotify-link" class="presence-link" target="_blank" rel="noopener" hidden>
+          {content.spotifyLink}
+        </a>
+      </div>
+    </section>
+  </div>
+</SiteLayout>

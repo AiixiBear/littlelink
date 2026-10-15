@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 
 <!--
@@ -27,8 +29,8 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/css/404_aiixi.css">
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M39ZRQSLTT"></script>
-  <script>
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-M39ZRQSLTT"></script>
+  <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
@@ -83,7 +85,7 @@
     </div>
   </div>
       <div id="sakura-container"></div>
-      <script>
+      <script is:inline>
         const container = document.getElementById('sakura-container');
 
         // 定義生成櫻花的函式 (核心工廠)
@@ -162,7 +164,7 @@
         // 當視窗大小改變時，動態調整生產節奏
         window.addEventListener('resize', adjustProductionRhythm);
       </script>
-      <script>
+      <script is:inline>
       Promise.all([
         fetch('/cdn-cgi/trace').then(res => res.text()),
         fetch('https://www.aiixi.cc/cloudflare_nodes.json').then(res => res.json())
