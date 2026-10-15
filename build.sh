@@ -7,9 +7,7 @@ set -e
 OUTPUT_DIR="dist"
 NODE_BINARY="${NODE_BINARY:-node}"
 
-# 1. 讀取 TZ.txt 資訊與 Commit Hash
-AIIXI_TZ=$(sed -n '1p' TZ.txt)
-TZ_NAME=$(sed -n '2p' TZ.txt)
+# 1. 讀取 Commit Hash
 COMMIT_HASH=$(echo "${CF_PAGES_COMMIT_SHA:-local}" | cut -c1-7)
 
 echo "Starting build process..."
