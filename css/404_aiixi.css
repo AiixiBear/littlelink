@@ -179,7 +179,6 @@ footer {
     background-color: #ffb7c5;
     border-radius: 15% 85% 35% 65% / 20% 80% 20% 80%;
     opacity: 0.8;
-    filter: blur(1px);
     will-change: transform;
     animation: fall linear forwards;
 }
