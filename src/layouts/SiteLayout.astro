@@ -106,36 +106,49 @@ const page = locales[locale];
       <div class="column">
         <slot />
         <br />
-        <hr />
-        <footer>
-          <p>
-            <span>{footerTitle}</span>
-            <br />
-            <span>{imageCredit}</span>
-            <br />
-            <span>
-              &copy; 2026 Aiixi Bear <a href="mailto:aiixi@aiixi.cc" class="a-footer">aiixi@aiixi.cc</a>
-            </span>
-            <br />
-            <small id="trace-info" style="opacity: 0.8;">...</small>
-            <br />
-            <small style="opacity: 0.8;">
-              {versionLabel}
-              <a
-                class="a-footer"
-                href="https://github.com/AiixiBear/littlelink/commit/COMMIT_HASH_PLACEHOLDER"
-                target="_blank"
-              >
-                COMMIT_HASH_PLACEHOLDER
-              </a>
-              {" | "}
-              <a class="a-footer" href="https://github.com/AiixiBear/littlelink">GitHub Repo</a>
-            </small>
-            <br />
-          </p>
-        </footer>
       </div>
     </div>
+    <footer>
+      <!-- 第一行：品牌與圖片聲明（手機會自動彈性換行） -->
+      <p class="footer-main">
+        <span>{footerTitle}</span>
+        <br>
+        {imageCredit && <span>{imageCredit}</span>}
+      </p>
+
+      <!-- 第二行：開發者資訊與聯絡方式 -->
+      <p class="footer-author">
+        <span>
+          Made by Aiixi Bear in Poland & Taiwan. 
+        </span>
+      </p>
+
+      <!-- 第三行：Trace 資訊與 Commit / GitHub 連結 -->
+      <p class="footer-sub-info">
+        <small id="trace-info" style="opacity: 0.8;">...</small>
+        <br />
+        <small style="opacity: 0.8;">
+          {versionLabel}{" "}
+          <a
+            class="a-footer"
+            href="https://github.com/AiixiBear/littlelink/commit/COMMIT_HASH_PLACEHOLDER"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            COMMIT_HASH_PLACEHOLDER
+          </a>
+          {" | "}
+          <a 
+            class="a-footer" 
+            href="https://github.com/AiixiBear/littlelink"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub Repo
+          </a>
+        </small>
+      </p>
+    </footer> 
     <button id="floating-share-btn" class="floating-share-btn" aria-label={shareLabel} title={shareLabel}>
       <span class="material-symbols-outlined">share</span>
     </button>
