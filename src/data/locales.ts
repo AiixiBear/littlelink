@@ -51,7 +51,7 @@ export const locales = {
       {
         title: "推し",
         lines: [
-          [{ text: "草薙寧寧、朝比奈真冬（Project SEKAI）" }],
+          [{ text: "草薙寧寧、朝比奈真冬（世界計畫）" }],
           [{ text: "大黑塔（崩壞：星穹鐵道）" }],
           [{ text: "酒寄彩葉（超時空輝耀姬）" }],
           [{ text: "哆啦A夢" }],
@@ -60,7 +60,7 @@ export const locales = {
       {
         title: "遊戲清單",
         lines: [
-          [{ text: "Project SEKAI（台／日）、Phigros（音遊）" }],
+          [{ text: "世界計畫（台／日）、Phigros（音遊）" }],
           [{ text: "崩壞：星穹鐵道" }],
         ],
       },
@@ -227,7 +227,7 @@ export const locales = {
       {
         title: "推し",
         lines: [
-          [{ text: "草薙寧々、朝比奈まふゆ（Project SEKAI）" }],
+          [{ text: "草薙寧々、朝比奈まふゆ（プロセカ）" }],
           [{ text: "The Herta（崩壊：スターレイル）" }],
           [{ text: "酒寄彩葉（超かぐや姫）" }],
           [{ text: "ドラえもん" }],
