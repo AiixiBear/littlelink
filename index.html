@@ -198,7 +198,12 @@
             role="button"><img class="icon" aria-hidden="true" src="images/icons/email.svg"
               alt="Email Logo">aiixi@aiixi.cc</a>
 
-          <h2>愛希的 Discord 狀態（測試中）</h2>
+          <h2>我的 Discord 狀態（測試中）</h2>
+          <p>
+            這裡會即時更新並顯示我的 Discord 狀態<br>
+            此功能使用 Lanyard API 實現<br>
+            目前正在測試中，如果看到異常屬於正常現象
+          </p>
           <section id="discord-presence" class="aiixi-box aria-live="polite" hidden>
           <div class="presence-header">
             <span id="presence-indicator" class="presence-indicator" aria-hidden="true"></span>
@@ -466,15 +471,22 @@
 
         function renderPresence(data) {
           const status = data && data.discord_status || 'offline';
-          presenceCard.hidden = status === 'offline';
+          
+          presenceCard.hidden = false;
           presenceIndicator.dataset.status = status;
-          presenceStatus.textContent = statusNames[status] || status;
+
           if (status === 'offline') {
+            presenceStatus.textContent = '這個功能沒有壞掉但是目前無法顯示';
+            presenceIndicator.hidden = true;
+            
             activitySection.hidden = true;
             spotifySection.hidden = true;
             currentSpotifyTimestamps = null;
             return;
           }
+
+          presenceStatus.textContent = statusNames[status] || status;
+          presenceIndicator.hidden = false;
           renderActivities(data.activities || []);
           renderSpotify(data.spotify);
         }
