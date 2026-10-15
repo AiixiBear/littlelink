@@ -15,17 +15,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Page Title - Change this to your name/brand (50-60 characters recommended) -->
-    <title>Aiixi Bear的入口</title>
+    <title>Aiixi Bear的入口網站</title>
     <link rel="icon" type="image/x-icon" href="https://aiixi.cc/favicon.ico"> <!-- Update this with your own favicon -->
 
     <!-- Meta Description - Write a description (150-160 characters recommended) -->
-    <meta name="description" content="這個是Aiixi Bear的入口，裡面有我的各種連結">
+    <meta name="description" content="歡迎來到 Aiixi Bear（愛希熊）的入口網站！這裡匯集了我所有社交平台、部落格及網頁的傳送門。歡迎戳各平台帳號與我互動！">
 
     <!-- Keywords -->
     <meta name="keywords" content="Aiixi Bear, aiixi_bear, 入口, port, links, 傳送門, 連結">
 
     <!-- Canonical URL - Helps prevent duplicate content issues -->
-    <meta rel="canonical" href="https://aiixi.cc">
+    <link rel="canonical" href="https://go.aiixi.cc/">
 
     <!-- Author Information -->
     <meta name="author" content="Aiixi Bear">
@@ -141,7 +141,7 @@
         <a href="/links.json" class="a-footer">JSON 版</a>
         <br>
         <span>背景圖來自プロセカ <b>草薙寧々</b>卡面</span><br>
-        <span>&copy; 2026 Aiixi Bear. <a href="mailto:aiixi@aiixi.cc">aiixi@aiixi.cc</a></span>
+        <span>&copy; 2026 Aiixi Bear. <a href="mailto:aiixi@aiixi.cc" class="a-footer">aiixi@aiixi.cc</a></span>
       </p>
     </footer>
 
@@ -168,34 +168,24 @@
 
           const idToCopy = this.getAttribute('data-id');      // 取得實際帳號
           const platformLabel = this.getAttribute('data-label'); // 取得平台名稱
-          const textSpan = this.querySelector('.btn-text');   // 取得按鈕內的文字區塊
-          const originalText = document.querySelector('.btn-text').textContent; // 取得原始文字
 
           navigator.clipboard.writeText(idToCopy).then(() => {
-            textSpan.textContent = `✅ 已複製 ${platformLabel} ID！`;
-            
-            setTimeout(() => {
-              textSpan.textContent = `${originalText}`;
-            }, 1500);
+            alert(`已複製 ${platformLabel} ID！`);
           }).catch(err => {
-            console.error('複製失敗: ', err);
-            alert(`複製失敗，請手動複製：${idToCopy}`);
+            console.error(`複製 ${platformLabel} 失敗: `, err);
+            alert(`複製失敗`);
           });
         });
       });
     </script>
-    <!-- 由 Google 結構化資料標記協助工具產生的 JSON-LD 標記。 -->
-    <script type="application/ld+json">
+    <script type="text/html+structured-data">
     {
-      "@context": "http://schema.org",
-      "@type": "Article",
-      "headline": "Aiixi Bear的入口",
-      "author": {
-        "@type": "Person",
-        "name": "Aiixi Bear"
-      },
-      "image": "https://aiixi.cc/img/blowfish_logo.webp",
-      "articleBody": "你好！</B>我叫Aiixi Bear<BR/>\n              你也可以叫我 <I>愛希熊、あいきくま</I><BR/>\n              想更了解我可以戳下方的網頁連結"
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://go.aiixi.cc",
+      "url": "https://go.aiixi.cc/",
+      "name": "Aiixi Bear的入口網站",
+      "alternateName": "Aiixi Bear入口"
     }
     </script>
 </body>
