@@ -17,8 +17,17 @@ export const locales = {
       line2: "也可以叫我",
       alternateName: "愛希熊 / あいきくま",
       alternateSuffix: "",
-      line3: [{ text: "10/19", strong: true }, { text: " ♎ · " }, { text: "INFJ", strong: true }],
-      line4: [{ text: "台灣，中華民國 · ", strong: true }, { text: "", strong: true, class: "pink-text", id: "aiixi-time" }],
+      line3: [
+        { text: "cake", materialIcon: true },
+        { text: "10/19", strong: true }, { text: " ♎ · " }, { text: "INFJ", strong: true }
+
+      ],
+      line4: [
+        { text: "location_on", materialIcon: true },
+        { text: "台灣，中華民國 · ", strong: true },
+        { text: "schedule", materialIcon: true },
+        { text: "", strong: true, class: "pink-text", id: "aiixi-time" },
+      ],
       line5: "很高興認識你！",
     },
     aboutHeading: "自我介紹",
@@ -97,8 +106,16 @@ export const locales = {
       line2: "You can also call me",
       alternateName: "愛希熊 / あいきくま",
       alternateSuffix: "",
-      line3: [{ text: "10/19", strong: true }, { text: " ♎ · " }, { text: "INFJ", strong: true }],
-      line4: [{ text: "Taiwan, Republic of China · ", strong: true }, { text: "", strong: true, class: "pink-text", id: "aiixi-time" }],
+      line3: [
+        { text: "cake", materialIcon: true },
+        { text: "10/19", strong: true }, { text: " ♎ · " }, { text: "INFJ", strong: true }
+      ],
+      line4: [
+        { text: "location_on", materialIcon: true },
+        { text: "Taiwan, ROC · ", strong: true },
+        { text: "schedule", materialIcon: true },
+        { text: "", strong: true, class: "pink-text", id: "aiixi-time" },
+      ],
       line5: "Nice to meet you!",
     },
     aboutHeading: "About me",
@@ -177,8 +194,16 @@ export const locales = {
       line2: "別名は",
       alternateName: "愛希熊 / あいきくま",
       alternateSuffix: "",
-      line3: [{ text: "10/19", strong: true }, { text: " ♎ · " }, { text: "INFJ", strong: true }],
-      line4: [{ text: "台湾、中華民国 · ", strong: true }, { text: "", strong: true, class: "pink-text", id: "aiixi-time" }],
+      line3: [
+        { text: "cake", materialIcon: true },
+        { text: "10/19", strong: true }, { text: " ♎ · " }, { text: "INFJ", strong: true }
+      ],
+      line4: [
+        { text: "location_on", materialIcon: true },
+        { text: "Taiwan, ROC · ", strong: true },
+        { text: "schedule", materialIcon: true },
+        { text: "", strong: true, class: "pink-text", id: "aiixi-time" },
+      ],
       line5: "どうぞよろしくお願いします！",
     },
     aboutHeading: "自己紹介",
