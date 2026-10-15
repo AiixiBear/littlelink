@@ -118,8 +118,6 @@ h1{
     max-width: 100%;
     box-sizing: border-box;
     position: relative;
-    backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(1px);
 }
 .clock-box {
     text-align: center;
