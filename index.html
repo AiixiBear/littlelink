@@ -90,12 +90,41 @@
             我的各社交平台帳號直戳都會回！
             想更了解我可以戳下方的網頁連結<br>
             ↓↓↓
-            <div class="music-player-container">
-              <div id="player"></div>
-              <button id="mute-toggle" class="button button-default" style="margin-top: 10px;">
-                🔇 點擊開啟音樂 (Music Off)
+            <!-- 音樂播放器區域 -->
+            <div class="music-player-container" style="text-align: center; margin: 20px 0;">
+              <!-- 這是嵌入播放器最穩定的方式 -->
+              <iframe id="yt-player" 
+                      width="300" height="150" 
+                      src="https://www.youtube.com/embed/lA7ynoM8fm0?autoplay=1&loop=1&playlist=lA7ynoM8fm0&mute=1" 
+                      frameborder="0" 
+                      allow="autoplay; encrypted-media" 
+                      allowfullscreen>
+              </iframe>
+              <br>
+              <button id="mute-toggle" class="button button-default">
+                🔊 點我開啟聲音！
               </button>
             </div>
+
+            <script>
+              const player = document.getElementById('yt-player');
+              const btn = document.getElementById('mute-toggle');
+              let isMuted = true;
+
+              btn.addEventListener('click', () => {
+                // 透過修改 src 的參數來切換靜音狀態 (最不容易報錯的方法！)
+                const videoId = "lA7ynoM8fm0";
+                if (isMuted) {
+                  player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&playlist=${videoId}&mute=0`;
+                  btn.textContent = "🔇 點我靜音";
+                  isMuted = false;
+                } else {
+                  player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&playlist=${videoId}&mute=1`;
+                  btn.textContent = "🔊 點我開啟聲音！";
+                  isMuted = true;
+                }
+              });
+            </script>
           </p>
         </div>
         <!-- All your buttons go here -->
@@ -280,39 +309,6 @@
 
         // 當視窗大小改變時，動態調整生產節奏
         window.addEventListener('resize', adjustProductionRhythm);
-      </script>
-      <script src="https://www.youtube.com/iframe_api"></script>
-      <script>
-        let player;
-        function onYouTubeIframeAPIReady() {
-          player = new YT.Player('player', {
-            height: '0', // 設為 0 隱藏影片，只留音樂
-            width: '0',
-            videoId: 'lA7ynoM8fm0',
-            playerVars: {
-              'autoplay': 1,
-              'loop': 1,
-              'playlist': 'YOUR_VIDEO_ID_HERE',
-              'mute': 1 // 預設靜音，這是為了符合瀏覽器規範
-            },
-            events: {
-              'onReady': onPlayerReady
-            }
-          });
-        }
-
-        function onPlayerReady(event) {
-          const btn = document.getElementById('mute-toggle');
-          btn.addEventListener('click', () => {
-            if (player.isMuted()) {
-              player.unMute();
-              btn.textContent = '🔊 音樂播放中 (Music On)';
-            } else {
-              player.mute();
-              btn.textContent = '🔇 音樂已靜音 (Music Off)';
-            }
-          });
-        }
       </script>
       <script>
         fetch('/cdn-cgi/trace')
