@@ -80,6 +80,9 @@ class LinkExtractor(HTMLParser):
             if not href or href.startswith("#"):
                 return
             
+            if href.lower().startswith("javascript:"):
+                return
+
             parsed = urlparse(href)
             if parsed.scheme in SKIP_SCHEMES:
                 return
