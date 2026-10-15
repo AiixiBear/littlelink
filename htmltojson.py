@@ -88,6 +88,9 @@ class LinkExtractor(HTMLParser):
             if href in self._seen_urls:
                 return
 
+            if "JSON" in title:
+                return
+
             self._seen_urls.add(href)
 
             section_name = self._current_section or "未分類"
