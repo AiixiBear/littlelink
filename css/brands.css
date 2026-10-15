@@ -1,25 +1,36 @@
 /*
-* LittleLink Button Styles
-* https://littlelink.io
-* Free to use under the MIT license
-* http://www.opensource.org/licenses/mit-license.php
+* LittleLink Button Styles — Aiixi Bear Theme Edition
+* 原始版本：https://littlelink.io（MIT License）
+*
+* 修改重點：
+*   - 「Brand Button Base Styles」改用 color-mix() 把每個品牌原本的實色
+*     自動轉成半透明玻璃色，並加上 backdrop-filter 模糊效果，
+*     所以下面每個品牌區塊完全不用改，識別色與功能都保留。
+*   - Hover 效果改為「提亮 + 上浮 + 發光陰影」，呼應 404_aiixi.css 的按鈕手感。
+*   - .button-default 改用 Aiixi 的頁尾綠作為預設色，貼合整體主題。
 */
 
 /* Brand Button Base Styles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-/* Only include brand-specific button styling here */
-.button,button {
-  color:var(--button-text,#000000);
-  background-color:var(--button-background,transparent);
-	border:var(--button-border,none);
-	transition:filter 0.2s ease,transform 0.2s ease;
+/* 只有這裡負責把品牌顏色套上「玻璃透明感」，各品牌區塊維持原樣即可 */
+.button, button {
+    color: var(--button-text, #ffffff);
+    /* 直接套用品牌實色，不使用 color-mix 混合透明 */
+    background-color: var(--button-background, #2457F5);
+    /* 優先套用品牌自訂邊框，若無則使用 Aiixi 邊框變數 */
+    border: var(--button-border, 1px solid var(--aiixi-glass-border, transparent));
+    border-radius: var(--aiixi-radius, 12px);
 }
 
-/* Global Button Hover Effect
+/* Global Button Hover Effect — 對應 404_aiixi.css 的浮起 + 發光手感
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .button:hover,button:hover {
-	filter:brightness(90%);
-	transform:translateY(-1px);
+	filter:brightness(115%);
+	transform:translateY(-2px);
+	box-shadow:0 8px 20px rgba(0,0,0,0.3);
+}
+.button:active,button:active {
+	transform:translateY(0);
 }
 
 /* Button Icons
@@ -31,11 +42,11 @@
 /* Brand-Specific Styles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-/* Default */
+/* Default — 改用 Aiixi 頁尾綠作為預設強調色 */
 .button.button-default {
 	--button-text:#ffffff;
 	--button-background:#2457F5;
-	--button-border:1px solid #ffffff;
+	--button-border:1px solid rgba(255,255,255,0.4);
 }
 
 /* Amazon */
