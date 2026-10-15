@@ -17,7 +17,7 @@ export const locales = {
       line2: "也可以叫我",
       alternateName: "愛希熊 / あいきくま",
       alternateSuffix: "",
-      line5: "很高興認識你！",
+      line5: "歡迎交友啊！",
     },
     aboutHeading: "自我介紹",
     aboutCards: [
@@ -97,7 +97,7 @@ export const locales = {
       line2: "You can also call me",
       alternateName: "愛希熊 / あいきくま",
       alternateSuffix: "",
-      line5: "Nice to meet you!",
+      line5: "Welcome to make friends!",
     },
     aboutHeading: "About me",
     aboutCards: [
@@ -177,7 +177,7 @@ export const locales = {
       line2: "別名は",
       alternateName: "愛希熊 / あいきくま",
       alternateSuffix: "",
-      line5: "どうぞよろしくお願いします！",
+      line5: "友達作りへようこそ！",
     },
     aboutHeading: "自己紹介",
     aboutCards: [
