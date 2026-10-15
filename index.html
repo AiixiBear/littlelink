@@ -25,7 +25,7 @@
   <link rel="icon" type="image/x-icon" href="https://www.aiixi.cc/favicon.ico"> <!-- Update this with your own favicon -->
 
   <!-- Meta Description - Write a description (150-160 characters recommended) -->
-  <meta name="description" content="歡迎來到 Aiixi Bear（愛希熊）的入口網站！這裡匯集了我所有社交平台、部落格及網頁的傳送門。歡迎戳各平台帳號與我互動！">
+  <meta name="description" content="歡迎來到 Aiixi Bear（愛希熊）的入口網站！這裡匯集了我所有社交 platform、部落格及網頁的傳送門。歡迎戳各 platform 帳號與我互動！">
 
   <!-- Keywords -->
   <meta name="keywords" content="Aiixi Bear, aiixi_bear, 入口, port, links, 傳送門, 連結">
@@ -37,10 +37,10 @@
   <meta name="author" content="Aiixi Bear">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/brands.css">
-  <link rel="stylesheet" href="css/aiixi.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/brands.css">
+  <link rel="stylesheet" href="/css/aiixi.css">
 
   <!-- LittleLink Extended Stylesheet (Optional) -->
   <!-- <link rel="stylesheet" href="css/brands-extended.css"> -->
@@ -92,28 +92,28 @@
           <p class="des">
             <b>你好！</b>我叫Aiixi Bear<br>
             你也可以叫我 <i>愛希熊、あいきくま</i><br>
-            我的各社交平台帳號直戳都會回！
+            我的各社交平台帳號直戳都會回！<br>
             想更了解我可以戳下方的網頁連結<br>
-            ↓↓↓
-            <!-- 雙時區時鐘與日期區塊 -->
-            <div class="timezone-clock-container"> 
-              <span>愛希熊目前處於 <b>TZ_HERE</b> 時區<br>如果有造成不便 敬請見諒</span>
-              <br>
-              <br>
-              <div class="clock-box">
-                <span class="clock-label">您的時區 (<span id="user-tz">偵測中...</span>)</span>
-                <div id="user-date" class="clock-date">0000/00/00</div>
-                <div id="user-time" class="clock-time">00:00:00</div>
-              </div>
-              <div class="clock-box">
-                <span class="clock-label">愛希熊的時區 (TZ_HERE)</span>
-                <div id="bear-date" class="clock-date">0000/00/00</div>
-                <div id="bear-time" class="clock-time">00:00:00</div>
-              </div>
-              <div><small class="sync-status" id="sync-status" style="opacity: 0.8;">正在請求愛希熊報時台...</small></div>
-            </div>
-            <br>
+            ↓↓↓↓↓↓
           </p>
+          
+          <div class="timezone-clock-container"> 
+            <span>愛希熊目前處於 <b>TZ_NAME</b> 時區<br>如果有造成不便 敬請見諒</span>
+            <br>
+            <br>
+            <div class="clock-box">
+              <span class="clock-label">您的時鐘</span>
+              <div id="user-date" class="clock-date">0000/00/00</div>
+              <div id="user-time" class="clock-time">00:00:00</div>
+            </div>
+            <div class="clock-box">
+              <span class="clock-label">愛希熊的時鐘 (TZ_NAME) <small id="time-diff-tag" style="color: var(--accent-color, #ffb7c5);"></small></span>
+              <div id="bear-date" class="clock-date">0000/00/00</div>
+              <div id="bear-time" class="clock-time">00:00:00</div>
+            </div>
+            <div><small class="sync-status" id="sync-status" style="opacity: 0.8;">正在請求愛希熊報時台...</small></div>
+          </div>
+          <br>
         </div>
         </div>
         <!-- All your buttons go here -->
@@ -207,9 +207,9 @@
           <!-- 我覺得以下是專業區域 -->
           <small style="opacity: 0.8;">
             目前版本：
-            <a class="a-footer" href="https://github.com/AiixiBear/littlelink/commit/COMMIT_HASH_PLACEHOLDER"
+            <a class="a-footer" href="https://github.com/AiixiBear/littlelink/commit/"
               target="_blank">
-              COMMIT_HASH_PLACEHOLDER
+              
             </a>
           </small>
           <br>
@@ -358,17 +358,29 @@
             });
         }
 
+        // 輔助函式：解析長時區偏移量字串並轉換為分鐘數
+        function parseOffsetToMinutes(tzStr) {
+          if (!tzStr || tzStr === 'GMT' || tzStr === 'UTC') return 0;
+          const match = tzStr.match(/GMT([+-])(\d+):?(\d+)?/);
+          if (!match) return 0;
+          const sign = match[1] === '+' ? 1 : -1;
+          const hours = parseInt(match[2], 10);
+          const minutes = match[3] ? parseInt(match[3], 10) : 0;
+          return sign * (hours * 60 + minutes);
+        }
+
         // 雙時區時鐘與日期更新主程式
         function updateClocks() {
           // 取得經過校時修正後的絕對精準時間物件
           const preciseNow = new Date(Date.now() + timeOffset);
+          const bearTimeZone = 'AIIXI_TZ';
+          let userTimeZone = '';
 
           // 1. 處理使用者時區、日期（含星期）與時間
           try {
-            const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-            document.getElementById('user-tz').textContent = userTimeZone;
+            userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
             
-            // 格式化使用者日期與星期 (例如：2026/07/13 星期一)
+            // 格式化使用者日期與星期
             const userDateStr = preciseNow.toLocaleDateString('zh-TW', {
               timeZone: userTimeZone,
               year: 'numeric',
@@ -388,27 +400,61 @@
             });
             document.getElementById('user-time').textContent = userTimeStr;
           } catch (e) {
-            document.getElementById('user-tz').textContent = '無法偵測';
+            // 本地 fallback 安全機制
+            document.getElementById('user-date').textContent = preciseNow.toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'long' });
+            document.getElementById('user-time').textContent = preciseNow.toLocaleTimeString('zh-TW', { hour12: false });
           }
 
           // 2. 處理愛希熊的時區日期（含星期）與時間
-          const bearDateStr = preciseNow.toLocaleDateString('zh-TW', {
-            timeZone: 'TZ_HERE',
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-            weekday: 'long'
-          });
-          document.getElementById('bear-date').textContent = bearDateStr;
+          try {
+            const bearDateStr = preciseNow.toLocaleDateString('zh-TW', {
+              timeZone: bearTimeZone,
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit',
+              weekday: 'long'
+            });
+            document.getElementById('bear-date').textContent = bearDateStr;
 
-          const bearTimeStr = preciseNow.toLocaleTimeString('zh-TW', {
-            timeZone: 'TZ_HERE',
-            hour12: false,
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit'
-          });
-          document.getElementById('bear-time').textContent = bearTimeStr;
+            const bearTimeStr = preciseNow.toLocaleTimeString('zh-TW', {
+              timeZone: bearTimeZone,
+              hour12: false,
+              hour: '2-digit',
+              minute: '2-digit',
+              second: '2-digit'
+            });
+            document.getElementById('bear-time').textContent = bearTimeStr;
+          } catch (e) {
+            console.error('愛希熊時區時間計算異常', e);
+          }
+
+          // 3. 自動計算雙方精準時差並動態渲染標籤
+          try {
+            if (userTimeZone && bearTimeZone && bearTimeZone !== 'TZ_' + 'HERE') {
+              const formatterUser = new Intl.DateTimeFormat('en-US', { timeZone: userTimeZone, timeZoneName: 'longOffset' });
+              const formatterBear = new Intl.DateTimeFormat('en-US', { timeZone: bearTimeZone, timeZoneName: 'longOffset' });
+              
+              const partsUser = formatterUser.formatToParts(preciseNow);
+              const partsBear = formatterBear.formatToParts(preciseNow);
+              
+              const tzStrUser = partsUser.find(p => p.type === 'timeZoneName').value;
+              const tzStrBear = partsBear.find(p => p.type === 'timeZoneName').value;
+
+              const diffMinutes = parseOffsetToMinutes(tzStrBear) - parseOffsetToMinutes(tzStrUser);
+              const diffHours = diffMinutes / 60;
+
+              const diffTag = document.getElementById('time-diff-tag');
+              if (diffHours === 0) {
+                diffTag.textContent = '(與您相同)';
+              } else if (diffHours > 0) {
+                diffTag.textContent = `(比您快 ${diffHours} 小時)`;
+              } else {
+                diffTag.textContent = `(比您慢 ${Math.abs(diffHours)} 小時)`;
+              }
+            }
+          } catch (err) {
+            console.error('時差標籤動態計算失敗', err);
+          }
         }
 
         // 執行初始化校時與定時鐘
@@ -417,5 +463,6 @@
         setInterval(updateClocks, 1000);
       </script>
     </div>
+  </div>
 </body>
 </html>
