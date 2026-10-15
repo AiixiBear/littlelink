@@ -315,6 +315,37 @@ document.querySelectorAll('.copy-btn').forEach(button => {
     });
     });
 });
+document.addEventListener('DOMContentLoaded', () => {
+  const shareBtn = document.getElementById('floating-share-btn');
+
+  if (shareBtn) {
+    shareBtn.addEventListener('click', async () => {
+      // 優先使用原生 Web Share API
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            text: '歡迎來到 Aiixi Bear 的入口網站！',
+            url: window.location.href,
+          });
+        } catch (err) {
+          // 使用者取消分享時不處理錯誤
+          if (err.name !== 'AbortError') {
+            console.error('分享失敗:', err);
+          }
+        }
+      } else {
+        // 不支援 Web Share API 時（如部分桌上型瀏覽器），降級為複製網址
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          alert('已複製網站連結至剪貼簿！');
+        } catch (err) {
+          console.error('複製失敗:', err);
+        }
+      }
+    });
+  }
+});
 /*
 // 輔助函式：解析長時區偏移量字串並轉換為分鐘數
 function parseOffsetToMinutes(tzStr) {
