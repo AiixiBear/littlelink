@@ -125,7 +125,7 @@
               <div id="bear-date" class="clock-date">0000/00/00</div>
               <div id="bear-time" class="clock-time">00:00:00</div>
             </div>
-            <div><small class="sync-status" id="sync-status" style="opacity: 0.8;">正在請求愛希熊報時台...</small></div>
+            <div><small class="sync-status" id="sync-status" style="opacity: 0.8;">正在請求標準時間...</small></div>
           </div>
           <br>
         </div>
@@ -356,30 +356,44 @@
         // 核心時間變數
         let timeOffset = 0; // 本地時間與伺服器精準時間的毫秒差
 
-        // 向我的報時台請求時間
         function syncWithServer() {
           const startTime = Date.now();
           
-          fetch('https://www.aiixi.cc/api/time/')
-            .then(res => res.json())
-            .then(data => {
+          fetch('/cdn-cgi/trace')
+            .then(res => {
+              if (!res.ok) throw new Error('HTTP ' + res.status);
+              return res.text();
+            })
+            .then(traceText => {
               const endTime = Date.now();
+              
+              // 解析 /cdn-cgi/trace 的 key=value 格式
+              const info = {};
+              traceText.split('\n').forEach(line => {
+                const [key, val] = line.split('=');
+                if (key && val) info[key.trim()] = val.trim();
+              });
+
+              if (!info.ts) throw new Error('未找到 ts 欄位');
+
+              // Cloudflare timestamp 單位為秒，需乘以 1000 轉為毫秒
+              const serverTimeMs = parseFloat(info.ts) * 1000;
+
               // 計算網路傳輸延遲（來回時間的一半）
               const latency = (endTime - startTime) / 2;
               // 伺服器時間對齊到本地接收當下的推估值
-              const serverTimeCorrected = data.time + latency;
+              const serverTimeCorrected = serverTimeMs + latency;
               
               // 計算時間差：伺服器精準時間 - 本地當前時間
               timeOffset = serverTimeCorrected - endTime;
               
-              document.getElementById('sync-status').textContent = '愛希熊報時台同步完成';
+              document.getElementById('sync-status').textContent = '標準時間同步完成';
             })
             .catch(err => {
               console.error('網路校時失敗，將使用本地設備時間代替。', err);
               document.getElementById('sync-status').textContent = '校時失敗 (採用本地時間)';
             });
         }
-
         // 輔助函式：解析長時區偏移量字串並轉換為分鐘數
         function parseOffsetToMinutes(tzStr) {
           if (!tzStr || tzStr === 'GMT' || tzStr === 'UTC') return 0;
