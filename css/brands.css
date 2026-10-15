@@ -13,12 +13,13 @@
 /* Brand Button Base Styles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 /* 只有這裡負責把品牌顏色套上「玻璃透明感」，各品牌區塊維持原樣即可 */
-.button,button {
-	color:var(--button-text,#ffffff);
-	background-color:color-mix(in srgb, var(--button-background,rgba(255,255,255,0.15)));
-	transition:filter 0.2s ease,transform 0.2s ease,box-shadow 0.2s ease;
-	border:1px solid var(--aiixi-glass-border);
-	border-radius:var(--aiixi-radius);
+.button, button {
+    color: var(--button-text, #ffffff);
+    /* 直接套用品牌實色，不使用 color-mix 混合透明 */
+    background-color: var(--button-background, #2457F5);
+    /* 優先套用品牌自訂邊框，若無則使用 Aiixi 邊框變數 */
+    border: var(--button-border, 1px solid var(--aiixi-glass-border, transparent));
+    border-radius: var(--aiixi-radius, 12px);
 }
 
 /* Global Button Hover Effect — 對應 404_aiixi.css 的浮起 + 發光手感
