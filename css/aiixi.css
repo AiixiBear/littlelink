@@ -85,3 +85,41 @@ h1{
 .toast-msg.active {
     opacity: 1;
 }
+
+/* ============================================================
+   櫻花飄落特效
+   ============================================================ */
+
+/* 櫻花容器設置 */
+#sakura-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* 櫻花單體樣式 */
+.sakura {
+  position: absolute;
+  background-color: #ffb7c5;
+  border-radius: 15% 85% 35% 65% / 20% 80% 20% 80%;
+  opacity: 0.8;
+  filter: blur(1px);
+  will-change: transform;
+  /* 這裡設定動畫名稱為 fall */
+  animation: fall linear forwards;
+}
+
+/* 這裡是讓花瓣動起來的魔法：從上方掉到下方，並伴隨旋轉 */
+@keyframes fall {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
