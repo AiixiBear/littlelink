@@ -15,6 +15,7 @@
 	font-size:16px;
 	/* 1.25 倍模組化字級 */
 	--scale-0:1rem;           /* 16px */
+	--scale-05:1.10rem;
 	--scale-1:1.25rem;        /* 20px */
 	--scale-2:1.563rem;       /* 25px */
 	--scale-3:1.953rem;       /* 31px */
@@ -151,8 +152,9 @@ h1 {
 /* Footer */
 footer {
 	margin:var(--spacing-m) 0;
-	font-size:var(--scale-1);
+	font-size:var(--scale-05);
 	color:#ffffff;
+	max-width: 90%;
 }
 
 
