@@ -21,22 +21,23 @@ rm -rf "$OUTPUT_DIR"
 mkdir -p "$OUTPUT_DIR"
 
 # 3. 複製所有檔案到 public/ (排除不需要公開的原始碼、Git 檔案或設定檔)
-# 使用 rsync 是一個比較安全且靈活的方式
-# 如果系統沒有 rsync，可以使用 cp，但 cp 排除特定檔案會比較麻煩。這裡使用常見的排除方法：
 echo "Copying files to ${OUTPUT_DIR}/..."
-cp -R css en images ja js 404.html index.html cloudflare_nodes.json robots.txt sitemap.xml "$OUTPUT_DIR/"
+cp -R css en zh-tw images ja js 404.html robots.txt sitemap.xml _redirects "$OUTPUT_DIR/"
 
-# (備註：如果有需要把其他檔案也放進去，請在上面的 cp 命令加上去)
-
-# 4. 定義 public/ 內需要處理的 HTML 檔案列表
+# 4. 定義 public/ 內需要處理的 HTML / JS 檔案列表
 HTML_FILES=(
-  "${OUTPUT_DIR}/index.html"
+  "${OUTPUT_DIR}/zh-tw/index.html"
   "${OUTPUT_DIR}/en/index.html"
   "${OUTPUT_DIR}/ja/index.html"
 )
+JS_FILES=(
+  "${OUTPUT_DIR}/zh-tw/main.js"
+  "${OUTPUT_DIR}/en/main_en.js"
+  "${OUTPUT_DIR}/ja/main_ja.js"
+)
 
-# 5. 替換時區變數 (AIIXI_TZ 與 TZ_NAME)
-for file in "${HTML_FILES[@]}"; do
+# 5. 替換時區變數 (AIIXI_TZ 與 TZ_NAME)：HTML 與 JS 都要處理
+for file in "${HTML_FILES[@]}" "${JS_FILES[@]}"; do
   if [ -f "$file" ]; then
     sed -i "s#AIIXI_TZ#${AIIXI_TZ}#g; s#TZ_NAME#${TZ_NAME}#g" "$file"
   fi

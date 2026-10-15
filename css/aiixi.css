@@ -118,6 +118,18 @@ h1{
     box-sizing: border-box;
     position: relative;
     text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    margin-bottom: 1rem;
+}
+
+/* 自介小卡標題：收斂預設 heading 上下留白，貼齊卡片內距 */
+.aiixi-box > h2:first-child,
+.aiixi-box > h3:first-child {
+    margin-top: 0;
+    margin-bottom: 0.6em;
+}
+
+.aiixi-box > p:last-child {
+    margin-bottom: 0;
 }
 .clock-box {
     text-align: center;
@@ -237,4 +249,9 @@ h1{
 
 .floating-share-btn:active {
   transform: scale(0.95);
+}
+
+
+.aiixi-box b {
+  color: var(--accent-color, #ffb7c5);
 }

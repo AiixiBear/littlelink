@@ -153,7 +153,7 @@ footer {
 	align-items:center;
 	justify-content:center;
 	gap:0.5rem;
-	width:18.75rem;             	/* 300px，維持原本固定寬度的排版功能 */
+	width:20rem;             	/* 300px，維持原本固定寬度的排版功能 */
 	min-height:3rem;
 	padding:0.75rem 1.25rem;
 	font-size:1.125rem;

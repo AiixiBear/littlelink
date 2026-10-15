@@ -34,11 +34,11 @@
   <meta name="author" content="Aiixi Bear">
 
   <!-- hreflang 標籤：列出所有語言版本 -->
-  <link rel="alternate" hreflang="zh-TW" href="https://go.aiixi.cc/">
+  <link rel="alternate" hreflang="zh-TW" href="https://go.aiixi.cc/zh-tw/">
   <link rel="alternate" hreflang="en" href="https://go.aiixi.cc/en/">
   <link rel="alternate" hreflang="ja" href="https://go.aiixi.cc/ja/">
   <!-- x-default：當使用者的語言都不匹配時推薦的預設頁面 -->
-  <link rel="alternate" hreflang="x-default" href="https://go.aiixi.cc/">
+  <link rel="alternate" hreflang="x-default" href="https://go.aiixi.cc/zh-tw/">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/css/reset.css">
@@ -96,7 +96,7 @@
             <div>Aiixi Bear</div>
           </h1>
 
-          <div class="lang-switcher">
+          <div class="lang-switcher" title="Language / 言語">
             <select id="lang-select" aria-label="Language / 言語">
               <option value="zh-TW">繁體中文</option>
               <option value="en">English</option>
@@ -106,10 +106,9 @@
           
           <p class="des">
             <b>こんにちは！</b>Aiixi Bear です！<br>
-            <i>愛希熊（あいきくま）</i>とも呼ばれています🐻<br>
+            <i>愛希熊（あいきくま）</i>とも呼ばれています<br>
+            絵を描くのが好きなクマです 🐻<br>
             友達申請・フォロー大歓迎です！<br>
-            私についてもっと知りたい方は、下のリンクをチェックしてね！<br>
-            ↓↓↓↓↓↓
           </p>
 
           <br>
@@ -121,13 +120,51 @@
           <hr>
           <br>
 
-          <h2>ようこそ！</h2>
+          <h2>自己紹介</h2>
+
+          <div class="aiixi-box">
+            <h3>About me</h3>
+            <p>
+              誕生日：<b>10/19</b> ♎ · <b>INFJ</b><br>
+              好きな色：<b>水色</b><br>
+              クマだけど、人間みたいな見た目<br>
+              絵を描くこと、アニメ、音楽
+            </p>
+          </div>
+
+          <div class="aiixi-box">
+            <h3>好きなもの / 嫌いなもの</h3>
+            <p>
+              <b>好き：</b>可愛いもの、絵を描くこと、アニメ、ふかふかの布団、音楽、お友達づくり<br>
+              <b>嫌い：</b>甘すぎる食べ物、騒音、強い日差し、話を半分しかしないこと
+            </p>
+          </div>
+
+          <div class="aiixi-box">
+            <h3>推し</h3>
+            <p>
+              草薙寧々、朝比奈まふゆ（プロセカ）<br>
+              The Herta（崩壊：スターレイル）<br>
+              酒寄彩葉（超かぐや姫）<br>
+              ドラえもん
+            </p>
+          </div>
+
+          <div class="aiixi-box">
+            <h3>ゲーム</h3>
+            <p>
+              プロセカ（TW/JP）、Phigros<br>
+              崩壊：スターレイル、hololive Dreams
+            </p>
+          </div>
 
           <a class="button button-default" href="https://www.aiixi.cc/about/" target="_blank" rel="noopener"
             role="button"><img class="icon" aria-hidden="true" src="/images/icons/generic-blog.svg"
-              alt="Website Logo">★自己紹介はこちらをクリック</a>
+              alt="Website Logo">★完全な自己紹介はこちら</a>
 
-          <h2>ウェブサイト</h2>
+          <h2>リンク</h2>
+
+          <h3>ウェブサイト</h3>
 
           <a class="button button-default" href="https://www.aiixi.cc/" target="_blank" rel="noopener" role="button"><img
               class="icon" aria-hidden="true" src="/images/icons/generic-homepage.svg"
@@ -137,7 +174,7 @@
             role="button"><img class="icon" aria-hidden="true" src="/images/icons/generic-website.svg"
               alt="Website Logo">www.aiixi.run.place</a>
 
-          <h2>SNSアカウント</h2>
+          <h3>SNSアカウント</h3>
 
           <a class="button button-threads" href="https://www.threads.com/@aiixi_bear" target="_blank" rel="noopener me"
             role="button"><img class="icon" aria-hidden="true" src="/images/icons/threads.svg"
@@ -195,7 +232,7 @@
             <div id="activity-list"></div>
           </div>
           <div id="spotify-activity" class="presence-section spotify-section" hidden>
-            <h2>Spotify</h2>
+            <h3>Spotify</h3>
             <div class="spotify-content">
               <img id="spotify-art" class="spotify-art" alt="" hidden>
               <div class="spotify-details">
@@ -236,7 +273,7 @@
         </p>
       </footer>
   </div>
-  <button id="floating-share-btn" class="floating-share-btn" aria-label="分享此頁面" title="分享此頁面">
+  <button id="floating-share-btn" class="floating-share-btn" aria-label="このページをシェア" title="このページをシェア">
     <span class="material-symbols-outlined">
     share
     </span>

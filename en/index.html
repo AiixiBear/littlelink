@@ -34,11 +34,11 @@
   <meta name="author" content="Aiixi Bear">
 
   <!-- hreflang 標籤：列出所有語言版本 -->
-  <link rel="alternate" hreflang="zh-TW" href="https://go.aiixi.cc/">
+  <link rel="alternate" hreflang="zh-TW" href="https://go.aiixi.cc/zh-tw/">
   <link rel="alternate" hreflang="en" href="https://go.aiixi.cc/en/">
   <link rel="alternate" hreflang="ja" href="https://go.aiixi.cc/ja/">
   <!-- x-default：當使用者的語言都不匹配時推薦的預設頁面 -->
-  <link rel="alternate" hreflang="x-default" href="https://go.aiixi.cc/">
+  <link rel="alternate" hreflang="x-default" href="https://go.aiixi.cc/zh-tw/">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/css/reset.css">
@@ -105,7 +105,7 @@
             <div>Aiixi Bear</div>
           </h1>
 
-          <div class="lang-switcher">
+          <div class="lang-switcher" title="Language / 語言">
             <select id="lang-select" aria-label="Language / 語言">
               <option value="zh-TW">繁體中文</option>
               <option value="en">English</option>
@@ -117,9 +117,8 @@
           <p class="des">
             <b>Hello! </b>I'm Aiixi Bear<br>
             Can also call me: <i>愛希熊、あいきくま</i><br>
+            A bear who loves to draw 🐻<br>
             Friends are always welcome!<br>
-            To learn more, you can click the webpage links below<br>
-            ↓↓↓↓↓↓
           </p>
 
           <!--
@@ -148,13 +147,51 @@
           <hr>
           <br>
 
-          <h2>Hey there!</h2>
+          <h2>About</h2>
+
+          <div class="aiixi-box">
+            <h3>About me</h3>
+            <p>
+              Birthday: <b>10/19</b> ♎ · <b>INFJ</b><br>
+              Favorite color: <b>cyan</b><br>
+              A bear, but looks human<br>
+              Into drawing, anime, and music
+            </p>
+          </div>
+
+          <div class="aiixi-box">
+            <h3>Likes / Dislikes</h3>
+            <p>
+              <b>Likes:</b> cute things, drawing, anime, soft blankets, music, making friends<br>
+              <b>Dislikes:</b> overly sweet food, noise, harsh sunlight, people who only say half a sentence
+            </p>
+          </div>
+
+          <div class="aiixi-box">
+            <h3>Favorite characters / 推し</h3>
+            <p>
+              Nene Kusanagi, Mafuyu Asahina (Project SEKAI)<br>
+              The Herta (Honkai: Star Rail)<br>
+              Iroha Sakayori (Cho Kaguya Hime)<br>
+              Doraemon
+            </p>
+          </div>
+
+          <div class="aiixi-box">
+            <h3>Games</h3>
+            <p>
+              Project SEKAI (TW/JP), Phigros<br>
+              Honkai: Star Rail, hololive Dreams
+            </p>
+          </div>
 
           <a class="button button-default" href="https://www.aiixi.cc/about/" target="_blank" rel="noopener"
             role="button"><img class="icon" aria-hidden="true" src="/images/icons/generic-blog.svg"
-              alt="Website Logo">★ Click here to see my self-introduction</a>
+              alt="Website Logo">★ Click here to see my full self-introduction</a>
 
-          <h2>My website</h2>
+          <h2>Links</h2>
+
+          <h3>My website</h3>
 
 
           <a class="button button-default" href="https://www.aiixi.cc/" target="_blank" rel="noopener" role="button"><img
@@ -165,7 +202,7 @@
             role="button"><img class="icon" aria-hidden="true" src="/images/icons/generic-website.svg"
               alt="Website Logo">www.aiixi.run.place</a>
 
-          <h2>My Social Proflies</h2>
+          <h3>My Social Proflies</h3>
 
           <a class="button button-threads" href="https://www.threads.com/@aiixi_bear" target="_blank" rel="noopener me"
             role="button"><img class="icon" aria-hidden="true" src="/images/icons/threads.svg"
@@ -224,7 +261,7 @@
             <div id="activity-list"></div>
           </div>
           <div id="spotify-activity" class="presence-section spotify-section" hidden>
-            <h2>Spotify</h2>
+            <h3>Spotify</h3>
             <div class="spotify-content">
               <img id="spotify-art" class="spotify-art" alt="" hidden>
               <div class="spotify-details">
@@ -266,7 +303,7 @@
         </p>
       </footer>
   </div>
-  <button id="floating-share-btn" class="floating-share-btn" aria-label="分享此頁面" title="分享此頁面">
+  <button id="floating-share-btn" class="floating-share-btn" aria-label="Share this page" title="Share this page">
     <span class="material-symbols-outlined">
     share
     </span>

@@ -269,7 +269,7 @@ setInterval(() => {
 
 Promise.all([
 fetch('/cdn-cgi/trace').then(res => res.text()),
-fetch('/cloudflare_nodes.json').then(res => res.json())
+fetch('cloudflare_nodes.json').then(res => res.json())
 ])
 .then(([traceText, nodesData]) => {
     // 解析 /cdn-cgi/trace 文字資料
