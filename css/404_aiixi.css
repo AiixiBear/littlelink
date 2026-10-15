@@ -61,8 +61,6 @@ body::before {
     width: 100%;
     max-width: 560px;
     background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 40px;
     padding: 3rem 2.5rem;
@@ -84,6 +82,10 @@ h1 {
     margin-bottom: 1.2rem;
     line-height: 1.1;
     letter-spacing: -0.5px;
+    color: transparent;
+    background-image: linear-gradient(45deg, #ff0000, #ecadad);
+    background-clip: text;
+    -webkit-background-clip: text; /* 相容舊版 WebKit 瀏覽器 */
 }
 
 .des {

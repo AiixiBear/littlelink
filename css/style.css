@@ -1,5 +1,4 @@
 /*
-* LittleLink — Aiixi Bear Theme Edition
 * 依照 404_aiixi.css / aiixi.css 的毛玻璃深色風格重新設計，
 * 但保留原版 LittleLink 的版面結構、按鈕系統、主題切換機制。
 *
@@ -8,9 +7,6 @@
 *   - style.css   : 版面 / 排版 / 按鈕形狀 / 主題切換（本檔）
 *   - brands.css  : 各品牌按鈕「顏色」與 hover 效果（玻璃透明化在這裡處理）
 *   - aiixi.css / 404_aiixi.css : 背景圖、櫻花特效、頁尾連結色、時鐘元件等頁面專屬效果
-*
-* 建議載入順序：
-*   reset.css -> style.css -> brands.css -> aiixi.css (或 404_aiixi.css)
 */
 
 /* Base Typography Settings
@@ -55,10 +51,7 @@ html {
 	margin: 4rem 0;
 	padding:var(--spacing-xl) var(--spacing-m);
 	box-sizing:border-box;
-	/* 玻璃卡片外觀，對應 404_aiixi.css 的 .column */
 	background:var(--aiixi-glass-bg);
-	backdrop-filter:blur(2.5px);
-	-webkit-backdrop-filter:blur(2.5px);
 	border:1px solid var(--aiixi-glass-border);
 	border-radius:var(--aiixi-radius);
 	box-shadow:0 20px 40px rgba(0,0,0,0.4);
@@ -128,7 +121,7 @@ h1 {
 	overflow-wrap:break-word;
 }
 .container p {
-	margin:0 0 var(--spacing-xl) 0;
+	margin:0 0 var(--spacing-m) 0;
 	font-size:var(--scale-1);
 	line-height:1.7;
 	color:#ffffff;
@@ -140,15 +133,15 @@ h1 {
 	body { font-size:var(--scale-0); }
 	.container p { font-size:var(--scale-0); }
 	.avatar { margin-bottom:var(--spacing-m); }
-	footer { margin:var(--spacing-xl) 0; }
+	footer { margin:var(--spacing-m) 0; }
 	.container { padding:2.25rem 1.5rem; border-radius:1.75rem; margin: 1rem 0;}
 }
 
 /* Footer */
 footer {
-	margin:var(--spacing-xxl) 0;
+	margin:var(--spacing-m) 0;
 	font-size:var(--scale-0);
-	color:#cccccc;
+	color:#ffffff;
 }
 
 
