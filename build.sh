@@ -44,14 +44,7 @@ JS_FILES=(
   "${OUTPUT_DIR}/ja/main_ja.js"
 )
 
-# 4. 替換時區變數 (AIIXI_TZ 與 TZ_NAME)：HTML 與 JS 都要處理
-for file in "${HTML_FILES[@]}" "${JS_FILES[@]}"; do
-  if [ -f "$file" ]; then
-    sed -i "s#AIIXI_TZ#${AIIXI_TZ}#g; s#TZ_NAME#${TZ_NAME}#g" "$file"
-  fi
-done
-
-# 5. 替換 COMMIT_HASH_PLACEHOLDER (包含 404 頁)
+# 4. 替換 COMMIT_HASH_PLACEHOLDER (包含 404 頁)
 ALL_TARGET_FILES=("${HTML_FILES[@]}" "${OUTPUT_DIR}/404.html")
 for file in "${ALL_TARGET_FILES[@]}"; do
   if [ -f "$file" ]; then

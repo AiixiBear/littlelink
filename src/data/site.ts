@@ -5,6 +5,12 @@ export const websiteLinks = [
     key: "websiteTitle",
     rel: "noopener",
   },
+    {
+    href: "https://apps.aiixi.cc/aqa/?tag=go.aiixi.cc",
+    icon: "generic-website.svg",
+    key: "aqaTitle",
+    rel: "noopener",
+  },
 ] as const;
 
 export const socialLinks = [

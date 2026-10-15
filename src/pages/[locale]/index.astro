@@ -58,7 +58,7 @@ const languageOptions = languages.map((language) => ({
       </div>
 
       <p class="des">
-        <b id="greeting" >{content.intro.greeting}</b>
+        <b id="greeting" class="pink-text" >{content.intro.greeting}</b>
         {!content.intro.greetingOnOwnLine && " "}
         {!content.intro.greetingOnOwnLine && content.intro.line1}
         {content.intro.greetingOnOwnLine && <br />}
@@ -67,44 +67,6 @@ const languageOptions = languages.map((language) => ({
         {content.intro.line2 && `${content.intro.line2} `}
         <i>{content.intro.alternateName}</i>
         {content.intro.alternateSuffix}
-        <br />
-        {content.intro.line3.map((item, index) => (
-          item.materialIcon ? (
-            <span
-              key={index}
-              class="material-symbols-outlined"
-              aria-hidden="true"
-              style="vertical-align: middle; font-size: 1em; line-height: 1;"
-            >
-              {item.text}
-            </span>
-            <span>&nbsp;</span>
-          ):
-          item.strong ? (
-            <b key={index} id={item.id} class={item.class}>{item.text}</b>
-          ) : (
-            <span key={index}>{item.text}</span>
-          )
-        ))}
-        <br />
-
-        {content.intro.line4.map((item, index) => (
-          item.materialIcon ? (
-            <span
-              key={index}
-              class="material-symbols-outlined"
-              aria-hidden="true"
-              style="vertical-align: middle; font-size: 1em; line-height: 1;"
-            >
-              {item.text}
-            </span>
-            <span>&nbsp;</span>
-          ) : item.strong ? (
-            <b key={index} id={item.id} class={item.class}>{item.text}</b>
-          ) : (
-            <span key={index}>{item.text}</span>
-          )
-        ))}
         <br />
         {content.intro.line5}
         <br />
@@ -128,7 +90,22 @@ const languageOptions = languages.map((language) => ({
             {card.lines.map((line) => (
               <>
                 {line.map((part) =>
-                  part.strong ? <b>{part.text}</b> : part.text
+                  part.materialIcon ? (
+                    <>
+                      <span
+                        class="material-symbols-outlined"
+                        aria-hidden="true"
+                        style="vertical-align: middle; font-size: 1em; line-height: 1;"
+                      >
+                        {part.text}
+                      </span>
+                      <span>&nbsp;</span>
+                    </>
+                  ) : part.strong ? (
+                    <b id={part.id} class={part.class}>{part.text}</b>
+                  ) : (
+                    part.text
+                  )
                 )}
                 <br />
               </>
@@ -193,44 +170,17 @@ const languageOptions = languages.map((language) => ({
         {"\n"}
       </>
     ))}
-
-    <h2>{content.discordHeading}</h2>
-    <p>
-      {content.discordDescription.map((line) => (
-        <>
-          {line}
-          <br />
-        </>
-      ))}
-    </p>
-
-    <section id="discord-presence" class="aiixi-box" aria-live="polite" hidden>
-      <div class="presence-header">
-        <span id="presence-indicator" class="presence-indicator" aria-hidden="true"></span>
-        <span id="presence-status">{content.presenceStatus}</span>
-      </div>
-      <div id="discord-activity" class="presence-section" hidden>
-        <h3>{content.activityHeading}</h3>
-        <div id="activity-list"></div>
-      </div>
-      <div id="spotify-activity" class="presence-section spotify-section" hidden>
-        <h3>{content.spotifyHeading}</h3>
-        <div class="spotify-content">
-          <img id="spotify-art" class="spotify-art" alt="" hidden />
-          <div class="spotify-details">
-            <strong id="spotify-song"></strong>
-            <span id="spotify-artist"></span>
-            <span id="spotify-album"></span>
-            <div class="spotify-progress" aria-label={content.spotifyProgress}>
-              <span id="spotify-progress-bar"></span>
-            </div>
-            <span id="spotify-time" class="spotify-time"></span>
-          </div>
-        </div>
-        <a id="spotify-link" class="presence-link" target="_blank" rel="noopener" hidden>
-          {content.spotifyLink}
-        </a>
-      </div>
-    </section>
+    <h2>Enjoy!</h2>
+    <div class="aiixi-box">
+      <iframe
+        class="aiixi-video-embed"
+        src="https://www.youtube.com/embed/HD3v90A3ldg"
+        title="Enjoy!"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    </div>
   </div>
 </SiteLayout>
