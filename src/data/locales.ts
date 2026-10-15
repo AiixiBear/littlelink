@@ -7,6 +7,7 @@ export const locales = {
     ogDescription:
       "歡迎來到 Aiixi Bear（愛希熊）的入口網站！這裡整理了我的社群平台、部落格與個人網站，歡迎一起交流、認識彼此。",
     ogImageAlt: "Aiixi Bear 的入口網站封面圖片",
+    ogSiteName: "Aiixi Bear 的入口網站",
     jsonLdName: "Aiixi Bear 的入口網站",
     languageLabel: "Language / 語言 / 言語",
     avatarAlt: "Aiixi Bear Avatar",
@@ -87,6 +88,7 @@ export const locales = {
     ogDescription:
       "Welcome to Aiixi Bear's portal website! Here I’ve gathered my social media, blog, and personal websites so you can get to know me and say hello.",
     ogImageAlt: "Aiixi Bear's portal website cover image",
+    ogSiteName: "Aiixi Bear's Portal Website",
     jsonLdName: "Aiixi Bear's Portal Website",
     languageLabel: "Language / 語言",
     avatarAlt: "Aiixi Bear Avatar",
@@ -167,6 +169,7 @@ export const locales = {
     ogDescription:
       "Aiixi Bear のポータルサイトへようこそ！ここでは私のSNS、ブログ、個人サイトをまとめているので、ぜひ交流してみてください。",
     ogImageAlt: "Aiixi Bear のポータルサイトカバー画像",
+    ogSiteName: "Aiixi Bear のポータルサイト",
     jsonLdName: "Aiixi Bear のポータルサイト",
     languageLabel: "Language / 言語",
     avatarAlt: "Aiixi Bear アバター",
