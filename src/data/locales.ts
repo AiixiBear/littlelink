@@ -36,7 +36,7 @@ export const locales = {
           ],
           [
             { text: "location_on", materialIcon: true },
-            { text: "台灣，中華民國 · ", strong: false },
+            { text: "台灣（中華民國） · ", strong: false },
             { text: "schedule", materialIcon: true },
             { text: "", strong: true, class: "pink-text", id: "aiixi-time" },
           ],
