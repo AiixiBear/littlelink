@@ -308,21 +308,32 @@
         window.addEventListener('resize', adjustProductionRhythm);
       </script>
       <script>
-        fetch('/cdn-cgi/trace')
-          .then(res => res.text())
-          .then(text => {
-            const info = {};
-            text.split('\n').forEach(line => {
-              const [key, val] = line.split('=');
-              if (key) info[key] = val;
-            });
-            const colo = info.colo || '不存在';
-            document.getElementById('trace-info').textContent = `CDN : ${colo}`;
-          })
-          .catch(err => {
-            console.error('無法抓取 Cloudflare trace', err);
-            document.getElementById('trace-info').textContent = 'CDN:錯誤';
+      Promise.all([
+        fetch('/cdn-cgi/trace').then(res => res.text()),
+        fetch('https://www.aiixi.cc/cloudflare_nodes.json').then(res => res.json())
+      ])
+        .then(([traceText, nodesData]) => {
+          // 解析 /cdn-cgi/trace 文字資料
+          const info = {};
+          traceText.split('\n').forEach(line => {
+            const [key, val] = line.split('=');
+            if (key) info[key] = val.trim();
           });
+
+          const colo = info.colo;
+          if (!colo) {
+            document.getElementById('trace-info').textContent = 'CDN：不存在';
+            return;
+          }
+
+          // 依據 colo 機房代碼尋找對應的城市名稱
+          const cityName = nodesData[colo] || '未知城市';
+          document.getElementById('trace-info').textContent = `CDN : ${cityName} (${colo})`;
+        })
+        .catch(err => {
+          console.error('無法抓取 Cloudflare trace 或節點資料', err);
+          document.getElementById('trace-info').textContent = 'CDN：錯誤';
+        });
         console.info("大便")
         document.querySelectorAll('.copy-btn').forEach(button => {
           button.addEventListener('click', function (event) {
