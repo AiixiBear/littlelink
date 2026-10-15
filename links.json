@@ -1,0 +1,56 @@
+[
+  {
+    "section": "我的網站",
+    "links": [
+      {
+        "title": "★看我的自我介紹點這裡",
+        "url": "https://bearshen.top/about/"
+      },
+      {
+        "title": "我的網站首頁",
+        "url": "https://bearshen.top/"
+      },
+      {
+        "title": "我的聯邦宇宙帳號",
+        "url": "https://nene.bearshen.top/@bearshen1019"
+      }
+    ]
+  },
+  {
+    "section": "我的社交個人檔案",
+    "links": [
+      {
+        "title": "Threads",
+        "url": "https://threads.com/@aiixi_bear"
+      },
+      {
+        "title": "Instagram",
+        "url": "https://instagram.com/aiixi_bear"
+      },
+      {
+        "title": "X (Twitter)",
+        "url": "https://x.com/aiixi_bear"
+      },
+      {
+        "title": "GitHub",
+        "url": "https://github.com/AiixiBear"
+      },
+      {
+        "title": "Mastodon",
+        "url": "https://mastodon.social/@bearshen1019"
+      },
+      {
+        "title": "Bluesky",
+        "url": "https://bsky.app/profile/aiixi-bear.bsky.social"
+      },
+      {
+        "title": "Matrix",
+        "url": "https://matrix.to/#/@aiixi_bear:matrix.org"
+      },
+      {
+        "title": "Pinterest",
+        "url": "https://www.pinterest.com/aiixi_bear/"
+      }
+    ]
+  }
+]

@@ -61,9 +61,9 @@ class LinkExtractor(HTMLParser):
             self._current_text = []
 
     def handle_endtag(self, tag):
-        if tag == "p" and self._in_p:
-            self._in_p = False
-            text = " ".join("".join(self._p_text).split()).strip()
+        if tag == "h2" and self._in_h2:
+            self._in_h2 = False
+            text = " ".join("".join(self._h2_text).split()).strip()
             if text:
                 self._current_section = text
 
@@ -99,8 +99,8 @@ class LinkExtractor(HTMLParser):
             section["links"].append({"title": title, "url": href})
 
     def handle_data(self, data):
-        if self._in_p and not self._in_anchor:
-            self._p_text.append(data)
+        if self._in_h2 and not self._in_anchor:
+            self._h2_text.append(data)
         if self._in_anchor:
             self._current_text.append(data)
 
