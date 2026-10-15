@@ -75,6 +75,7 @@ requestAnimationFrame(startSakuraProduction);
 
 // 當視窗大小改變時，動態調整生產節奏
 window.addEventListener('resize', adjustProductionRhythm);
+
 const LANYARD_USER_ID = '982547292529774612';
 const presenceCard = document.getElementById('discord-presence');
 const presenceIndicator = document.getElementById('presence-indicator');
@@ -316,9 +317,9 @@ function setGreeting() {
 
 if (hour >= 5 && hour < 12) {
     greetingText = `你好啊，早安呀～`;
-  } else if (hour >= 12 && hour < 18) {
+  } else if (hour >= 12 && hour < 16) {
     greetingText = `你好呀！午安！吃午餐了嗎？`;
-  } else if (hour >= 18 && hour < 23) {
+  } else if (hour >= 16 && hour < 23) {
     greetingText = `你好耶，晚安！祝你有個美好的夜晚唷～`;
   } else {
     // 處理 23 點與 0~4 點
