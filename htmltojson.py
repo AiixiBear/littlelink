@@ -76,13 +76,22 @@ class LinkExtractor(HTMLParser):
             self._current_href = None
             self._current_text = []
 
+            # 基本檢查：無效網址或錨點跳過
             if not href or href.startswith("#"):
                 return
+            
             parsed = urlparse(href)
             if parsed.scheme in SKIP_SCHEMES:
                 return
+            
+            # 重複網址跳過
             if href in self._seen_urls:
                 return
+
+            # 愛希醬的功能：檢測到 title 包含 'Aiixi' 就刪掉 (跳過不處理)
+            if "Aiixi" in title:
+                return
+
             self._seen_urls.add(href)
 
             section_name = self._current_section or "未分類"
