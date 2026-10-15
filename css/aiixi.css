@@ -109,7 +109,7 @@ h1{
 }
 
 
-.timezone-clock-container {
+.aiixi-box {
     padding: 15px;
     background: rgba(255, 255, 255, 0.25);
     border-radius: 12px;
@@ -117,6 +117,7 @@ h1{
     max-width: 100%;
     box-sizing: border-box;
     position: relative;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 .clock-box {
     text-align: center;
@@ -133,3 +134,23 @@ h1{
     color: #ffb7c5; /* 櫻花粉 */
     letter-spacing: 2px;
 }
+
+.presence-header { display:flex; align-items:center; gap:0.55rem; justify-content:center; font-weight:700; font-size: 1.4rem;}
+.presence-indicator { width:0.75rem; height:0.75rem; border-radius:50%; background:#43b581; box-shadow:0 0 0 4px rgba(67,181,129,0.2); }
+.presence-indicator[data-status="idle"] { background:#faa61a; box-shadow:0 0 0 4px rgba(250,166,26,0.2); }
+.presence-indicator[data-status="dnd"] { background:#f04747; box-shadow:0 0 0 4px rgba(240,71,71,0.2); }
+.presence-section { margin-top:1rem; }
+.presence-section h3 { margin:0 0 0.65rem; font-size:1.3rem; }
+.presence-activity { display:flex; gap:0.75rem; padding:0.75rem 0; border-top:1px solid rgba(255,255,255,0.18); }
+.activity-image,.spotify-art { width:4rem; height:4rem; object-fit:cover; border-radius:0.65rem; flex-shrink:0; }
+.activity-details,.spotify-details { display:flex; min-width:0; flex:1; flex-direction:column; gap:0.12rem; font-size:0.97rem; }
+.activity-details strong,.spotify-details strong { font-size:1rem; }
+.activity-time,.spotify-time { font-size:0.9rem; opacity: 0.8;}
+.activity-progress { width:100%; height:0.4rem; margin-top:0.45rem; background:rgba(255, 255, 255, 0.5); border-radius:1rem; overflow:hidden; box-sizing:border-box; }
+.activity-progress span { display:block; width:0; height:100%; background:var(--aiixi-accent); transition:width 1s linear; }
+.activity-actions { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.45rem; }
+.presence-link { color:#fff !important; background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.35); border-radius:0.5rem; padding:0.25rem 0.6rem; font-size:0.8rem; text-decoration:none; }
+.presence-link:hover { background:rgba(255,255,255,0.28); }
+.spotify-content { display:flex; gap:0.75rem; border-top:1px solid rgba(255,255,255,0.18); padding-top:0.75rem; }
+.spotify-progress { height:0.25rem; margin-top:0.45rem; background:rgba(255,255,255,0.2); border-radius:1rem; overflow:hidden; }
+.spotify-progress span { display:block; width:0; height:100%; background:#1ed760; transition:width 1s linear; }
