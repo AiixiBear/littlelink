@@ -38,7 +38,7 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.6); /* ★重點在這 */
+    background: rgba(0, 0, 0, 0.35); 
     z-index: -1;
 }
 
@@ -55,4 +55,10 @@ body::before {
 /* Default document font stack */
 html{
     font-family: "Huninn", "Zen Maru Gothic", sans-serif !important;
+}
+
+.card {
+  background: rgba(0, 0, 0, 0.4); /* 粉色 + 60% 不透明 */
+  border-radius: 70px;
+  padding: 20px;
 }
