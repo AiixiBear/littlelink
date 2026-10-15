@@ -2,7 +2,7 @@
 
 ## 說明
 
-這是 [Aiixi Bear的入口網站](https://go.aiixi.cc/) 的開放原始碼 repo。
+這是 [Aiixi Bear 的入口網站](https://go.aiixi.cc/) 的開放原始碼 repo。
 
 這是基於 [sethcottle/littlelink](https://github.com/sethcottle/littlelink/) 進行修改的。
 
