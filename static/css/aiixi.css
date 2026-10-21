@@ -58,6 +58,11 @@ body {
     color: #00ff99 !important;
 }
 
+footer {
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+}
+
 h1{
     font-size: 3.3rem !important;
 }
@@ -248,4 +253,8 @@ h1{
 }
 .cyan {
   color: #00ffff !important; 
+}
+
+.langmenu-icon {
+  font-size: 2rem !important;
 }

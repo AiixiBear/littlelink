@@ -46,7 +46,13 @@ const languageOptions = languages.map((language) => ({
       </h1>
 
       <div class="lang-switcher" title={content.languageLabel}>
-        <span>You can select your preferred language here!</span>
+        <span class="material-symbols-outlined langmenu-icon">
+        language
+        </span>
+        <span class="langmenu-icon"> | </span>
+        <span class="material-symbols-outlined langmenu-icon">
+        translate
+        </span>
         <br>
         <select id="lang-select" aria-label={content.languageLabel}>
           {languageOptions.map((language) => (
