@@ -110,18 +110,16 @@ const page = locales[locale];
       </div>
     </div>
     <footer>
-      <!-- 第一行：品牌與圖片聲明（手機會自動彈性換行） -->
+      <!-- 第一行：品牌與圖片聲明 -->
       <p class="footer-main">
         <span>{footerTitle}</span>
         <br>
-        {imageCredit && <span>{imageCredit}</span>}
+        <span>Made by Aiixi Bear in Poland & Taiwan.</span>
       </p>
 
-      <!-- 第二行：開發者資訊與聯絡方式 -->
-      <p class="footer-author">
-        <span>
-          Made by Aiixi Bear in Poland & Taiwan. 
-        </span>
+      <!-- 第二行：版權聲明 -->
+      <p class="footer-credit">
+        {imageCredit && <span>{imageCredit}</span>}
       </p>
 
       <!-- 第三行：Trace 資訊與 Commit / GitHub 連結 -->
