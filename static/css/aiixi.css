@@ -158,7 +158,6 @@ h1{
 
 /* 語言切換器容器 */
 .lang-switcher {
-  display: flex;
   justify-content: center;
   align-items: center;
   margin: 15px auto;
