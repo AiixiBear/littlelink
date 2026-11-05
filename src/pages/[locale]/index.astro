@@ -66,6 +66,37 @@ const languageOptions = languages.map((language) => ({
         </select>
       </div>
 
+      <div
+        id="language-prompt"
+        class="language-prompt aiixi-box"
+        data-current-locale={locale}
+        hidden
+        role="status"
+        aria-live="polite"
+      >
+        <p class="language-prompt-message">
+          <span id="language-prompt-supported">
+            <span id="language-prompt-prefix">{content.languagePromptPrefix}</span>
+            <strong id="language-prompt-target"></strong>
+            <br />
+            <span id="language-prompt-question">{content.languagePromptQuestion}</span>
+          </span>
+          <span id="language-prompt-unsupported" hidden>
+            <span id="language-prompt-availability"></span>
+            <br />
+            <span id="language-prompt-browsing"></span>
+          </span>
+        </p>
+        <div class="language-prompt-actions">
+          <button id="language-prompt-switch" type="button" class="language-prompt-button language-prompt-button--primary">
+            {content.languagePromptSwitch} {languages.find((language) => language.key === locale)?.label}
+          </button>
+          <button id="language-prompt-stay" type="button" class="language-prompt-button">
+            {content.languagePromptStay}
+          </button>
+        </div>
+      </div>
+
       <p class="des">
         <b id="greeting" class="pink-text" >{content.intro.greeting}</b>
         {!content.intro.greetingOnOwnLine && " "}

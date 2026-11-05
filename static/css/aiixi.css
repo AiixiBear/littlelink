@@ -258,3 +258,61 @@ h1{
 .langmenu-icon {
   font-size: 2rem !important;
 }
+
+/* 瀏覽器語言建議提示 */
+.language-prompt {
+  width: min(100%, 29rem);
+  margin: 0.75rem auto 0;
+  padding: 0.65rem 0.8rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.language-prompt[hidden] {
+  display: none;
+}
+
+.language-prompt [hidden] {
+  display: none !important;
+}
+
+.language-prompt-message {
+  margin: 0 0 0.5rem !important;
+  font-size: 0.95rem !important;
+  line-height: 1.35 !important;
+}
+
+.language-prompt-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.language-prompt-button {
+  width: auto !important;
+  min-height: 2rem;
+  margin: 0 !important;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.language-prompt-button:hover,
+.language-prompt-button:focus-visible {
+  border-color: #ffb7c5;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.language-prompt-button--primary {
+  border-color: #ffb7c5;
+  background: rgba(255, 183, 197, 0.25);
+}
