@@ -76,7 +76,7 @@ function updateGreeting() {
   }
 
   // 顯示 12 小時制數字（如 0 點顯示為 12 點），若喜歡 24 小時制可保持 String(hour)
-  const displayHour = String(hour % 12 || 12);
+  const displayHour = String(hour);
   element.textContent = rawGreeting.replace("{hour}", displayHour);
 }
 
