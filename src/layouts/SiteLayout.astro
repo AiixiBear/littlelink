@@ -11,9 +11,7 @@ interface Props {
   ogSiteName: string;
   jsonLdName: string;
   footerTitle: string;
-  imageCredit: string;
   versionLabel: string;
-  shareLabel: string;
   pageScript: string;
 }
 
@@ -26,9 +24,7 @@ const {
   ogSiteName,
   jsonLdName,
   footerTitle,
-  imageCredit,
   versionLabel,
-  shareLabel,
   pageScript,
 } = Astro.props;
 const path = languages.find((language) => language.key === locale)?.path;
@@ -38,45 +34,22 @@ const page = locales[locale];
 ---
 
 <!doctype html>
-<html class="theme-dark" lang={page.lang}>
+<html lang={page.lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="preconnect" href="https://www.aiixi.cc" crossorigin />
-    <link
-      rel="preload"
-      href="https://www.aiixi.cc/fonts/Huninn-Regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link rel="preload" href="https://www.aiixi.cc/img/blowfish_logo.webp" as="image" />
     <title>{pageTitle}</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <meta name="author" content="Aiixi Bear" />
     {languages.map((language) => (
-      <>
-        <link rel="alternate" hreflang={language.locale} href={`https://go.aiixi.cc${language.path}`} />
-        {"\n"}
-      </>
+      <link rel="alternate" hreflang={language.locale} href={`https://go.aiixi.cc${language.path}`} />
     ))}
     <link rel="alternate" hreflang="x-default" href="https://go.aiixi.cc/zh-tw/" />
     <link rel="stylesheet" href="/css/reset.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/brands.css" />
-    <link rel="stylesheet" href="/css/aiixi.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/portal.css" />
 
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-M39ZRQSLTT"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { window.dataLayer.push(arguments); }
-      gtag("js", new Date());
-      gtag("config", "G-M39ZRQSLTT");
-    </script>
-    {"\n"}
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={ogDescription} />
     <meta property="og:image" content="https://www.aiixi.cc/img/aiixi_go.webp" />
@@ -91,67 +64,26 @@ const page = locales[locale];
     <meta name="twitter:description" content={ogDescription} />
     <meta name="twitter:image" content="https://www.aiixi.cc/img/aiixi_go.webp" />
     <meta name="yandex-verification" content="af664e13bded830e" />
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        url: canonical,
-        name: jsonLdName,
-      })}
-    ></script>
-    {"\n"}
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      url: canonical,
+      name: jsonLdName,
+    })}></script>
   </head>
   <body>
-    <div class="container">
-      <div class="column">
-        <slot />
-        <br />
-      </div>
-    </div>
-    <footer>
-      <!-- 第一行：品牌與圖片聲明 -->
-      <p class="footer-main">
-        <span>{footerTitle}</span>
-        <br>
-        <span>Made by Aiixi Bear in Poland & Taiwan</span>
-      </p>
+    <main class="site-main">
+      <slot />
+    </main>
 
-      <!-- 第二行：版權聲明 -->
-      <p class="footer-credit">
-        {imageCredit && <span>{imageCredit}</span>}
+    <footer class="site-footer">
+      <p>{footerTitle}</p>
+      <p>Made by Aiixi Bear in Poland &amp; Taiwan</p>
+      <p>
+        <small>{versionLabel} <a href="https://github.com/AiixiBear/littlelink">GitHub Repo</a></small>
       </p>
+    </footer>
 
-      <!-- 第三行：Trace 資訊與 Commit / GitHub 連結 -->
-      <p class="footer-sub-info">
-        <small id="trace-info" style="opacity: 0.8;">...</small>
-        <br />
-        <small style="opacity: 0.8;">
-          {versionLabel}{" "}
-          <a
-            class="a-footer"
-            href="https://github.com/AiixiBear/littlelink/commit/COMMIT_HASH_PLACEHOLDER"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            COMMIT_HASH_PLACEHOLDER
-          </a>
-          {" | "}
-          <a 
-            class="a-footer" 
-            href="https://github.com/AiixiBear/littlelink"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub Repo
-          </a>
-        </small>
-      </p>
-    </footer> 
-    <button id="floating-share-btn" class="floating-share-btn" aria-label={shareLabel} title={shareLabel}>
-      <span class="material-symbols-outlined">share</span>
-    </button>
-    <div id="sakura-container"></div>
     <script is:inline src="/js/lang_menu.js"></script>
     <script is:inline src={pageScript}></script>
   </body>

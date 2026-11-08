@@ -1,0 +1,68 @@
+---
+interface Props {
+  content: any;
+  languages: readonly any[];
+  languageOptions: readonly any[];
+}
+
+const { content, languages, languageOptions } = Astro.props;
+---
+
+<header class="profile-header">
+  <img
+    class="profile-avatar"
+    src="/images/avatar.webp"
+    alt={content.avatarAlt}
+    width="144"
+    height="144"
+  />
+
+  <p class="eyebrow">Aiixi Bear · 愛希熊</p>
+  <h1>Aiixi Bear</h1>
+  <p class="profile-tagline">
+    {content.intro.line1}。{content.intro.line5}
+  </p>
+  <p class="profile-meta">台灣 · FOSS · 繪畫 · 生活紀錄</p>
+
+  <div class="language-switcher">
+    <label for="lang-select">{content.languageLabel}</label>
+    <select id="lang-select" aria-label={content.languageLabel}>
+      {languageOptions.map((language) => (
+        <option value={language.locale} selected={language.selected}>
+          {language.label}
+        </option>
+      ))}
+    </select>
+  </div>
+
+  <div
+    id="language-prompt"
+    class="language-prompt"
+    data-current-locale={Astro.props.content.lang?.toLowerCase()}
+    hidden
+    role="status"
+    aria-live="polite"
+  >
+    <p class="language-prompt-message">
+      <span id="language-prompt-supported">
+        <span id="language-prompt-prefix">{content.languagePromptPrefix}</span>
+        <strong id="language-prompt-target"></strong>
+        <br />
+        <span id="language-prompt-question">{content.languagePromptQuestion}</span>
+      </span>
+      <span id="language-prompt-unsupported" hidden>
+        <span id="language-prompt-availability"></span>
+        <br />
+        <span id="language-prompt-browsing"></span>
+      </span>
+    </p>
+    <div class="language-prompt-actions">
+      <button id="language-prompt-switch" type="button" class="prompt-button prompt-button-primary">
+        {content.languagePromptSwitch}
+      </button>
+      <button id="language-prompt-stay" type="button" class="prompt-button">
+        {content.languagePromptStay}
+      </button>
+    </div>
+  </div>
+</header>

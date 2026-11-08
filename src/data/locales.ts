@@ -25,6 +25,11 @@ export const locales = {
       line5: "歡迎交友啊！",
     },
     aboutHeading: "自我介紹",
+    quickLinksHeading: "快速入口",
+    mediaHeading: "喜歡的作品與靈感",
+    mediaImageAlt: "草薙寧寧卡面作品圖片",
+    mediaCaption: "一些陪伴我創作與生活的靈感。",
+    videoTitle: "Aiixi Bear 喜歡的影片",
     aboutCards: [
       {
         title: "關於我",
@@ -110,6 +115,11 @@ export const locales = {
       line5: "Welcome to make friends!",
     },
     aboutHeading: "About me",
+    quickLinksHeading: "Quick links",
+    mediaHeading: "Works and inspiration",
+    mediaImageAlt: "Nene Kusanagi artwork",
+    mediaCaption: "A little inspiration that accompanies my creative life.",
+    videoTitle: "A video Aiixi Bear enjoys",
     aboutCards: [
       {
         title: "About me",
@@ -195,6 +205,11 @@ export const locales = {
       line5: "友達作りへようこそ！",
     },
     aboutHeading: "自己紹介",
+    quickLinksHeading: "クイックリンク",
+    mediaHeading: "好きな作品とインスピレーション",
+    mediaImageAlt: "草薙寧々のカード画像",
+    mediaCaption: "創作と日々の生活に寄り添うインスピレーション。",
+    videoTitle: "Aiixi Bear が好きな動画",
     aboutCards: [
       {
         title: "私について",

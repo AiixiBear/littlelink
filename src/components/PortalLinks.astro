@@ -1,0 +1,42 @@
+---
+interface Props {
+  links: readonly any[];
+  content: any;
+  heading: string;
+  showKeys?: boolean;
+}
+
+const { links, content, heading } = Astro.props;
+---
+
+<section class="links-section" aria-labelledby={`${heading}-heading`}>
+  <div class="section-heading-row">
+    <h2 id={`${heading}-heading`}>{heading}</h2>
+  </div>
+
+  <div class="portal-link-list">
+    {links.map((link) => (
+      <a
+        class="portal-link"
+        href={link.href}
+        target={link.copyId ? undefined : "_blank"}
+        rel={link.rel}
+        data-id={link.copyId}
+        data-label={link.copyId ? "Discord" : undefined}
+      >
+        <img
+          class="portal-link-icon"
+          src={`/images/icons/${link.icon}`}
+          alt=""
+          width="24"
+          height="24"
+          aria-hidden="true"
+        />
+        <span class="portal-link-text">
+          {link.key ? content[link.key] : link.label}
+        </span>
+        <span class="portal-link-arrow" aria-hidden="true">→</span>
+      </a>
+    ))}
+  </div>
+</section>

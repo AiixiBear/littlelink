@@ -1,0 +1,343 @@
+/* Aiixi Bear portal: plain-color layout with no background images or visual filters. */
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+  color: #24343b;
+  background: #f4fafc;
+  font-synthesis: none;
+}
+
+html {
+  background: #f4fafc;
+}
+
+body {
+  margin: 0;
+  background: #f4fafc;
+  color: #24343b;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.site-main {
+  width: calc(100% - 32px);
+  max-width: 720px;
+  margin: 32px auto 0;
+}
+
+.portal-page {
+  width: 100%;
+}
+
+.profile-header,
+.quick-links,
+.content-section,
+.media-section,
+.links-section {
+  margin: 0 0 16px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #d7eaf0;
+  border-radius: 12px;
+}
+
+.profile-header {
+  text-align: center;
+}
+
+.profile-avatar {
+  display: block;
+  width: 144px;
+  height: 144px;
+  margin: 0 auto 16px;
+  border: 1px solid #d7eaf0;
+  border-radius: 50%;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: #277f98;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 8px;
+  color: #1e5668;
+  font-size: 2.25rem;
+  line-height: 1.2;
+}
+
+h2 {
+  margin-bottom: 16px;
+  color: #277f98;
+  font-size: 1.25rem;
+  line-height: 1.35;
+}
+
+.profile-tagline {
+  max-width: 34rem;
+  margin: 0 auto 8px;
+  font-size: 1.05rem;
+}
+
+.profile-meta {
+  margin-bottom: 20px;
+  color: #667980;
+  font-size: 0.9rem;
+}
+
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #667980;
+  font-size: 0.875rem;
+}
+
+.language-switcher select {
+  min-height: 36px;
+  padding: 6px 28px 6px 10px;
+  color: #24343b;
+  background: #ffffff;
+  border: 1px solid #b9dce6;
+  border-radius: 6px;
+  font: inherit;
+}
+
+.language-prompt {
+  max-width: 30rem;
+  margin: 16px auto 0;
+  padding: 12px;
+  color: #24343b;
+  background: #eef8fb;
+  border: 1px solid #b9dce6;
+  border-radius: 8px;
+}
+
+.language-prompt[hidden],
+.language-prompt [hidden] {
+  display: none;
+}
+
+.language-prompt-message {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.language-prompt-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.prompt-button {
+  min-height: 36px;
+  padding: 6px 12px;
+  color: #277f98;
+  background: #ffffff;
+  border: 1px solid #b9dce6;
+  border-radius: 6px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.prompt-button-primary {
+  color: #ffffff;
+  background: #277f98;
+  border-color: #277f98;
+}
+
+.quick-link-grid,
+.portal-link-list,
+.info-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quick-link,
+.portal-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  padding: 10px 14px;
+  color: #24343b;
+  background: #ffffff;
+  border: 1px solid #d7eaf0;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.quick-link-primary {
+  color: #ffffff;
+  background: #277f98;
+  border-color: #277f98;
+}
+
+.quick-link:hover,
+.quick-link:focus-visible,
+.portal-link:hover,
+.portal-link:focus-visible {
+  color: #1e5668;
+  background: #eef8fb;
+  border-color: #43afcb;
+}
+
+.quick-link-primary:hover,
+.quick-link-primary:focus-visible {
+  color: #ffffff;
+  background: #1e5668;
+  border-color: #1e5668;
+}
+
+.section-heading-row {
+  border-bottom: 1px solid #e4f1f4;
+}
+
+.info-card {
+  padding: 16px;
+  background: #f9fdfe;
+  border: 1px solid #e4f1f4;
+  border-radius: 8px;
+}
+
+.info-card h2 {
+  margin-bottom: 8px;
+  color: #1e5668;
+  font-size: 1.05rem;
+}
+
+.info-card-content p {
+  margin: 0 0 4px;
+  color: #4f6269;
+  font-size: 0.95rem;
+}
+
+.info-card-content p:last-child {
+  margin-bottom: 0;
+}
+
+.cyan {
+  color: #277f98;
+}
+
+.pink-text {
+  color: #c96d83;
+}
+
+.media-card,
+.video-card {
+  margin: 0;
+  overflow: hidden;
+  background: #f9fdfe;
+  border: 1px solid #e4f1f4;
+  border-radius: 8px;
+}
+
+.media-card + .video-card {
+  margin-top: 12px;
+}
+
+.media-card picture,
+.media-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.media-card figcaption {
+  padding: 10px 14px;
+  color: #667980;
+  font-size: 0.875rem;
+}
+
+.video-card iframe {
+  display: block;
+  width: 100%;
+  height: 315px;
+  border: 0;
+}
+
+.portal-link {
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.portal-link-icon {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+}
+
+.portal-link-text {
+  flex: 1;
+}
+
+.portal-link-arrow {
+  color: #43afcb;
+  font-size: 1.2rem;
+}
+
+.site-footer {
+  width: calc(100% - 32px);
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 8px 0 32px;
+  color: #667980;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 4px 0;
+}
+
+.site-footer a {
+  color: #277f98;
+}
+
+:focus-visible {
+  outline: 2px solid #e99bab;
+  outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  .site-main {
+    width: calc(100% - 24px);
+    margin-top: 16px;
+  }
+
+  .profile-header,
+  .quick-links,
+  .content-section,
+  .media-section,
+  .links-section {
+    padding: 18px;
+  }
+
+  .profile-avatar {
+    width: 120px;
+    height: 120px;
+  }
+
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  .video-card iframe {
+    height: 210px;
+  }
+
+  .site-footer {
+    width: calc(100% - 24px);
+  }
+}
