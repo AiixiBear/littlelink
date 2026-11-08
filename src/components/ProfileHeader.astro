@@ -18,10 +18,11 @@ const { content, languages, languageOptions } = Astro.props;
   />
 
   <p class="profile-greeting">{content.intro.greeting}</p>
-  <p class="eyebrow">Aiixi Bear · 愛希熊</p>
   <h1>Aiixi Bear</h1>
   <p class="profile-tagline">
-    {content.intro.line1}。{content.intro.line5}
+    {content.intro.line1}
+    <br>
+    {content.intro.line5}
   </p>
   <p class="profile-meta">{content.slogan}</p>
 

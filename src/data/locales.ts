@@ -1,6 +1,3 @@
-// 这一行在文案配置里用不到，疑似误粘贴，可删除
-import { text } from "node:stream/consumers";
-
 export const locales = {
   "zh-tw": {
     lang: "zh-TW",
@@ -22,11 +19,11 @@ export const locales = {
     intro: {
       greeting: "嗨，你好呀！",
       greetingOnOwnLine: true,
-      line1: "我是 Aiixi Bear",
+      line1: "ようこそ！我是 Aiixi Bear！",
       line2: "也可以叫我",
       alternateName: "愛希熊 / あいきくま",
       alternateSuffix: "",
-      line5: "歡迎來交朋友，也歡迎慢慢逛。",
+      line5: "歡迎交友！也可以隨意看看喔！",
     },
     aboutHeading: "自我介紹",
     quickLinksHeading: "快速傳送門",
@@ -116,11 +113,11 @@ export const locales = {
     intro: {
       greeting: "Hey there!",
       greetingOnOwnLine: true,
-      line1: "I'm Aiixi Bear",
+      line1: "Yokoso! I'm Aiixi Bear! ",
       line2: "You can also call me",
       alternateName: "愛希熊 / あいきくま",
       alternateSuffix: "",
-      line5: "Come make friends, or just wander around.",
+      line5: "Always open to new friends! Feel free to look around.",
     },
     aboutHeading: "About me",
     quickLinksHeading: "Quick portals",
@@ -137,9 +134,9 @@ export const locales = {
           [{ text: "I look human, but deep down I'm a bear" }],
           [{ text: "I enjoy drawing, anime, music, and a quiet, easygoing life" }],
           [
-            { text: "10/19", strong: false },
+            { text: "10/19", strong: true },
             { text: " ♎ · " },
-            { text: "INFJ", strong: false },
+            { text: "INFJ", strong: true },
           ],
           [
             { text: "🧭 ·  Taiwan, Republic of China", strong: false },
@@ -172,7 +169,7 @@ export const locales = {
         ],
       },
     ],
-    aboutLink: "★ Want the full story? Click here",
+    aboutLink: "★ Want to read the full Self-Intro? Click here",
     quickLinkClasses: {
       about: "quick-link-primary",
       homepage: "quick-link-primary",
@@ -206,15 +203,15 @@ export const locales = {
     languagePromptSwitch: "切り替える",
     languagePromptStay: "日本語のまま",
     avatarAlt: "Aiixi Bear アバター",
-    slogan: "#テクノロジー、#描画、#アート",
+    slogan: "#テクノロジー · #イラスト · #アート",
     intro: {
       greeting: "こんにちは！",
       greetingOnOwnLine: true,
-      line1: "私は Aiixi Bear です",
+      line1: "ようこそ！Aiixi Bear です！",
       line2: "別名は",
       alternateName: "愛希熊 / あいきくま",
       alternateSuffix: "",
-      line5: "友達になれたらうれしいです。ゆっくり見ていってね。",
+      line5: "お友達大歓迎！ゆっくりしていってね！",
     },
     aboutHeading: "自己紹介",
     quickLinksHeading: "クイック入口",
@@ -253,7 +250,7 @@ export const locales = {
         title: "推し",
         lines: [
           [{ text: "草薙寧々、朝比奈まふゆ（プロセカ）" }],
-          [{ text: "The Herta（崩壊：スターレイル）" }],
+          [{ text: "マダム・ヘルタ（崩壊：スターレイル）" }],
           [{ text: "酒寄彩葉（超かぐや姫）" }],
           [{ text: "ドラえもん" }],
         ],
@@ -266,7 +263,7 @@ export const locales = {
         ],
       },
     ],
-    aboutLink: "★ もっと知りたい方はこちら",
+    aboutLink: "★ 詳しい自己紹介はこちら！",
     quickLinkClasses: {
       about: "quick-link-primary",
       homepage: "quick-link-primary",
