@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const targetUrl = "/en/";
+            const delayMs = 2000; // 延遲 2 秒（2000 毫秒）
+
+            setTimeout(() => {
+                // 使用 replace 不會保留歷史紀錄，避免使用者按上一頁時卡在跳轉頁
+                window.location.replace(targetUrl);
+            }, delayMs);
+        });
+    </script>
+</head>
+<body>
+    <main>
+        <h1>Redirecting...</h1>
+        <p>Aiixi Bear is taking you to the requested page.</p>
+        <p>If you are not redirected automatically, please <a href="/en/">click here</a>.</p>
+    </main>
+</body>
+</html>

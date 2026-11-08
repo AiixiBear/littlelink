@@ -1,5 +1,8 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
+import ProfileHeader from "../../components/ProfileHeader.astro";
+import InfoCards from "../../components/InfoCards.astro";
+import PortalLinks from "../../components/PortalLinks.astro";
 import { languages } from "../../data/languages";
 import { locales, type Locale } from "../../data/locales";
 import { socialLinks, websiteLinks } from "../../data/site";
@@ -12,7 +15,7 @@ export function getStaticPaths() {
 }
 
 const { locale, content } = Astro.props;
-const pageScript = `/${locale}/${locale === "zh-tw" ? "main.js" : locale === "en" ? "main_en.js" : "main_ja.js"}`;
+const pageScript = "/js/portal.js";
 const languageOptions = languages.map((language) => ({
   ...language,
   selected: language.key === locale,
@@ -28,199 +31,65 @@ const languageOptions = languages.map((language) => ({
   ogImageAlt={content.ogImageAlt}
   jsonLdName={content.jsonLdName}
   footerTitle={content.footerTitle}
-  imageCredit={content.imageCredit}
   versionLabel={content.versionLabel}
-  shareLabel={content.shareLabel}
   pageScript={pageScript}
 >
-  <div class="">
-    <div class="head-text">
-      <img
-        class="avatar avatar--rounded"
-        src="https://www.aiixi.cc/img/blowfish_logo.webp"
-        alt={content.avatarAlt}
-      />
+  <div class="portal-page">
+    <ProfileHeader content={content} languages={languages} languageOptions={languageOptions} />
 
-      <h1>
-        <div>Aiixi Bear</div>
-      </h1>
-
-      <div class="lang-switcher" title={content.languageLabel}>
-        <span class="material-symbols-outlined langmenu-icon">
-        language
-        </span>
-        <span class="langmenu-icon"> | </span>
-        <span class="material-symbols-outlined langmenu-icon">
-        translate
-        </span>
-        <br>
-        <select id="lang-select" aria-label={content.languageLabel}>
-          {languageOptions.map((language) => (
-            <>
-              <option value={language.locale} selected={language.selected}>
-                {language.label}
-              </option>
-              {"\n"}
-            </>
-          ))}
-        </select>
-      </div>
-
-      <div
-        id="language-prompt"
-        class="language-prompt aiixi-box"
-        data-current-locale={locale}
-        hidden
-        role="status"
-        aria-live="polite"
-      >
-        <p class="language-prompt-message">
-          <span id="language-prompt-supported">
-            <span id="language-prompt-prefix">{content.languagePromptPrefix}</span>
-            <strong id="language-prompt-target"></strong>
-            <br />
-            <span id="language-prompt-question">{content.languagePromptQuestion}</span>
-          </span>
-          <span id="language-prompt-unsupported" hidden>
-            <span id="language-prompt-availability"></span>
-            <br />
-            <span id="language-prompt-browsing"></span>
-          </span>
-        </p>
-        <div class="language-prompt-actions">
-          <button id="language-prompt-switch" type="button" class="language-prompt-button language-prompt-button--primary">
-            {content.languagePromptSwitch} {languages.find((language) => language.key === locale)?.label}
-          </button>
-          <button id="language-prompt-stay" type="button" class="language-prompt-button">
-            {content.languagePromptStay}
-          </button>
-        </div>
-      </div>
-
-      <p class="des">
-        <b id="greeting" class="pink-text" >{content.intro.greeting}</b>
-        {!content.intro.greetingOnOwnLine && " "}
-        {!content.intro.greetingOnOwnLine && content.intro.line1}
-        {content.intro.greetingOnOwnLine && <br />}
-        {content.intro.greetingOnOwnLine && content.intro.line1}
-        <br />
-        {content.intro.line2 && `${content.intro.line2} `}
-        <i>{content.intro.alternateName}</i>
-        {content.intro.alternateSuffix}
-        <br />
-        {content.intro.line5}
-        <br />
-      </p>
-
-      <br />
-    </div>
-  </div>
-
-  <div class="button-stack" role="navigation">
-    <hr />
-    <br />
-
-    <h2>{content.aboutHeading}</h2>
-
-    {content.aboutCards.map((card) => (
-      <>
-        <div class="aiixi-box">
-          <h3>{card.title}</h3>
-          <p>
-            {card.lines.map((line) => (
-              <>
-                {line.map((part) =>
-                  part.materialIcon ? (
-                    <>
-                      <span
-                        class="material-symbols-outlined"
-                        aria-hidden="true"
-                        style="vertical-align: middle; font-size: 1em; line-height: 1;"
-                      >
-                        {part.text}
-                      </span>
-                      <span>&nbsp;</span>
-                    </>
-                  ) : part.strong ? (
-                    <b id={part.id} class={part.class}>{part.text}</b>
-                  ) : (
-                    part.text
-                  )
-                )}
-                <br />
-              </>
-            ))}
-          </p>
-        </div>
-        {"\n"}
-      </>
-    ))}
-
-    <a
-      class="button button-default"
-      href="https://www.aiixi.cc/about/"
-      target="_blank"
-      rel="noopener"
-      role="button"
-    >
-      <img class="icon" aria-hidden="true" src="/images/icons/generic-blog.svg" alt={content.websiteIconAlt} />
-      {content.aboutLink}
-    </a>
-
-    <h2>{content.linksHeading}</h2>
-
-    <h3>{content.websitesHeading}</h3>
-
-    {websiteLinks.map((link) => (
-      <>
-        <a class="button button-default" href={link.href} target="_blank" rel={link.rel} role="button">
-          <img
-            class="icon"
-            aria-hidden="true"
-            src={`/images/icons/${link.icon}`}
-            alt={link.key ? content.homepageIconAlt : content.websiteIconAlt}
-          />
-          {link.key ? content[link.key] : link.label}
+    <section class="quick-links" aria-labelledby="quick-links-heading">
+      <h2 id="quick-links-heading">{content.quickLinksHeading}</h2>
+      <div class="quick-link-grid">
+        <a class:list={["quick-link", content.quickLinkClasses.about]} href="https://www.aiixi.cc/about/" target="_blank" rel="noopener">
+          <span>{content.aboutLink}</span>
+          <span aria-hidden="true">→</span>
         </a>
-        {"\n"}
-      </>
-    ))}
+        {websiteLinks.map((link) => (
+          <a class:list={["quick-link", content.quickLinkClasses[link.id]]} href={link.href} target="_blank" rel={link.rel}>
+            <span>{link.key ? content[link.key] : link.label}</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </section>
 
-    <h3>{content.socialHeading}</h3>
+    <section class="content-section" aria-labelledby="about-heading">
+      <div class="section-heading-row">
+        <h2 id="about-heading">{content.aboutHeading}</h2>
+      </div>
+      <InfoCards cards={content.aboutCards} />
+      <br>
+      <a class:list={["quick-link", content.quickLinkClasses.about]} href="https://www.aiixi.cc/about/" target="_blank" rel="noopener">
+          <span>{content.aboutLink}</span>
+          <span aria-hidden="true">→</span>
+      </a>
+    </section>
 
-    {socialLinks.map((link) => (
-      <>
-        <a
-          class={`button button-${link.className}`}
-          href={link.href}
-          target={link.copyId ? undefined : "_blank"}
-          rel={link.rel}
-          role="button"
-          data-id={link.copyId}
-          data-label={link.copyId ? "Discord" : undefined}
-        >
-          <img
-            class="icon"
-            aria-hidden="true"
-            src={`/images/icons/${link.icon}`}
-            alt={`${link.label.split(" · ")[0]} Logo`}
-          />
-          {link.copyId ? <span class="btn-text">{link.label}</span> : link.label}
-        </a>
-        {"\n"}
-      </>
-    ))}
-    <h2>Enjoy!</h2>
-    <div class="aiixi-box">
-      <iframe
-        class="aiixi-video-embed"
-        src="https://www.youtube.com/embed/HD3v90A3ldg"
-        title="Enjoy!"
-        loading="lazy"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
-    </div>
+    <section class="media-section" aria-labelledby="media-heading">
+      <div class="section-heading-row">
+        <h2 id="media-heading">{content.mediaHeading}</h2>
+      </div>
+      <figure class="media-card">
+        <picture>
+          <source media="(min-width: 768px)" srcset="/images/nene2.webp" />
+          <img src="/images/nene1.webp" alt={content.mediaImageAlt} width="1200" height="630" loading="lazy" />
+        </picture>
+        <figcaption>{content.mediaCaption}</figcaption>
+      </figure>
+      <figure class="media-card">
+        <lite-youtube
+          videotitle="ロミオとシンデレラ / 日野森雫（アナザーボーカル Full ver.）"
+          videoid="HD3v90A3ldg"
+          posterquality="maxresdefault"
+        ></lite-youtube>
+        <figcaption>{content.videoTitle}</figcaption>
+      </figure>
+    </section>
+
+    <PortalLinks links={socialLinks} content={content} heading={content.socialHeading} />
   </div>
 </SiteLayout>
+
+<script>
+  import '@justinribeiro/lite-youtube';
+</script>

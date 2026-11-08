@@ -35,12 +35,6 @@ HTML_FILES=(
   "${OUTPUT_DIR}/en/index.html"
   "${OUTPUT_DIR}/ja/index.html"
 )
-JS_FILES=(
-  "${OUTPUT_DIR}/zh-tw/main.js"
-  "${OUTPUT_DIR}/en/main_en.js"
-  "${OUTPUT_DIR}/ja/main_ja.js"
-)
-
 # 4. 替換 COMMIT_HASH_PLACEHOLDER (包含 404 頁)
 ALL_TARGET_FILES=("${HTML_FILES[@]}" "${OUTPUT_DIR}/404.html")
 for file in "${ALL_TARGET_FILES[@]}"; do

@@ -1,0 +1,82 @@
+@font-face {
+  font-family: Huninn;
+  src: url(Huninn-Regular.woff2);
+}
+
+:root {
+  font-family: "Huninn", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+  color: #24343b;
+  background: #f4fafc;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #f4fafc;
+}
+
+.error-card {
+  width: 100%;
+  max-width: 560px;
+  padding: 40px 28px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #d7eaf0;
+  border-radius: 12px;
+}
+
+.error-code {
+  margin: 0 0 8px;
+  color: #43afcb;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+h1 {
+  margin: 0 0 12px;
+  color: #1e5668;
+  font-size: 1.75rem;
+}
+
+.error-card p:not(.error-code) {
+  margin: 0 0 24px;
+  color: #667980;
+}
+
+.error-link {
+  display: inline-block;
+  padding: 10px 16px;
+  color: #ffffff;
+  background: #277f98;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.error-link:hover,
+.error-link:focus-visible {
+  background: #1e5668;
+}
+
+.error-version {
+  margin: 24px 0 0;
+  color: #667980;
+  font-size: 0.8rem;
+}
+
+.error-version a {
+  color: #277f98;
+}
+
+:focus-visible {
+  outline: 2px solid #e99bab;
+  outline-offset: 2px;
+}

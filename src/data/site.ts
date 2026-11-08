@@ -1,11 +1,13 @@
 export const websiteLinks = [
   {
+    id: "homepage",
     href: "https://www.aiixi.cc/",
     icon: "generic-homepage.svg",
     key: "websiteTitle",
     rel: "noopener",
   },
-    {
+  {
+    id: "aqa",
     href: "https://apps.aiixi.cc/aqa/?tag=go.aiixi.cc",
     icon: "generic-website.svg",
     key: "aqaTitle",
