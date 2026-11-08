@@ -4,8 +4,6 @@
 
 這是 [Aiixi Bear 的入口網站](https://go.aiixi.cc/) 的開放原始碼 repo。
 
-這是基於 [sethcottle/littlelink](https://github.com/sethcottle/littlelink/) 進行修改的。
-
 網站使用 Astro 產生靜態 HTML，頁面樣式與互動仍以 HTML、CSS 和 JavaScript 為主。
 
 本專案基於 [MIT License](LICENSE.md) 條款開源，您可以免費使用、修改、分發及進行商業化利用。
