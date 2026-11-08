@@ -181,6 +181,7 @@ h2 {
 }
 
 .language-prompt {
+  font-size: 0.9rem;
   max-width: 32rem;
   margin: 20px auto 0;
   padding: 14px 16px;
@@ -198,7 +199,7 @@ h2 {
 
 .language-prompt-message {
   margin-bottom: 10px;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .language-prompt-actions {

@@ -9,7 +9,7 @@ export const locales = {
     ogImageAlt: "Aiixi Bear 的入口網站封面圖片",
     ogSiteName: "Aiixi Bear 的入口網站",
     jsonLdName: "Aiixi Bear 的入口網站",
-    languageLabel: "Language / 語言 / 言語",
+    languageLabel: "Language / 語言",
     avatarAlt: "Aiixi Bear Avatar",
     slogan: "#科技 · #畫畫 · #藝術",
     intro: {
