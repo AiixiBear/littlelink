@@ -16,6 +16,7 @@ echo "Commit SHA: ${COMMIT_HASH}"
 # 2. 使用 Astro 建置頁面
 echo "Building pages with Astro..."
 "$NODE_BINARY" ./node_modules/astro/bin/astro.mjs build
+"$NODE_BINARY" ./scripts/flatten-sitemap.mjs
 "$NODE_BINARY" ./node_modules/js-beautify/js/bin/html-beautify.js \
   --replace \
   --type html \
