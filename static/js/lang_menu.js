@@ -39,19 +39,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const promptTranslations = {
     'zh-tw': {
       prefix: '偵測到您使用的語言為',
-      question: '，是否要切換過去？',
+      question: '是否要切換過去？',
       switch: '切換至',
       stay: '留在當前語言',
     },
+    'zh-cn': {
+      prefix: '检测到您的浏览器语言为简体中文，本站提供',
+      question: '是否需要切换？',
+      switch: '切换至',
+      stay: '留在当前语言',
+    },
     en: {
       prefix: 'It looks like your preferred language is',
-      question: '. Would you like to switch?',
+      question: 'Would you like to switch?',
       switch: 'Switch to',
       stay: 'Stay in current language',
     },
     ja: {
       prefix: '優先言語が',
-      question: 'に設定されています。切り替えますか？',
+      question: '切り替えますか？',
       switch: '切替：',
       stay: '現在の言語のままにする',
     },
@@ -68,18 +74,32 @@ document.addEventListener('DOMContentLoaded', () => {
   // Map the primary browser language to a supported site language.
   const getPreferredLanguage = (browserLanguage) => {
     const normalizedLanguage = browserLanguage.toLowerCase();
+    
+    // 繁體中文
     if (normalizedLanguage.startsWith('zh-tw') || normalizedLanguage.startsWith('zh-hant')) {
-      return 'zh-tw';
+      return { targetKey: 'zh-tw', promptKey: 'zh-tw' };
     }
-    if (normalizedLanguage.startsWith('en')) return 'en';
-    if (normalizedLanguage.startsWith('ja')) return 'ja';
+    // 簡體中文：目標頁面導向 zh-tw，但選用 zh-cn 的提示語系
+    if (normalizedLanguage.startsWith('zh')) {
+      return { targetKey: 'zh-tw', promptKey: 'zh-cn' };
+    }
+    // 英文
+    if (normalizedLanguage.startsWith('en')) {
+      return { targetKey: 'en', promptKey: 'en' };
+    }
+    // 日文
+    if (normalizedLanguage.startsWith('ja')) {
+      return { targetKey: 'ja', promptKey: 'ja' };
+    }
 
     return null;
   };
 
   const browserLanguage = getBrowserLanguages()[0] || 'en';
-  const preferredLanguage = getPreferredLanguage(browserLanguage);
-  const targetLanguage = preferredLanguage && supportedLanguages[preferredLanguage];
+  const preferred = getPreferredLanguage(browserLanguage);
+  
+  const targetLanguage = preferred ? supportedLanguages[preferred.targetKey] : null;
+  const promptKey = preferred ? preferred.promptKey : null;
 
   const supportedMessage = document.getElementById('language-prompt-supported');
   const unsupportedMessage = document.getElementById('language-prompt-unsupported');
@@ -103,7 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
     !stayButton
   ) return;
 
-  if (targetLanguage && preferredLanguage === currentLocale) return;
+  // 如果目標語言與目前所在頁面語系相同，就不跳出提示
+  if (targetLanguage && preferred.targetKey === currentLocale) return;
 
   const availableLanguageLabels = Object.values(supportedLanguages).map((language) => language.label);
   const availableLanguagesText = `${availableLanguageLabels.slice(0, -1).join(', ')}, and ${availableLanguageLabels.at(-1)}`;
@@ -117,18 +138,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // Handle cases where the browser language is not directly supported by the site
   if (!targetLanguage) {
     supportedMessage.hidden = true;
     unsupportedMessage.hidden = false;
-    availabilityMessage.textContent = `This page is available in ${availableLanguagesText}.`;
-    browsingMessage.textContent = `You're browsing in ${getBrowserLanguageName(browserLanguage)}.`;
-    switchButton.hidden = false;
-    switchButton.textContent = 'Switch to English';
+    
+    availabilityMessage.textContent = `This page is available in ${availableLanguagesText}. You can switch languages manually using the selector.`;
+    browsingMessage.textContent = `Your browser language is set to ${getBrowserLanguageName(browserLanguage)}.`;
+    
+    switchButton.hidden = true;
     stayButton.hidden = false;
-    stayButton.textContent = 'Stay in the current language';
+    stayButton.textContent = 'Got it';
     languagePrompt.hidden = false;
   } else {
-    const translation = promptTranslations[preferredLanguage];
+    const translation = promptTranslations[promptKey] || promptTranslations.en;
     promptPrefix.textContent = translation.prefix;
     promptQuestion.textContent = translation.question;
     targetLabel.textContent = targetLanguage.label;
