@@ -6,11 +6,12 @@
     "node": ">=22.19.0"
   },
   "scripts": {
-    "build": "astro build && html-beautify --replace --type html --indent-size 2 --wrap-line-length 100 --no-preserve-newlines --indent-inner-html --end-with-newline \"dist/**/*.html\"",
+    "build": "astro build && node scripts/flatten-sitemap.mjs && html-beautify --replace --type html --indent-size 2 --wrap-line-length 100 --no-preserve-newlines --indent-inner-html --end-with-newline \"dist/**/*.html\"",
     "dev": "astro dev",
     "preview": "astro preview"
   },
   "devDependencies": {
+    "@astrojs/sitemap": "^3.7.4",
     "astro": "^7.3.5",
     "js-beautify": "^1.15.4"
   },
