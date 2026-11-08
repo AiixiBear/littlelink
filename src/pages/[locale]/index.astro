@@ -40,12 +40,12 @@ const languageOptions = languages.map((language) => ({
     <section class="quick-links" aria-labelledby="quick-links-heading">
       <h2 id="quick-links-heading">{content.quickLinksHeading}</h2>
       <div class="quick-link-grid">
-        <a class="quick-link quick-link-primary" href="https://www.aiixi.cc/about/" target="_blank" rel="noopener">
+        <a class:list={["quick-link", content.quickLinkClasses.about]} href="https://www.aiixi.cc/about/" target="_blank" rel="noopener">
           <span>{content.aboutLink}</span>
           <span aria-hidden="true">→</span>
         </a>
         {websiteLinks.map((link) => (
-          <a class="quick-link" href={link.href} target="_blank" rel={link.rel}>
+          <a class:list={["quick-link", content.quickLinkClasses[link.id]]} href={link.href} target="_blank" rel={link.rel}>
             <span>{link.key ? content[link.key] : link.label}</span>
             <span aria-hidden="true">→</span>
           </a>
@@ -58,6 +58,11 @@ const languageOptions = languages.map((language) => ({
         <h2 id="about-heading">{content.aboutHeading}</h2>
       </div>
       <InfoCards cards={content.aboutCards} />
+      <br>
+      <a class:list={["quick-link", content.quickLinkClasses.about]} href="https://www.aiixi.cc/about/" target="_blank" rel="noopener">
+          <span>{content.aboutLink}</span>
+          <span aria-hidden="true">→</span>
+      </a>
     </section>
 
     <section class="media-section" aria-labelledby="media-heading">
@@ -71,19 +76,20 @@ const languageOptions = languages.map((language) => ({
         </picture>
         <figcaption>{content.mediaCaption}</figcaption>
       </figure>
-      <figure class="video-card">
-        <iframe
-          src="https://www.youtube.com/embed/HD3v90A3ldg"
-          title={content.videoTitle}
-          loading="lazy"
-          width="560"
-          height="315"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
+      <figure class="media-card">
+        <lite-youtube
+          videotitle="ロミオとシンデレラ / 日野森雫（アナザーボーカル Full ver.）"
+          videoid="HD3v90A3ldg"
+          posterquality="maxresdefault"
+        ></lite-youtube>
+        <figcaption>{content.videoTitle}</figcaption>
       </figure>
     </section>
 
     <PortalLinks links={socialLinks} content={content} heading={content.socialHeading} />
   </div>
 </SiteLayout>
+
+<script>
+  import '@justinribeiro/lite-youtube';
+</script>

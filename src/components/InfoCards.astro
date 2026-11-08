@@ -7,14 +7,14 @@ const { cards } = Astro.props;
 ---
 
 <div class="info-card-list">
-  {cards.slice(0, 3).map((card) => (
+  {cards.map((card) => (
     <article class="info-card">
       <h2>{card.title}</h2>
       <div class="info-card-content">
         {card.lines.map((line: readonly any[]) => (
           <p>
             {line.map((part) =>
-              part.materialIcon ? null : part.id ? (
+              part.id ? (
                 <span id={part.id} class={part.class}>{part.text}</span>
               ) : part.strong ? (
                 <strong class={part.class}>{part.text}</strong>

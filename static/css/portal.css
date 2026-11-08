@@ -1,11 +1,13 @@
 @font-face {
   font-family: Huninn;
-  src: url(Huninn-Regular.woff2);
+  src: url(/Huninn-Regular.woff2);
   font-display: swap;
+  font-weight: 400;
 }
 
 :root {
   --font-sans: "Huninn", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+  --base-font-size: 19px;
 
   /* palette */
   --bg: #eef6f9;
@@ -48,6 +50,7 @@
 
 html {
   background: var(--bg);
+  font-size: var(--base-font-size);
   scroll-behavior: smooth;
 }
 
@@ -55,7 +58,6 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-size: 16px;
   line-height: 1.65;
 }
 
@@ -382,8 +384,7 @@ h2 {
 
 /* ---------- media ---------- */
 
-.media-card,
-.video-card {
+.media-card {
   margin: 0;
   overflow: hidden;
   background: var(--surface-soft);
@@ -392,7 +393,7 @@ h2 {
   box-shadow: var(--shadow-xs);
 }
 
-.media-card + .video-card {
+.media-card {
   margin-top: 12px;
 }
 
@@ -407,13 +408,6 @@ h2 {
   padding: 10px 16px;
   color: var(--text-muted);
   font-size: 0.875rem;
-}
-
-.video-card iframe {
-  display: block;
-  width: 100%;
-  height: 340px;
-  border: 0;
 }
 
 /* ---------- portal link icons ---------- */
@@ -530,5 +524,42 @@ h2 {
   *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   櫻花飄落特效
+   ============================================================ */
+
+/* 櫻花容器設置 */
+#sakura-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* 櫻花單體樣式 */
+.sakura {
+  position: absolute;
+  background-color: #ffb7c5;
+  border-radius: 15% 85% 35% 65% / 20% 80% 20% 80%;
+  opacity: 0.8;
+  will-change: transform;
+  /* 這裡設定動畫名稱為 fall */
+  animation: fall linear forwards;
+}
+
+/* 這裡是讓花瓣動起來的魔法：從上方掉到下方，並伴隨旋轉 */
+@keyframes fall {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
   }
 }

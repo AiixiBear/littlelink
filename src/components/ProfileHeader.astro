@@ -23,7 +23,7 @@ const { content, languages, languageOptions } = Astro.props;
   <p class="profile-tagline">
     {content.intro.line1}。{content.intro.line5}
   </p>
-  <p class="profile-meta">台灣 · FOSS · 繪畫 · 生活紀錄</p>
+  <p class="profile-meta">{content.slogan}</p>
 
   <div class="language-switcher">
     <label for="lang-select">{content.languageLabel}</label>

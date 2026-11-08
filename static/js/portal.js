@@ -39,7 +39,7 @@ function updateTime() {
     minute: "2-digit",
     hour12: false,
   });
-  element.textContent = formatter.format(new Date());
+  element.textContent = "⏰ \u00B7 " + formatter.format(new Date());
 }
 
 updateTime();
