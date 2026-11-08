@@ -276,6 +276,10 @@ h2 {
   flex: 0 0 24px;
   width: 24px;
   height: 24px;
+  padding: 6px;
+  box-sizing: content-box;
+  background: #277f98;
+  border-radius: 6px;
 }
 
 .portal-link-text {
