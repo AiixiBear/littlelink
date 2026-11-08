@@ -253,6 +253,21 @@ h2 {
   gap: 10px;
 }
 
+.quick-link-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quick-link-group-homepage.has-latest-article {
+  gap: 0;
+}
+
+.quick-link-group-homepage.has-latest-article > .quick-link {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 .quick-link,
 .portal-link {
   display: flex;
@@ -296,6 +311,91 @@ h2 {
   background: var(--primary-strong);
   border-color: var(--primary-strong);
   box-shadow: 0 4px 16px rgba(27, 79, 95, 0.32);
+}
+
+.latest-article[hidden],
+.latest-article-image[hidden] {
+  display: none;
+}
+
+.latest-article {
+  overflow: hidden;
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-top: 0;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  box-shadow: var(--shadow-xs);
+}
+
+.latest-article-summary {
+  padding: 14px 18px;
+  color: var(--primary-strong);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+.latest-article-summary::-webkit-details-marker {
+  display: none;
+}
+
+.latest-article-summary::after {
+  content: "+";
+  float: right;
+  margin-left: 12px;
+}
+
+.latest-article[open] > .latest-article-summary::after {
+  content: "−";
+}
+
+.latest-article-summary:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+
+.latest-article-link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  overflow: hidden;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.latest-article-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+
+.latest-article-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.latest-article-content {
+  padding: 14px 18px;
+}
+
+.latest-article-content h4 {
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.latest-article-date {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.latest-article-content p {
+  margin-bottom: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
 /* ---------- section headings ---------- */

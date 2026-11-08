@@ -45,10 +45,27 @@ const languageOptions = languages.map((language) => ({
           <span aria-hidden="true">→</span>
         </a>
         {websiteLinks.map((link) => (
-          <a class:list={["quick-link", content.quickLinkClasses[link.id]]} href={link.href} target="_blank" rel={link.rel}>
-            <span>{link.key ? content[link.key] : link.label}</span>
-            <span aria-hidden="true">→</span>
-          </a>
+          <div class:list={["quick-link-group", link.id === "homepage" && "quick-link-group-homepage"]}>
+            <a class:list={["quick-link", content.quickLinkClasses[link.id]]} href={link.href} target="_blank" rel={link.rel}>
+              <span>{link.key ? content[link.key] : link.label}</span>
+              <span aria-hidden="true">→</span>
+            </a>
+            {link.id === "homepage" && (
+              <details class="latest-article" id="latest-article" hidden>
+                <summary class="latest-article-summary" id="latest-article-summary">
+                  {locale === "en" ? "Latest article | " : locale === "ja" ? "最新記事 | " : "最新文章 | "}
+                </summary>
+                <a class="latest-article-link" id="latest-article-link" target="_blank" rel="noopener">
+                  <img class="latest-article-image" id="latest-article-image" alt="" loading="lazy" />
+                  <div class="latest-article-content">
+                    <h4 id="latest-article-title"></h4>
+                    <time class="latest-article-date" id="latest-article-date"></time>
+                    <p id="latest-article-description"></p>
+                  </div>
+                </a>
+              </details>
+            )}
+          </div>
         ))}
       </div>
     </section>
