@@ -87,7 +87,10 @@ async function loadLatestArticle() {
   const card = document.getElementById("latest-article");
   if (!card) return;
 
-  const response = await fetch("https://www.aiixi.cc/index.xml", {
+  const feedPath = document.documentElement.lang.toLowerCase().startsWith("en")
+    ? "/en/index.xml"
+    : "/index.xml";
+  const response = await fetch(`https://www.aiixi.cc${feedPath}`, {
     headers: { Accept: "application/rss+xml, application/xml" },
   });
   if (!response.ok) {
