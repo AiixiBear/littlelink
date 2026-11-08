@@ -17,7 +17,17 @@ const { content, languages, languageOptions } = Astro.props;
     height="144"
   />
 
-  <p class="profile-greeting">{content.intro.greeting}</p>
+  <p
+    class="profile-greeting"
+    id="profile-greeting"
+    data-greeting-morning={content.intro.greetingMorning}
+    data-greeting-afternoon={content.intro.greetingAfternoon}
+    data-greeting-evening={content.intro.greetingEvening}
+    data-greeting-night={content.intro.greetingNight}
+    data-greeting-midnight={content.intro.greetingMidnight}
+  >
+    {content.intro.greeting}
+  </p>
   <h1>Aiixi Bear</h1>
   <p class="profile-tagline">
     {content.intro.line1}

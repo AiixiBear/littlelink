@@ -5,9 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentPath = window.location.pathname;
 
   // Set default language selection based on the current URL path
-  let currentLang = 'zh-TW';
-  if (currentPath.startsWith('/en/')) currentLang = 'en';
-  if (currentPath.startsWith('/ja/')) currentLang = 'ja';
+  let currentLang = 'en';
+  if (currentPath.startsWith('/en')) currentLang = 'en';
+  if (currentPath.startsWith('/ja')) currentLang = 'ja';
+  if (currentPath.startsWith('/zh-tw')) currentLang = 'zh-TW';
 
   if (langSelect) {
     langSelect.value = currentLang;
