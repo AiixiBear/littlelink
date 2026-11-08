@@ -61,6 +61,13 @@ body {
   letter-spacing: 0.08em;
 }
 
+.profile-greeting {
+  margin: 0 0 8px;
+  color: #c96d83;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
 h1,
 h2,
 p {
