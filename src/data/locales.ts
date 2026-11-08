@@ -28,8 +28,8 @@ export const locales = {
     aboutHeading: "自我介紹",
     quickLinksHeading: "快速傳送門",
     mediaHeading: "靈感",
-    mediaImageAlt: "草薙寧々のカード画像",
-    mediaCaption: "草薙寧々のカード画像",
+    mediaImageAlt: "草薙寧寧的卡面",
+    mediaCaption: "草薙寧寧的卡面",
     videoTitle: "ロミオとシンデレラ / 日野森雫（アナザーボーカル Full ver.）",
     aboutCards: [
       {
@@ -121,9 +121,9 @@ export const locales = {
     },
     aboutHeading: "About me",
     quickLinksHeading: "Quick portals",
-    mediaHeading: "inspiration",
-    mediaImageAlt: "草薙寧々のカード画像",
-    mediaCaption: "草薙寧々のカード画像",
+    mediaHeading: "Inspiration",
+    mediaImageAlt: "Nene Kusanagi Card",
+    mediaCaption: "Nene Kusanagi Card",
     videoTitle: "ロミオとシンデレラ / 日野森雫（アナザーボーカル Full ver.）",
     aboutCards: [
       {
@@ -164,7 +164,7 @@ export const locales = {
       {
         title: "Games",
         lines: [
-          [{ text: "Project SEKAI (TW/JP), Phigros" }],
+          [{ text: "Project SEKAI (TW/JP), Phigros (Rhythm Game)" }],
           [{ text: "Honkai: Star Rail" }],
         ],
       },
@@ -258,7 +258,7 @@ export const locales = {
       {
         title: "ゲーム",
         lines: [
-          [{ text: "プロセカ（TW/JP）、Phigros" }],
+          [{ text: "プロセカ（TW/JP）、Phigros （音ゲー）" }],
           [{ text: "崩壊：スターレイル" }],
         ],
       },
@@ -278,8 +278,8 @@ export const locales = {
     imageCredit: "背景画像：『プロセカ』草薙寧々",
     versionLabel: "バージョン：",
     shareLabel: "このページを共有",
-    websiteIconAlt: "Website Logo",
-    homepageIconAlt: "Website Homepage Logo",
+    websiteIconAlt: "ウェブサイトのロゴ",
+    homepageIconAlt: "ホームページのロゴ",
   },
 } as const;
 
