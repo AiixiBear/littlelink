@@ -10,10 +10,6 @@ export const locales = {
     ogSiteName: "Aiixi Bear 的入口網站",
     jsonLdName: "Aiixi Bear 的入口網站",
     languageLabel: "Language / 語言 / 言語",
-    languagePromptPrefix: "偵測到你慣用",
-    languagePromptQuestion: "要幫你切換嗎？",
-    languagePromptSwitch: "切換成",
-    languagePromptStay: "留在繁體中文",
     avatarAlt: "Aiixi Bear Avatar",
     slogan: "#科技 · #畫畫 · #藝術",
     intro: {
@@ -104,10 +100,6 @@ export const locales = {
     ogSiteName: "Aiixi Bear's Portal Website",
     jsonLdName: "Aiixi Bear's Portal Website",
     languageLabel: "Language / 語言",
-    languagePromptPrefix: "Your browser seems to prefer",
-    languagePromptQuestion: "Want to switch?",
-    languagePromptSwitch: "Switch to",
-    languagePromptStay: "Stay in English",
     avatarAlt: "Aiixi Bear Avatar",
     slogan: "#Tech · #Drawing · #Art",
     intro: {
@@ -198,10 +190,6 @@ export const locales = {
     ogSiteName: "Aiixi Bear のポータルサイト",
     jsonLdName: "Aiixi Bear のポータルサイト",
     languageLabel: "Language / 言語",
-    languagePromptPrefix: "ブラウザの優先言語が",
-    languagePromptQuestion: "切り替えますか？",
-    languagePromptSwitch: "切り替える",
-    languagePromptStay: "日本語のまま",
     avatarAlt: "Aiixi Bear アバター",
     slogan: "#テクノロジー · #イラスト · #アート",
     intro: {

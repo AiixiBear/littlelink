@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const currentPath = window.location.pathname;
 
-  // 根據目前網址路徑設定選單預設值
+  // Set default language selection based on the current URL path
   let currentLang = 'zh-TW';
   if (currentPath.startsWith('/en/')) currentLang = 'en';
   if (currentPath.startsWith('/ja/')) currentLang = 'ja';
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     langSelect.value = currentLang;
   }
 
-  // 監聽選單切換事件
+  // Handle language selection change events
   langSelect?.addEventListener('change', (e) => {
     const selectedLang = e.target.value;
 
@@ -38,21 +38,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const promptTranslations = {
     'zh-tw': {
-      prefix: '你的瀏覽器偏好',
-      question: '要切換語言嗎？',
+      prefix: '偵測到您使用的語言為',
+      question: '，是否要切換過去？',
       switch: '切換至',
-      stay: '維持目前語言',
+      stay: '留在當前語言',
     },
     en: {
-      prefix: 'Your browser prefers',
-      question: 'Switch language?',
+      prefix: 'It looks like your preferred language is',
+      question: '. Would you like to switch?',
       switch: 'Switch to',
-      stay: 'Stay in the current language',
+      stay: 'Stay in current language',
     },
     ja: {
-      prefix: 'ブラウザの優先言語は',
-      question: '言語を切り替えますか？',
-      switch: '切り替える',
+      prefix: '優先言語が',
+      question: 'に設定されています。切り替えますか？',
+      switch: '切替：',
       stay: '現在の言語のままにする',
     },
   };
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
       : [navigator.language];
   };
 
-  // 將瀏覽器的第一優先語言對應到網站支援的語言。
+  // Map the primary browser language to a supported site language.
   const getPreferredLanguage = (browserLanguage) => {
     const normalizedLanguage = browserLanguage.toLowerCase();
     if (normalizedLanguage.startsWith('zh-tw') || normalizedLanguage.startsWith('zh-hant')) {

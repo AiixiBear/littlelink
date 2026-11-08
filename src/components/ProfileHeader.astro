@@ -47,10 +47,10 @@ const { content, languages, languageOptions } = Astro.props;
   >
     <p class="language-prompt-message">
       <span id="language-prompt-supported">
-        <span id="language-prompt-prefix">{content.languagePromptPrefix}</span>
+        <span id="language-prompt-prefix"></span>
         <strong id="language-prompt-target"></strong>
         <br />
-        <span id="language-prompt-question">{content.languagePromptQuestion}</span>
+        <span id="language-prompt-question"></span>
       </span>
       <span id="language-prompt-unsupported" hidden>
         <span id="language-prompt-availability"></span>
@@ -60,10 +60,8 @@ const { content, languages, languageOptions } = Astro.props;
     </p>
     <div class="language-prompt-actions">
       <button id="language-prompt-switch" type="button" class="prompt-button prompt-button-primary">
-        {content.languagePromptSwitch}
       </button>
       <button id="language-prompt-stay" type="button" class="prompt-button">
-        {content.languagePromptStay}
       </button>
     </div>
   </div>
