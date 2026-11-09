@@ -632,6 +632,14 @@ h2 {
    櫻花飄落特效
    ============================================================ */
 
+/* Snowfall canvas remains decorative and behind the existing sakura layer. */
+.snowfall-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+}
+
 /* 櫻花容器設置 */
 #sakura-container {
   position: fixed;

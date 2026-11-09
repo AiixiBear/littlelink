@@ -1,6 +1,7 @@
 ---
 import { languages } from "../data/languages";
 import { locales, type Locale } from "../data/locales";
+import SnowfallOverlay from "../components/SnowfallOverlay";
 
 interface Props {
   locale: Locale;
@@ -78,6 +79,7 @@ const page = locales[locale];
     </script>
   </head>
   <body>
+    <SnowfallOverlay client:load />
     <main class="site-main">
       <slot />
     </main>
