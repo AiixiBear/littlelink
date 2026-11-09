@@ -66,6 +66,8 @@ body {
   width: calc(100% - 32px);
   max-width: 760px;
   margin: 20px auto 0;
+  z-index: 9999;
+  position: relative;
 }
 
 .portal-page {
@@ -636,7 +638,7 @@ h2 {
 .snowfall-overlay {
   position: fixed;
   inset: 0;
-  z-index: 9998;
+  z-index: 5000;
   pointer-events: none;
 }
 
