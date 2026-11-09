@@ -115,7 +115,7 @@ export const locales = {
       greetingNight: "Up so late? Sleep tight and sweet dreams~",
       greetingMidnight: "It's already {hour} o'clock!! Time to get some rest!",
       greetingOnOwnLine: true,
-      line1: "Yokoso! I'm Aiixi Bear! ",
+      line1: "Welcome! I'm Aiixi Bear! ",
       line2: "You can also call me",
       alternateName: "愛希熊 / あいきくま",
       alternateSuffix: "",
