@@ -1,7 +1,7 @@
 ---
 import { languages } from "../data/languages";
 import { locales, type Locale } from "../data/locales";
-import SnowfallOverlay from "../components/SnowfallOverlay";
+import Snowfall from "../components/Snowfall.astro";
 
 interface Props {
   locale: Locale;
@@ -79,7 +79,7 @@ const page = locales[locale];
     </script>
   </head>
   <body>
-    <SnowfallOverlay client:load />
+    <Snowfall />
     <main class="site-main">
       <slot />
     </main>
