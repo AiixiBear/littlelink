@@ -1,0 +1,85 @@
+lang: ja
+title: Aiixi Bear のポータルサイト
+description: Aiixi Bear の小さな入口です。SNS、ブログ、個人サイトをここにまとめました。ふらっと見ていってください。気軽に話しかけてくれるとうれしいです。
+ogDescription: Aiixi Bear の小さな入口です。SNS、ブログ、個人サイトをここにまとめました。ふらっと見ていってください。気軽に話しかけてくれるとうれしいです。
+ogImageAlt: Aiixi Bear のポータルサイトカバー画像
+ogSiteName: Aiixi Bear のポータルサイト
+jsonLdName: Aiixi Bear のポータルサイト
+languageLabel: Language / 言語
+avatarAlt: Aiixi Bear アバター
+slogan: '#テクノロジー · #イラスト · #アート'
+intro:
+  greeting: やっほー！今日も素敵な一日になりますように～
+  greetingMorning: おはよー！今日も一日元気にいこうね～
+  greetingAfternoon: こんにちは～！ちょっと一息入れていってね！
+  greetingEvening: こんばんは～！今日も一日お疲れ様でしたっ
+  greetingNight: こんばんは～！今日も無事に一日が終わってよかったね
+  greetingMidnight: もう{hour}時だよ、そろそろ休もう！
+  greetingOnOwnLine: true
+  line1: ようこそ！Aiixi Bear です！
+  line2: 別名は
+  alternateName: 愛希熊 / あいきくま
+  alternateSuffix: ''
+  line5: お友達大歓迎！ゆっくりしていってね！
+aboutHeading: 自己紹介
+quickLinksHeading: クイック入口
+mediaHeading: インスピレーション
+mediaImageAlt: 草薙寧々のカード画像
+mediaCaption: 草薙寧々のカード画像
+videoTitle: ロミオとシンデレラ / 日野森雫（アナザーボーカル Full ver.）
+aboutCards:
+- title: 私について
+  lines:
+  - - text: 絵を描くのが大好きなクマです 🐻
+  - - text: 好きな色：
+    - text: 水色
+      strong: true
+      class: cyan
+  - - text: 見た目は人間っぽいけれど、中身はクマです
+  - - text: 絵を描くこと、アニメ、音楽、そして静かな暮らしが好きです
+  - - text: 10/19
+      strong: true
+    - text: ' ♎ · '
+    - text: INFJ
+      strong: true
+  - - text: 🧭 ·  中華民国（台湾）
+      strong: false
+    - text: ' | '
+    - text: ''
+      strong: true
+      class: pink-text
+      id: aiixi-time
+- title: 好きなもの / 嫌いなもの
+  lines:
+  - - text: 好き：
+      strong: true
+    - text: 可愛いもの、絵を描くこと、アニメ、ふかふかの布団、音楽、お友達づくり
+  - - text: 嫌い：
+      strong: true
+    - text: 甘すぎる食べ物、騒がしい場所、強い日差し、話を途中で終わらせること
+- title: 推し
+  lines:
+  - - text: 草薙寧々、朝比奈まふゆ（プロセカ）
+  - - text: マダム・ヘルタ（崩壊：スターレイル）
+  - - text: 酒寄彩葉（超かぐや姫）
+  - - text: ドラえもん
+- title: ゲーム
+  lines:
+  - - text: プロセカ（TW/JP）、Phigros （音ゲー）
+  - - text: 崩壊：スターレイル
+aboutLink: ★ 詳しい自己紹介はこちら！
+quickLinkClasses:
+  about: quick-link-primary
+  homepage: quick-link-primary
+  aqa: ''
+linksHeading: リンク
+websitesHeading: ウェブサイト
+socialHeading: SNS アカウント
+websiteTitle: Aiixi Bear デジタルの裏庭 (Blog)
+aqaTitle: Aiixi の匿名Q&A
+footerTitle: Aiixi Bear のポータルサイト
+imageCredit: 背景画像：『プロセカ』草薙寧々
+versionLabel: バージョン：
+shareLabel: このページを共有
+websiteIconAlt: ウェブサイトのロゴ
+homepageIconAlt: ホームページのロゴ

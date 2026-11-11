@@ -6,9 +6,9 @@
     "node": ">=22.19.0"
   },
   "scripts": {
-    "build": "astro build && node scripts/flatten-sitemap.mjs && html-beautify --replace --type html --indent-size 2 --wrap-line-length 100 --no-preserve-newlines --indent-inner-html --end-with-newline \"dist/**/*.html\"",
-    "dev": "astro dev",
-    "preview": "astro preview"
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build && node scripts/flatten-sitemap.mjs && html-beautify --replace --type html --indent-size 2 --wrap-line-length 100 --no-preserve-newlines --indent-inner-html --end-with-newline \"dist/**/*.html\"",
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview"
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.7.4",

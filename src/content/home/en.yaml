@@ -1,0 +1,85 @@
+lang: en
+title: Aiixi Bear's Portal Website
+description: This is Aiixi Bear's little corner of the internet. My socials, blog, and personal sites are all here—feel free to look around and say hi.
+ogDescription: This is Aiixi Bear's little corner of the internet. My socials, blog, and personal sites are all here—feel free to look around and say hi.
+ogImageAlt: Aiixi Bear's portal website cover image
+ogSiteName: Aiixi Bear's Portal Website
+jsonLdName: Aiixi Bear's Portal Website
+languageLabel: Language / 語言
+avatarAlt: Aiixi Bear Avatar
+slogan: '#Tech · #Drawing · #Art'
+intro:
+  greeting: Hi there! Hope you're having a wonderful day~
+  greetingMorning: Good morning! Wishing you a lovely and cozy day~
+  greetingAfternoon: Good afternoon! Time for a sweet little break~
+  greetingEvening: Good evening! Hope your day was super nice~
+  greetingNight: Up so late? Sleep tight and sweet dreams~
+  greetingMidnight: It's already {hour} o'clock!! Time to get some rest!
+  greetingOnOwnLine: true
+  line1: 'Welcome! I''m Aiixi Bear! '
+  line2: You can also call me
+  alternateName: 愛希熊 / あいきくま
+  alternateSuffix: ''
+  line5: Always open to new friends! Feel free to look around.
+aboutHeading: About me
+quickLinksHeading: Quick portals
+mediaHeading: Inspiration
+mediaImageAlt: Nene Kusanagi Card
+mediaCaption: Nene Kusanagi Card
+videoTitle: ロミオとシンデレラ / 日野森雫（アナザーボーカル Full ver.）
+aboutCards:
+- title: About me
+  lines:
+  - - text: A bear who really loves to draw 🐻
+  - - text: 'Favorite color: '
+    - text: cyan
+      strong: true
+      class: cyan
+  - - text: I look human, but deep down I'm a bear
+  - - text: I enjoy drawing, anime, music, and a quiet, easygoing life
+  - - text: 10/19
+      strong: true
+    - text: ' ♎ · '
+    - text: INFJ
+      strong: true
+  - - text: 🧭 ·  Taiwan, Republic of China
+      strong: false
+    - text: ' | '
+    - text: ''
+      strong: true
+      class: pink-text
+      id: aiixi-time
+- title: Likes / Dislikes
+  lines:
+  - - text: 'Likes: '
+      strong: true
+    - text: cute things, drawing, anime, soft blankets, music, and making friends
+  - - text: 'Dislikes: '
+      strong: true
+    - text: overly sweet food, noisy places, harsh sunlight, and people who only finish half a sentence
+- title: Favorites
+  lines:
+  - - text: Nene Kusanagi, Mafuyu Asahina (Project SEKAI)
+  - - text: 'The Herta (Honkai: Star Rail)'
+  - - text: Iroha Sakayori (Cho Kaguya Hime)
+  - - text: Doraemon
+- title: Games
+  lines:
+  - - text: Project SEKAI (TW/JP), Phigros (Rhythm Game)
+  - - text: 'Honkai: Star Rail'
+aboutLink: ★ Want to read the full Self-Intro? Click here
+quickLinkClasses:
+  about: quick-link-primary
+  homepage: quick-link-primary
+  aqa: ''
+linksHeading: Links
+websitesHeading: My website
+socialHeading: My social profiles
+websiteTitle: Aiixi Bear Digital Backyard (Blog)
+aqaTitle: Aiixi's Anonymous Q&A
+footerTitle: Aiixi Bear's Portal Website
+imageCredit: 'Background image: Nene Kusanagi from Project SEKAI'
+versionLabel: 'Version: '
+shareLabel: Share this page
+websiteIconAlt: Website Logo
+homepageIconAlt: Website Homepage Logo

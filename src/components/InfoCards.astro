@@ -1,6 +1,10 @@
 ---
+import type { CollectionEntry } from "astro:content";
+
+type HomeContent = CollectionEntry<"home">["data"];
+
 interface Props {
-  cards: readonly any[];
+  cards: HomeContent["aboutCards"];
 }
 
 const { cards } = Astro.props;
@@ -11,7 +15,7 @@ const { cards } = Astro.props;
     <div class="info-card">
       <h3>{card.title}</h3>
       <div class="info-card-content">
-        {card.lines.map((line: readonly any[]) => (
+        {card.lines.map((line) => (
           <p>
             {line.map((part) =>
               part.id ? (

@@ -3,19 +3,22 @@ import SiteLayout from "../../layouts/SiteLayout.astro";
 import ProfileHeader from "../../components/ProfileHeader.astro";
 import InfoCards from "../../components/InfoCards.astro";
 import PortalLinks from "../../components/PortalLinks.astro";
-import { languages } from "../../data/languages";
-import { locales, type Locale } from "../../data/locales";
+import { getEntry } from "astro:content";
+import { languages, type Locale } from "../../data/languages";
 import { socialLinks, websiteLinks } from "../../data/site";
 import { getLatestArticle } from "../../lib/latestArticle";
 
 export function getStaticPaths() {
-  return Object.entries(locales).map(([locale, content]) => ({
-    params: { locale },
-    props: { locale: locale as Locale, content },
+  return languages.map((language) => ({
+    params: { locale: language.key },
+    props: { locale: language.key },
   }));
 }
 
-const { locale, content } = Astro.props;
+const { locale } = Astro.props as { locale: Locale };
+const entry = await getEntry("home", locale);
+if (!entry) throw new Error(`Missing home content for locale "${locale}"`);
+const content = entry.data;
 const pageScript = "/js/portal.js";
 const latestArticle = await getLatestArticle(locale);
 const latestArticleDate = latestArticle

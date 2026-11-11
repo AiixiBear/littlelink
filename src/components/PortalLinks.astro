@@ -1,7 +1,21 @@
 ---
+import type { CollectionEntry } from "astro:content";
+
+type HomeContent = CollectionEntry<"home">["data"];
+
+interface PortalLink {
+  href: string;
+  icon: string;
+  className: string;
+  label: string;
+  rel?: string;
+  copyId?: string;
+  key?: "websiteTitle" | "aqaTitle";
+}
+
 interface Props {
-  links: readonly any[];
-  content: any;
+  links: readonly PortalLink[];
+  content: HomeContent;
   heading: string;
   showKeys?: boolean;
 }

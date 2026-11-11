@@ -3,6 +3,9 @@
 # 遇到錯誤立即停止執行
 set -e
 
+# 停用 Astro 匿名遙測：不要在建置（包含 Cloudflare Pages）時回傳使用數據
+export ASTRO_TELEMETRY_DISABLED=1
+
 # 定義輸出目錄
 OUTPUT_DIR="dist"
 NODE_BINARY="${NODE_BINARY:-node}"
