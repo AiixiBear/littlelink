@@ -1,7 +1,6 @@
 ---
-import { languages } from "../data/languages";
-import { locales, type Locale } from "../data/locales";
-import SnowfallOverlay from "../components/SnowfallOverlay";
+import { languages, type Locale } from "../data/languages";
+import Snowfall from "../components/Snowfall.astro";
 
 interface Props {
   locale: Locale;
@@ -28,14 +27,14 @@ const {
   versionLabel,
   pageScript,
 } = Astro.props;
-const path = languages.find((language) => language.key === locale)?.path;
-if (!path) throw new Error(`Missing route for locale "${locale}"`);
-const canonical = `https://go.aiixi.cc${path}`;
-const page = locales[locale];
+const language = languages.find((item) => item.key === locale);
+if (!language) throw new Error(`Missing route for locale "${locale}"`);
+const canonical = `https://go.aiixi.cc${language.path}`;
+const lang = language.locale;
 ---
 
 <!doctype html>
-<html lang={page.lang}>
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -79,7 +78,7 @@ const page = locales[locale];
     </script>
   </head>
   <body>
-    <SnowfallOverlay client:load />
+    <Snowfall />
     <main class="site-main">
       <slot />
     </main>

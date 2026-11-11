@@ -1,8 +1,13 @@
 ---
+import type { CollectionEntry } from "astro:content";
+import type { Language } from "../data/languages";
+
+type HomeContent = CollectionEntry<"home">["data"];
+
 interface Props {
-  content: any;
-  languages: readonly any[];
-  languageOptions: readonly any[];
+  content: HomeContent;
+  languages: readonly Language[];
+  languageOptions: readonly (Language & { selected: boolean })[];
 }
 
 const { content, languages, languageOptions } = Astro.props;

@@ -3,3 +3,6 @@ export const languages = [
   { key: "en", locale: "en", label: "English", path: "/en/" },
   { key: "ja", locale: "ja", label: "日本語", path: "/ja/" },
 ] as const;
+
+export type Locale = (typeof languages)[number]["key"];
+export type Language = (typeof languages)[number];
