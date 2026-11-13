@@ -1,0 +1,152 @@
+# All portal links (quick portals + social profiles).
+#
+# This is the ONLY file to edit when adding a link. Copy one block,
+# change its values, done -- no .astro or .ts files to touch.
+# A wrong field or a duplicate id fails the build (schema in
+# src/content.config.ts) instead of shipping a broken link.
+#
+# group: website  -> shown in the Quick portals grid at the top
+# group: social   -> shown in the social profiles list at the bottom
+#                    (icon required: file in static/images/icons/)
+#
+# Add a social link:
+#
+#   - id: my-new-social
+#     order: 130
+#     group: social
+#     href: https://example.com/@me
+#     icon: example.svg
+#     label: Example · @me
+#
+# Add a website (quick portal):
+#
+#   - id: my-new-site
+#     order: 130
+#     group: website
+#     href: https://example.com/
+#     label: My new site
+#
+# label may be a single string (same for every language) or
+# per-language, as the website entries below do:
+#
+#   label:
+#     zh-tw: 繁體中文名稱
+#     en: English name
+#     ja: 日本語の名前
+#
+# order decides the display order within the group (Astro returns
+# collection entries sorted by id, not by file order). Entries use
+# steps of 10 so a new link can be inserted between two existing ones;
+# appending at the end just needs a number bigger than the last one.
+#
+# Optional fields:
+#   rel:     link rel attribute (default: none; social links usually
+#            "noopener", fediverse profiles add "me")
+#   copy:    (social only) clicking copies this text instead of
+#            opening href -- used for Discord below. Keep href as
+#            javascript:void(0); for copy entries.
+#   primary: (website only) true = highlighted button style
+#   latestArticle: (website only) true = the latest article from
+#            www.aiixi.cc is shown under this entry
+
+- id: homepage
+  order: 10
+  group: website
+  href: https://www.aiixi.cc/
+  label:
+    zh-tw: Aiixi Bear 數位後花園（部落格）
+    en: Aiixi Bear Digital Backyard (Blog)
+    ja: Aiixi Bear デジタルの裏庭 (Blog)
+  rel: noopener
+  primary: true
+  latestArticle: true
+
+- id: aqa
+  order: 20
+  group: website
+  href: https://apps.aiixi.cc/aqa/?tag=go.aiixi.cc
+  label:
+    zh-tw: 愛希的匿名問答
+    en: Aiixi's Anonymous Q&A
+    ja: Aiixi の匿名Q&A
+  rel: noopener
+
+- id: threads
+  order: 30
+  group: social
+  href: https://www.threads.com/@aiixi_bear
+  icon: threads.svg
+  label: Threads · aiixi_bear
+  rel: noopener me
+
+- id: instagram
+  order: 40
+  group: social
+  href: https://www.instagram.com/aiixi_bear
+  icon: instagram.svg
+  label: Instagram · aiixi_bear
+  rel: noopener
+
+- id: discord
+  order: 50
+  group: social
+  href: javascript:void(0);
+  icon: discord.svg
+  label: Discord · aiixi_bear
+  copy: aiixi_bear
+
+- id: x
+  order: 60
+  group: social
+  href: https://x.com/aiixi_bear
+  icon: x.svg
+  label: X · aiixi_bear
+  rel: noopener
+
+- id: github
+  order: 70
+  group: social
+  href: https://github.com/AiixiBear
+  icon: github.svg
+  label: GitHub · AiixiBear
+  rel: noopener
+
+- id: mastodon
+  order: 80
+  group: social
+  href: https://c7.io/@aiixi
+  icon: mastodon.svg
+  label: c7.io · @aiixi
+  rel: noopener me
+
+- id: bluesky
+  order: 90
+  group: social
+  href: https://bsky.app/profile/aiixi.cc
+  icon: bluesky.svg
+  label: Bluesky · @aiixi.cc
+  rel: noopener
+
+- id: matrix
+  order: 100
+  group: social
+  href: https://matrix.to/#/@aiixi_bear:matrix.org
+  icon: matrix.svg
+  label: Matrix
+  rel: noopener
+
+- id: pinterest
+  order: 110
+  group: social
+  href: https://www.pinterest.com/aiixi_bear/
+  icon: pinterest.svg
+  label: Pinterest · aiixi_bear
+  rel: noopener
+
+- id: email
+  order: 120
+  group: social
+  href: mailto:aiixi@aiixi.cc
+  icon: email.svg
+  label: aiixi@aiixi.cc
+  rel: noopener

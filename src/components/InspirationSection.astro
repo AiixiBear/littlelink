@@ -1,9 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import type { Locale } from "../data/languages";
+import { pickLocalizedText } from "../lib/localizedText";
 
 type InspirationItem = CollectionEntry<"inspiration">["data"];
-type LocalizedText = Extract<InspirationItem, { type: "image" }>["alt"];
 
 interface Props {
   heading: string;
@@ -12,14 +12,6 @@ interface Props {
 }
 
 const { heading, items, locale } = Astro.props;
-
-// alt / caption may be one string for all languages or a per-locale
-// object; fall back to zh-tw, then en, then any provided value.
-function pickText(text: LocalizedText | undefined): string | undefined {
-  if (!text) return undefined;
-  if (typeof text === "string") return text;
-  return text[locale] ?? text["zh-tw"] ?? text.en ?? text.ja;
-}
 
 // Accept a bare video ID or a full YouTube URL and return the ID,
 // so pasting a link into inspiration.yaml just works.
@@ -43,21 +35,21 @@ function youtubeId(value: string): string {
             {item.srcDesktop ? (
               <picture>
                 <source media="(min-width: 768px)" srcset={item.srcDesktop} />
-                <img src={item.src} alt={pickText(item.alt)} width={item.width} height={item.height} loading="lazy" />
+                <img src={item.src} alt={pickLocalizedText(item.alt, locale)} width={item.width} height={item.height} loading="lazy" />
               </picture>
             ) : (
-              <img src={item.src} alt={pickText(item.alt)} width={item.width} height={item.height} loading="lazy" />
+              <img src={item.src} alt={pickLocalizedText(item.alt, locale)} width={item.width} height={item.height} loading="lazy" />
             )}
           </a>
         ) : item.srcDesktop ? (
           <picture>
             <source media="(min-width: 768px)" srcset={item.srcDesktop} />
-            <img src={item.src} alt={pickText(item.alt)} width={item.width} height={item.height} loading="lazy" />
+            <img src={item.src} alt={pickLocalizedText(item.alt, locale)} width={item.width} height={item.height} loading="lazy" />
           </picture>
         ) : (
-          <img src={item.src} alt={pickText(item.alt)} width={item.width} height={item.height} loading="lazy" />
+          <img src={item.src} alt={pickLocalizedText(item.alt, locale)} width={item.width} height={item.height} loading="lazy" />
         )}
-        {pickText(item.caption) && <figcaption>{pickText(item.caption)}</figcaption>}
+        {pickLocalizedText(item.caption, locale) && <figcaption>{pickLocalizedText(item.caption, locale)}</figcaption>}
       </figure>
     ) : (
       <figure class="media-card">
@@ -66,7 +58,7 @@ function youtubeId(value: string): string {
           videoid={youtubeId(item.videoId)}
           posterquality={item.posterQuality ?? "maxresdefault"}
         ></lite-youtube>
-        <figcaption>{pickText(item.caption) ?? item.title}</figcaption>
+        <figcaption>{pickLocalizedText(item.caption, locale) ?? item.title}</figcaption>
       </figure>
     ),
   )}

@@ -1,26 +1,20 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import type { Locale } from "../data/languages";
+import { pickLocalizedText } from "../lib/localizedText";
 
-type HomeContent = CollectionEntry<"home">["data"];
-
-interface PortalLink {
-  href: string;
-  icon: string;
-  className: string;
-  label: string;
-  rel?: string;
-  copyId?: string;
-  key?: "websiteTitle" | "aqaTitle";
-}
+type SocialLink = Extract<
+  CollectionEntry<"links">["data"],
+  { group: "social" }
+>;
 
 interface Props {
-  links: readonly PortalLink[];
-  content: HomeContent;
+  links: SocialLink[];
   heading: string;
-  showKeys?: boolean;
+  locale: Locale;
 }
 
-const { links, content, heading } = Astro.props;
+const { links, heading, locale } = Astro.props;
 ---
 
 <section class="links-section" aria-labelledby={`${heading}-heading`}>
@@ -29,28 +23,31 @@ const { links, content, heading } = Astro.props;
   </div>
 
   <div class="portal-link-list">
-    {links.map((link) => (
-      <a
-        class="portal-link"
-        href={link.href}
-        target={link.copyId ? undefined : "_blank"}
-        rel={link.rel}
-        data-id={link.copyId}
-        data-label={link.copyId ? "Discord" : undefined}
-      >
-        <img
-          class="portal-link-icon"
-          src={`/images/icons/${link.icon}`}
-          alt=""
-          width="24"
-          height="24"
-          aria-hidden="true"
-        />
-        <span class="portal-link-text">
-          {link.key ? content[link.key] : link.label}
-        </span>
-        <span class="portal-link-arrow" aria-hidden="true">→</span>
-      </a>
-    ))}
+    {links.map((link) => {
+      const label = pickLocalizedText(link.label, locale) ?? "";
+      return (
+        <a
+          class="portal-link"
+          href={link.href}
+          target={link.copy ? undefined : "_blank"}
+          rel={link.rel}
+          data-id={link.copy}
+          data-label={link.copy ? label.split(" · ")[0] : undefined}
+        >
+          <img
+            class="portal-link-icon"
+            src={`/images/icons/${link.icon}`}
+            alt=""
+            width="24"
+            height="24"
+            aria-hidden="true"
+          />
+          <span class="portal-link-text">
+            {label}
+          </span>
+          <span class="portal-link-arrow" aria-hidden="true">→</span>
+        </a>
+      );
+    })}
   </div>
 </section>

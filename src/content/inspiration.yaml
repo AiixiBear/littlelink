@@ -1,4 +1,4 @@
-# Inspiration section items, in display order (top to bottom).
+# Inspiration section items.
 #
 # This is the ONLY file to edit when adding to the Inspiration section.
 # Copy one block, change its values, done -- no .astro files to touch.
@@ -8,6 +8,7 @@
 # Add an image (put the file in static/images/ first):
 #
 #   - id: my-new-image
+#     order: 40
 #     type: image
 #     src: /images/my-new-image.webp
 #     alt: Description of the image
@@ -20,11 +21,17 @@
 # youtube.com / youtu.be URL -- the ID is extracted at build time):
 #
 #   - id: my-new-video
+#     order: 40
 #     type: youtube
 #     videoId: dQw4w9WgXcQ
 #     title: Video title shown under the player
 #
 #   Optional YouTube field: caption (defaults to title).
+#
+# order decides the display order (Astro returns collection entries
+# sorted by id, not by file order). Entries use steps of 10 so a new
+# item can be inserted between two existing ones; appending at the
+# end just needs a number bigger than the last one.
 #
 # alt / caption may be a single string (same text for every language)
 # or per-language, as in the first item below:
@@ -35,6 +42,7 @@
 #     ja: 日本語キャプション
 
 - id: nene-card
+  order: 10
   type: image
   src: /images/nene1.webp
   srcDesktop: /images/nene2.webp
@@ -50,11 +58,13 @@
     ja: 草薙寧々のカード画像
 
 - id: romeo-to-cinderella-shizuku
+  order: 20
   type: youtube
   videoId: HD3v90A3ldg
   title: ロミオとシンデレラ / 日野森雫（アナザーボーカル Full ver.）
 
 - id: yuke
+  order: 30
   type: youtube
   videoId: WGy0Iw1Asw4
   title: 征け / ワンダーランズ×ショウタイム × 鏡音リン

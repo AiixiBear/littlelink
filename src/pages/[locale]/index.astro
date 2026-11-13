@@ -4,10 +4,10 @@ import ProfileHeader from "../../components/ProfileHeader.astro";
 import InfoCards from "../../components/InfoCards.astro";
 import PortalLinks from "../../components/PortalLinks.astro";
 import InspirationSection from "../../components/InspirationSection.astro";
-import { getCollection, getEntry } from "astro:content";
+import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 import { languages, type Locale } from "../../data/languages";
-import { socialLinks, websiteLinks } from "../../data/site";
 import { getLatestArticle } from "../../lib/latestArticle";
+import { pickLocalizedText } from "../../lib/localizedText";
 
 export function getStaticPaths() {
   return languages.map((language) => ({
@@ -34,8 +34,22 @@ const languageOptions = languages.map((language) => ({
   ...language,
   selected: language.key === locale,
 }));
-const inspirationItems = (await getCollection("inspiration")).map(
-  (item) => item.data,
+// getCollection returns entries sorted by id, not file order, so both
+// collections are sorted by their explicit "order" field here.
+const inspirationItems = (await getCollection("inspiration"))
+  .map((item) => item.data)
+  .sort((a, b) => a.order - b.order);
+type LinkItem = CollectionEntry<"links">["data"];
+const allLinks = (await getCollection("links"))
+  .map((item) => item.data)
+  .sort((a, b) => a.order - b.order);
+const websiteLinks = allLinks.filter(
+  (link): link is Extract<LinkItem, { group: "website" }> =>
+    link.group === "website",
+);
+const socialLinks = allLinks.filter(
+  (link): link is Extract<LinkItem, { group: "social" }> =>
+    link.group === "social",
 );
 ---
 
@@ -62,12 +76,12 @@ const inspirationItems = (await getCollection("inspiration")).map(
           <span aria-hidden="true">→</span>
         </a>
         {websiteLinks.map((link) => (
-          <div class:list={["quick-link-group", link.id === "homepage" && "quick-link-group-homepage", link.id === "homepage" && latestArticle && "has-latest-article"]}>
-            <a class:list={["quick-link", content.quickLinkClasses[link.id]]} href={link.href} target="_blank" rel={link.rel}>
-              <span>{link.key ? content[link.key] : link.label}</span>
+          <div class:list={["quick-link-group", link.latestArticle && "quick-link-group-homepage", link.latestArticle && latestArticle && "has-latest-article"]}>
+            <a class:list={["quick-link", link.primary && "quick-link-primary"]} href={link.href} target="_blank" rel={link.rel}>
+              <span>{pickLocalizedText(link.label, locale)}</span>
               <span aria-hidden="true">→</span>
             </a>
-            {link.id === "homepage" && latestArticle && latestArticleDate && (
+            {link.latestArticle && latestArticle && latestArticleDate && (
               <details class="latest-article">
                 <summary class="latest-article-summary">
                   {locale === "en" ? "Latest article | " : locale === "ja" ? "最新記事 | " : "最新文章 | "}
@@ -104,6 +118,6 @@ const inspirationItems = (await getCollection("inspiration")).map(
 
     <InspirationSection heading={content.mediaHeading} items={inspirationItems} locale={locale} />
 
-    <PortalLinks links={socialLinks} content={content} heading={content.socialHeading} />
+    <PortalLinks links={socialLinks} heading={content.socialHeading} locale={locale} />
   </div>
 </SiteLayout>
