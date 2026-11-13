@@ -1,0 +1,55 @@
+# Inspiration section items, in display order (top to bottom).
+#
+# This is the ONLY file to edit when adding to the Inspiration section.
+# Copy one block, change its values, done -- no .astro files to touch.
+# A wrong field or a duplicate id fails the build (schema in
+# src/content.config.ts) instead of shipping a broken section.
+#
+# Add an image (put the file in static/images/ first):
+#
+#   - id: my-new-image
+#     type: image
+#     src: /images/my-new-image.webp
+#     alt: Description of the image
+#     caption: Caption shown under the image
+#
+#   Optional image fields: srcDesktop (wide version shown at >=768px),
+#   width / height (omit if unknown), href (wrap the image in a link).
+#
+# Add a YouTube video (videoId accepts a bare ID or a full
+# youtube.com / youtu.be URL -- the ID is extracted at build time):
+#
+#   - id: my-new-video
+#     type: youtube
+#     videoId: dQw4w9WgXcQ
+#     title: Video title shown under the player
+#
+#   Optional YouTube field: caption (defaults to title).
+#
+# alt / caption may be a single string (same text for every language)
+# or per-language, as in the first item below:
+#
+#   caption:
+#     zh-tw: 繁體中文說明
+#     en: English caption
+#     ja: 日本語キャプション
+
+- id: nene-card
+  type: image
+  src: /images/nene1.webp
+  srcDesktop: /images/nene2.webp
+  width: 1200
+  height: 630
+  alt:
+    zh-tw: 草薙寧寧的卡面
+    en: Nene Kusanagi Card
+    ja: 草薙寧々のカード画像
+  caption:
+    zh-tw: 草薙寧寧的卡面
+    en: Nene Kusanagi Card
+    ja: 草薙寧々のカード画像
+
+- id: romeo-to-cinderella-shizuku
+  type: youtube
+  videoId: HD3v90A3ldg
+  title: ロミオとシンデレラ / 日野森雫（アナザーボーカル Full ver.）

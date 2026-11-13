@@ -1,5 +1,5 @@
 import { defineCollection, z } from "astro:content";
-import { glob } from "astro/loaders";
+import { file, glob } from "astro/loaders";
 
 // Home page copy, one YAML file per locale under src/content/home/.
 // Editing copy means editing one small YAML file, never TypeScript:
@@ -44,9 +44,6 @@ const home = defineCollection({
     aboutHeading: z.string(),
     quickLinksHeading: z.string(),
     mediaHeading: z.string(),
-    mediaImageAlt: z.string(),
-    mediaCaption: z.string(),
-    videoTitle: z.string(),
     aboutCards: z.array(
       z.object({
         title: z.string(),
@@ -73,4 +70,43 @@ const home = defineCollection({
   }),
 });
 
-export const collections = { home };
+// Inspiration section, one single YAML file: src/content/inspiration.yaml.
+// Adding an image or a YouTube embed means appending one small block to
+// that file; the items are language-independent except alt / caption,
+// which may be a plain string or a per-locale object.
+
+const localizedText = z.union([
+  z.string(),
+  z.object({
+    "zh-tw": z.string().optional(),
+    en: z.string().optional(),
+    ja: z.string().optional(),
+  }),
+]);
+
+const inspiration = defineCollection({
+  loader: file("src/content/inspiration.yaml"),
+  schema: z.discriminatedUnion("type", [
+    z.object({
+      type: z.literal("image"),
+      src: z.string(),
+      srcDesktop: z.string().optional(),
+      width: z.number().int().positive().optional(),
+      height: z.number().int().positive().optional(),
+      href: z.string().optional(),
+      alt: localizedText,
+      caption: localizedText.optional(),
+    }),
+    z.object({
+      type: z.literal("youtube"),
+      videoId: z.string(),
+      title: z.string(),
+      caption: localizedText.optional(),
+      posterQuality: z
+        .enum(["default", "mqdefault", "hqdefault", "sddefault", "maxresdefault"])
+        .optional(),
+    }),
+  ]),
+});
+
+export const collections = { home, inspiration };
