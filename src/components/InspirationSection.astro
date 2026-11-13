@@ -1,0 +1,77 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { Locale } from "../data/languages";
+
+type InspirationItem = CollectionEntry<"inspiration">["data"];
+type LocalizedText = Extract<InspirationItem, { type: "image" }>["alt"];
+
+interface Props {
+  heading: string;
+  items: InspirationItem[];
+  locale: Locale;
+}
+
+const { heading, items, locale } = Astro.props;
+
+// alt / caption may be one string for all languages or a per-locale
+// object; fall back to zh-tw, then en, then any provided value.
+function pickText(text: LocalizedText | undefined): string | undefined {
+  if (!text) return undefined;
+  if (typeof text === "string") return text;
+  return text[locale] ?? text["zh-tw"] ?? text.en ?? text.ja;
+}
+
+// Accept a bare video ID or a full YouTube URL and return the ID,
+// so pasting a link into inspiration.yaml just works.
+function youtubeId(value: string): string {
+  const match = value.match(
+    /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/,
+  );
+  return match ? match[1] : value.trim();
+}
+---
+
+<section class="media-section" aria-labelledby="media-heading">
+  <div class="section-heading-row">
+    <h2 id="media-heading">{heading}</h2>
+  </div>
+  {items.map((item) =>
+    item.type === "image" ? (
+      <figure class="media-card">
+        {item.href ? (
+          <a href={item.href} target="_blank" rel="noopener">
+            {item.srcDesktop ? (
+              <picture>
+                <source media="(min-width: 768px)" srcset={item.srcDesktop} />
+                <img src={item.src} alt={pickText(item.alt)} width={item.width} height={item.height} loading="lazy" />
+              </picture>
+            ) : (
+              <img src={item.src} alt={pickText(item.alt)} width={item.width} height={item.height} loading="lazy" />
+            )}
+          </a>
+        ) : item.srcDesktop ? (
+          <picture>
+            <source media="(min-width: 768px)" srcset={item.srcDesktop} />
+            <img src={item.src} alt={pickText(item.alt)} width={item.width} height={item.height} loading="lazy" />
+          </picture>
+        ) : (
+          <img src={item.src} alt={pickText(item.alt)} width={item.width} height={item.height} loading="lazy" />
+        )}
+        {pickText(item.caption) && <figcaption>{pickText(item.caption)}</figcaption>}
+      </figure>
+    ) : (
+      <figure class="media-card">
+        <lite-youtube
+          videotitle={item.title}
+          videoid={youtubeId(item.videoId)}
+          posterquality={item.posterQuality ?? "maxresdefault"}
+        ></lite-youtube>
+        <figcaption>{pickText(item.caption) ?? item.title}</figcaption>
+      </figure>
+    ),
+  )}
+</section>
+
+<script>
+  import "@justinribeiro/lite-youtube";
+</script>

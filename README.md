@@ -38,6 +38,7 @@ Cloudflare Pages 若未自動讀取 `.nvmrc`，請將 `NODE_VERSION` 環境變�
 - `src/pages/`：各語言頁面與 404 頁；目錄對應網站 URL。
 - `src/layouts/`：共用文件版型、SEO 標籤與頁尾。
 - `src/content/home/*.yaml`：首頁文案的 Content Collection，一個語言一個檔案，結構由 `src/content.config.ts` 的 schema 驗證。改文字時只改對應語言的 YAML 檔。
+- `src/content/inspiration.yaml`：靈感區塊的 Content Collection，單一檔案。要新增圖片或 YouTube 嵌入，只要在這個檔案最後多貼一段（範例寫在檔案頂部註解裡）：圖片先把檔案放進 `static/images/`，再寫 `type: image`＋`src`／`alt`／`caption`；影片寫 `type: youtube`＋`videoId`（可貼完整網址）／`title`。順序就是顯示順序，欄位寫錯或 `id` 重複會讓建置失敗，不會上線壞掉的區塊。
 - `src/data/`：語言路徑、社群連結等與語言無關的共用資料。
 - `static/`：CSS、圖片、JavaScript 及 Cloudflare Pages 靜態設定。
 - `dist/`：建置產物，不要直接修改。

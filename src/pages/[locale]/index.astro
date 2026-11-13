@@ -3,7 +3,8 @@ import SiteLayout from "../../layouts/SiteLayout.astro";
 import ProfileHeader from "../../components/ProfileHeader.astro";
 import InfoCards from "../../components/InfoCards.astro";
 import PortalLinks from "../../components/PortalLinks.astro";
-import { getEntry } from "astro:content";
+import InspirationSection from "../../components/InspirationSection.astro";
+import { getCollection, getEntry } from "astro:content";
 import { languages, type Locale } from "../../data/languages";
 import { socialLinks, websiteLinks } from "../../data/site";
 import { getLatestArticle } from "../../lib/latestArticle";
@@ -33,6 +34,9 @@ const languageOptions = languages.map((language) => ({
   ...language,
   selected: language.key === locale,
 }));
+const inspirationItems = (await getCollection("inspiration")).map(
+  (item) => item.data,
+);
 ---
 
 <SiteLayout
@@ -98,31 +102,8 @@ const languageOptions = languages.map((language) => ({
       </a>
     </section>
 
-    <section class="media-section" aria-labelledby="media-heading">
-      <div class="section-heading-row">
-        <h2 id="media-heading">{content.mediaHeading}</h2>
-      </div>
-      <figure class="media-card">
-        <picture>
-          <source media="(min-width: 768px)" srcset="/images/nene2.webp" />
-          <img src="/images/nene1.webp" alt={content.mediaImageAlt} width="1200" height="630" loading="lazy" />
-        </picture>
-        <figcaption>{content.mediaCaption}</figcaption>
-      </figure>
-      <figure class="media-card">
-        <lite-youtube
-          videotitle="ロミオとシンデレラ / 日野森雫（アナザーボーカル Full ver.）"
-          videoid="HD3v90A3ldg"
-          posterquality="maxresdefault"
-        ></lite-youtube>
-        <figcaption>{content.videoTitle}</figcaption>
-      </figure>
-    </section>
+    <InspirationSection heading={content.mediaHeading} items={inspirationItems} locale={locale} />
 
     <PortalLinks links={socialLinks} content={content} heading={content.socialHeading} />
   </div>
 </SiteLayout>
-
-<script>
-  import '@justinribeiro/lite-youtube';
-</script>
