@@ -39,6 +39,7 @@ const { content, languages, languageOptions } = Astro.props;
     <br>
     {content.intro.line5}
   </p>
+  {content.intro.motto && <p class="profile-motto">{content.intro.motto}</p>}
   <p class="profile-meta">{content.slogan}</p>
 
   <div class="language-switcher">
