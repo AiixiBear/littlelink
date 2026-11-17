@@ -144,6 +144,15 @@ h2 {
   text-wrap: pretty;
 }
 
+.profile-motto {
+  max-width: 34rem;
+  margin: 0 auto 10px;
+  color: var(--primary-strong);
+  font-size: 1rem;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
 .profile-meta {
   margin-bottom: 22px;
   color: var(--text-muted);

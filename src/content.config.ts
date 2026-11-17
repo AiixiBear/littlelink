@@ -41,6 +41,7 @@ const home = defineCollection({
       alternateName: z.string(),
       alternateSuffix: z.string(),
       line5: z.string(),
+      motto: z.string().optional(),
     }),
     aboutHeading: z.string(),
     quickLinksHeading: z.string(),
