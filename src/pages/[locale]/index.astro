@@ -6,7 +6,6 @@ import PortalLinks from "../../components/PortalLinks.astro";
 import InspirationSection from "../../components/InspirationSection.astro";
 import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 import { languages, type Locale } from "../../data/languages";
-import { getLatestArticle } from "../../lib/latestArticle";
 import { pickLocalizedText } from "../../lib/localizedText";
 
 export function getStaticPaths() {
@@ -21,15 +20,6 @@ const entry = await getEntry("home", locale);
 if (!entry) throw new Error(`Missing home content for locale "${locale}"`);
 const content = entry.data;
 const pageScript = "/js/portal.js";
-const latestArticle = await getLatestArticle(locale);
-const latestArticleDate = latestArticle
-  ? new Intl.DateTimeFormat(content.lang, {
-      timeZone: "Asia/Taipei",
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    }).format(latestArticle.publishedAt)
-  : null;
 const languageOptions = languages.map((language) => ({
   ...language,
   selected: language.key === locale,
@@ -76,25 +66,22 @@ const socialLinks = allLinks.filter(
           <span aria-hidden="true">→</span>
         </a>
         {websiteLinks.map((link) => (
-          <div class:list={["quick-link-group", link.latestArticle && "quick-link-group-homepage", link.latestArticle && latestArticle && "has-latest-article"]}>
+          <div class:list={["quick-link-group", link.latestArticle && "quick-link-group-homepage"]}>
             <a class:list={["quick-link", link.primary && "quick-link-primary"]} href={link.href} target="_blank" rel={link.rel}>
               <span>{pickLocalizedText(link.label, locale)}</span>
               <span aria-hidden="true">→</span>
             </a>
-            {link.latestArticle && latestArticle && latestArticleDate && (
-              <details class="latest-article">
-                <summary class="latest-article-summary">
+            {link.latestArticle && (
+              <details class="latest-article" id="latest-article" hidden>
+                <summary class="latest-article-summary" id="latest-article-summary">
                   {locale === "en" ? "Latest article | " : locale === "ja" ? "最新記事 | " : "最新文章 | "}
-                  {latestArticle.title} ({latestArticleDate})
                 </summary>
-                <a class="latest-article-link" href={latestArticle.href} target="_blank" rel="noopener">
-                  {latestArticle.coverHref && (
-                    <img class="latest-article-image" src={latestArticle.coverHref} alt="" loading="lazy" />
-                  )}
+                <a class="latest-article-link" id="latest-article-link" target="_blank" rel="noopener">
+                  <img class="latest-article-image" id="latest-article-image" alt="" loading="lazy" />
                   <div class="latest-article-content">
-                    <span>{latestArticle.title}</span>
-                    <time class="latest-article-date" datetime={latestArticle.publishedAt.toISOString()}>{latestArticleDate}</time>
-                    <p>{latestArticle.description}</p>
+                    <span id="latest-article-title"></span>
+                    <time class="latest-article-date" id="latest-article-date"></time>
+                    <p id="latest-article-description"></p>
                   </div>
                 </a>
               </details>
