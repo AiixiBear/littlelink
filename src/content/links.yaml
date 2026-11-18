@@ -71,6 +71,16 @@
     ja: Aiixi の匿名Q&A
   rel: noopener
 
+- id: apps
+  order: 21
+  group: website
+  href: https://apps.aiixi.cc/
+  label:
+    zh-tw: Aiixi Bear Apps
+    en: Aiixi Bear Apps
+    ja: Aiixi Bear Apps
+  rel: noopener
+
 - id: threads
   order: 30
   group: social
